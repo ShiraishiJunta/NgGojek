@@ -47,9 +47,9 @@ class HomepageActivity : AppCompatActivity() {
             startActivity(Intent(this, RiwayatActivity::class.java))
         }
 //
-//        navProfile.setOnClickListener {
-//            startActivity(Intent(this, ProfileActivity::class.java))
-//        }
+        navProfile.setOnClickListener {
+            startActivity(Intent(this, ProfileActivity::class.java))
+        }
 //
 //        navSettings.setOnClickListener {
 //            startActivity(Intent(this, SettingsActivity::class.java))
