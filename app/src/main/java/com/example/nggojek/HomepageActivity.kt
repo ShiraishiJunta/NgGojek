@@ -27,9 +27,9 @@ class HomepageActivity : AppCompatActivity() {
         val navProfile = findViewById<ImageView>(R.id.navProfile)
         val navSettings = findViewById<ImageView>(R.id.navSettings)
 
-//        btnProfile.setOnClickListener {
-//            startActivity(Intent(this, ProfileActivity::class.java))
-//        }
+        btnProfile.setOnClickListener {
+            startActivity(Intent(this, ProfileActivity::class.java))
+        }
 //
 //        btnMotor.setOnClickListener {
 //            startActivity(Intent(this, PesanMotorActivity::class.java))
