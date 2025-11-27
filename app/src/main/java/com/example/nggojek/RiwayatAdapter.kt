@@ -29,11 +29,12 @@ class RiwayatAdapter(
     override fun onBindViewHolder(holder: RiwayatViewHolder, position: Int) {
         val item = items[position]
 
+        holder.imgDriver.setImageResource(R.drawable.profile)
         holder.txtNamaDriver.text = item.namaDriver
         holder.txtTotal.text = "Total"
         holder.txtHarga.text = item.totalHarga
         holder.ratingBar.rating = item.rating
-        holder.imgDriver.setImageResource(R.drawable.profile) // default icon
+
     }
 
     override fun getItemCount(): Int = items.size
