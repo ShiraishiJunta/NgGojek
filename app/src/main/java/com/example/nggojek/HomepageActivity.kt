@@ -39,9 +39,9 @@ class HomepageActivity : AppCompatActivity() {
 //            startActivity(Intent(this, PesanMobilActivity::class.java))
 //        }
 //
-//        navChat.setOnClickListener {
-//            startActivity(Intent(this, ChatActivity::class.java))
-//        }
+        navChat.setOnClickListener {
+            startActivity(Intent(this, ChatActivity::class.java))
+        }
 //
         navRiwayat.setOnClickListener {
             startActivity(Intent(this, RiwayatActivity::class.java))
