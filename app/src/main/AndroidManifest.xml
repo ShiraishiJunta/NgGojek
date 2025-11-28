@@ -16,6 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NgGojek">
         <activity
+            android:name=".PesanMobilActivity"
+            android:exported="false" />
+        <activity
             android:name=".KonfirmasiActivity"
             android:exported="false" />
         <activity

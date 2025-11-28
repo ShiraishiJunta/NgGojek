@@ -34,11 +34,11 @@ class HomepageActivity : AppCompatActivity() {
         btnMotor.setOnClickListener {
             startActivity(Intent(this, PesanMotorActivity::class.java))
         }
-//
-//        btnMobil.setOnClickListener {
-//            startActivity(Intent(this, PesanMobilActivity::class.java))
-//        }
-//
+
+        btnMobil.setOnClickListener {
+            startActivity(Intent(this, PesanMobilActivity::class.java))
+        }
+
         navChat.setOnClickListener {
             startActivity(Intent(this, ChatActivity::class.java))
         }

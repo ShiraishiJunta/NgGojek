@@ -11,7 +11,7 @@ import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.MapView
 import org.osmdroid.views.overlay.Marker
 
-class PesanMotorActivity : AppCompatActivity() {
+class PesanMobilActivity : AppCompatActivity() {
 
     lateinit var mapView: MapView
     lateinit var bottomSheetBehavior: BottomSheetBehavior<LinearLayout>
@@ -24,7 +24,7 @@ class PesanMotorActivity : AppCompatActivity() {
             applicationContext.getSharedPreferences("osmdroid", MODE_PRIVATE)
         )
 
-        setContentView(R.layout.activity_pesan_motor)
+        setContentView(R.layout.activity_pesan_mobil)
 
         mapView = findViewById(R.id.mapView)
         mapView.setMultiTouchControls(true)
@@ -44,6 +44,7 @@ class PesanMotorActivity : AppCompatActivity() {
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
 
         findViewById<Button>(R.id.btnPesan).setOnClickListener {
+            // Nanti diarahkan ke halaman konfirmasi mobil
             startActivity(Intent(this, KonfirmasiActivity::class.java))
         }
     }
