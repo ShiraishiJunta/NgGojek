@@ -29,10 +29,10 @@ class HomepageActivity : AppCompatActivity() {
         btnMotor.setOnClickListener {
             startActivity(Intent(this, PesanMotorActivity::class.java))
         }
-//
-//        btnMobil.setOnClickListener {
-//            startActivity(Intent(this, MobilActivity::class.java))
-//        }
+
+        btnMobil.setOnClickListener {
+            startActivity(Intent(this, PesanMobilActivity::class.java))
+        }
 
         navChat.setOnClickListener {
             startActivity(Intent(this, ChatActivity::class.java))
@@ -51,5 +51,9 @@ class HomepageActivity : AppCompatActivity() {
         navSettings.setOnClickListener {
             startActivity(Intent(this, ProfileActivity::class.java))
         }
+//
+//        navSettings.setOnClickListener {
+//            startActivity(Intent(this, SettingsActivity::class.java))
+//        }
     }
 }
