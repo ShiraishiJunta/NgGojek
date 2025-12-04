@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- MAP -->
     <ImageView
         android:id="@+id/imgMap"
         android:layout_width="0dp"
@@ -16,7 +15,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/bottomSheet" />
 
-    <!-- BOTTOM SHEET -->
     <androidx.cardview.widget.CardView
         android:id="@+id/bottomSheet"
         android:layout_width="0dp"
@@ -35,7 +33,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <!-- STATUS -->
             <TextView
                 android:id="@+id/txtStatus"
                 android:text="The driver is on the way"
@@ -44,7 +41,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
-            <!-- DRIVER ROW -->
             <LinearLayout
                 android:layout_marginTop="16dp"
                 android:orientation="horizontal"
@@ -75,7 +71,6 @@
                         android:layout_height="wrap_content" />
                 </LinearLayout>
 
-                <!-- Call -->
                 <ImageView
                     android:id="@+id/btnCall"
                     android:src="@drawable/call"
@@ -83,7 +78,6 @@
                     android:layout_height="40dp"
                     android:padding="8dp" />
 
-                <!-- Chat -->
                 <ImageView
                     android:id="@+id/btnChat"
                     android:src="@drawable/chat"
@@ -92,7 +86,6 @@
                     android:padding="8dp" />
             </LinearLayout>
 
-            <!-- PICKUP -->
             <TextView
                 android:layout_marginTop="16dp"
                 android:text="Pick-Up Location"
@@ -108,7 +101,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
-            <!-- DESTINATION -->
             <TextView
                 android:layout_marginTop="16dp"
                 android:text="Destination"
@@ -124,7 +116,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
-            <!-- PAYMENT -->
             <TextView
                 android:layout_marginTop="16dp"
                 android:text="Payment"
