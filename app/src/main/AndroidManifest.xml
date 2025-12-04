@@ -11,6 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.NgGojek">
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="false" />
         <!-- START APP FROM LOGIN -->
         <activity
             android:name=".LoginActivity"
@@ -36,6 +39,7 @@
         <activity
             android:name=".ChatActivity"
             android:exported="false" />
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="YOUR_API_KEY" />
