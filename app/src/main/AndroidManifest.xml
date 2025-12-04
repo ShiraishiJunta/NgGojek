@@ -12,9 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NgGojek">
         <activity
-            android:name=".RegisterActivity"
+            android:name=".OrderActivity"
             android:exported="false" />
-        <!-- START APP FROM LOGIN -->
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="false" /> <!-- START APP FROM LOGIN -->
         <activity
             android:name=".LoginActivity"
             android:exported="true">
