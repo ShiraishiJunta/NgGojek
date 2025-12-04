@@ -18,11 +18,11 @@ class RiwayatActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         val dataRiwayat = listOf(
-            Riwayat("Nama Driver", "Rp 200.000", 3f),
-            Riwayat("Nama Driver", "Rp 200.000", 4f),
-            Riwayat("Nama Driver", "Rp 200.000", 2f),
-            Riwayat("Nama Driver", "Rp 200.000", 5f),
-//            Riwayat("Nama Driver", "Rp 200.000", 0f)
+            Riwayat("Nama Driver", "Rp 6.000", 3f),
+            Riwayat("Nama Driver", "Rp 20.000", 4f),
+            Riwayat("Nama Driver", "Rp 14.000", 2f),
+            Riwayat("Nama Driver", "Rp 67.000", 5f),
+            Riwayat("Nama Driver", "Rp 61.000", 0f)
         )
 
         adapterRiwayat = RiwayatAdapter(dataRiwayat)
