@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import org.osmdroid.config.Configuration
 import org.osmdroid.util.GeoPoint
@@ -13,18 +14,28 @@ import org.osmdroid.views.overlay.Marker
 
 class PesanMobilActivity : AppCompatActivity() {
 
-    lateinit var mapView: MapView
-    lateinit var bottomSheetBehavior: BottomSheetBehavior<LinearLayout>
+    private lateinit var mapView: MapView
+    private lateinit var bottomSheetBehavior: BottomSheetBehavior<LinearLayout>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_pesan_mobil)
+
+        val toolbar = findViewById<MaterialToolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
+
+        // Ubah ikon back menjadi hitam
+        toolbar.navigationIcon?.setTint(getColor(android.R.color.black))
+
+        toolbar.setNavigationOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
+
 
         Configuration.getInstance().load(
             applicationContext,
             applicationContext.getSharedPreferences("osmdroid", MODE_PRIVATE)
         )
-
-        setContentView(R.layout.activity_pesan_mobil)
 
         mapView = findViewById(R.id.mapView)
         mapView.setMultiTouchControls(true)
@@ -44,7 +55,6 @@ class PesanMobilActivity : AppCompatActivity() {
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
 
         findViewById<Button>(R.id.btnPesan).setOnClickListener {
-            // Nanti diarahkan ke halaman konfirmasi mobil
             startActivity(Intent(this, KonfirmasiActivity::class.java))
         }
     }
