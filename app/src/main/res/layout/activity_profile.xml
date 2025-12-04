@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF">
 
-    <!-- Foto Profil -->
     <ImageView
         android:id="@+id/imgProfile"
         android:layout_width="100dp"
@@ -19,12 +18,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Nama Pengguna -->
     <TextView
         android:id="@+id/txtNama"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nama Pengguna"
+        android:text="Admin"
         android:textSize="20sp"
         android:textStyle="bold"
         android:layout_marginTop="16dp"
@@ -32,12 +30,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Email -->
     <TextView
         android:id="@+id/txtEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="user@email.com"
+        android:text="admin@gmail.com"
         android:textSize="14sp"
         android:textColor="#808080"
         android:layout_marginTop="4dp"
@@ -45,17 +42,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Garis -->
-    <View
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="32dp"
-        android:background="#E0E0E0"
-        app:layout_constraintTop_toBottomOf="@id/txtEmail"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <!-- Menu Pengaturan Profil -->
     <LinearLayout
         android:id="@+id/btnEditProfile"
         android:layout_width="0dp"
@@ -85,7 +71,6 @@
             android:textColor="#000000" />
     </LinearLayout>
 
-    <!-- Tombol Riwayat -->
     <LinearLayout
         android:id="@+id/btnRiwayat"
         android:layout_width="0dp"
@@ -115,7 +100,6 @@
             android:textColor="#000000" />
     </LinearLayout>
 
-    <!-- Tombol Logout -->
     <LinearLayout
         android:id="@+id/btnLogout"
         android:layout_width="0dp"

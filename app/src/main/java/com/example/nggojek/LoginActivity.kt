@@ -59,7 +59,7 @@ class LoginActivity : AppCompatActivity() , View.OnClickListener {
 
                 Toast.makeText(this,"Selamat Datang, $username", Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(this, "Email & Password salah!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Email atau Password salah!", Toast.LENGTH_SHORT).show()
             }
         }
     }
