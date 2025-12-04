@@ -104,9 +104,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <RadioButton android:id="@+id/rbCash" />
-            <RadioButton android:id="@+id/rbEW1" />
-            <RadioButton android:id="@+id/rbEW2" />
+            <RadioButton
+                android:id="@+id/rbCashRight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"/>
+            <RadioButton android:id="@+id/rbEW1Right" />
+            <RadioButton android:id="@+id/rbEW2Right" />
 
         </RadioGroup>
 
