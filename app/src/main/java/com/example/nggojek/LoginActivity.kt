@@ -2,13 +2,14 @@ package com.example.nggojek
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import android.view.View
 
 class LoginActivity : AppCompatActivity() , View.OnClickListener {
 
@@ -34,6 +35,12 @@ class LoginActivity : AppCompatActivity() , View.OnClickListener {
         val editTextEmailAddress: EditText = findViewById(R.id.editTextEmailAddress)
         val editTextPassword: EditText = findViewById(R.id.editTextPassword)
         val buttonLogin: Button = findViewById(R.id.buttonLogin)
+        val goToRegister: TextView = findViewById(R.id.goToRegister)
+
+        goToRegister.setOnClickListener {
+            val intentLoginToRegister = Intent(this, RegisterActivity::class.java)
+            startActivity(intentLoginToRegister)
+        }
 
         buttonLogin.setOnClickListener {
             val username: String = editTextEmailAddress.text.toString()
@@ -48,5 +55,4 @@ class LoginActivity : AppCompatActivity() , View.OnClickListener {
     companion object{
         const val KEY_USERNAME = "username"
     }
-
 }
