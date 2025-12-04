@@ -48,7 +48,6 @@
             android:textStyle="bold" />
     </LinearLayout>
 
-    <!-- Saldo -->
     <LinearLayout
         android:id="@+id/saldoCard"
         android:layout_width="0dp"
@@ -81,7 +80,6 @@
             app:tint="#FFFFFF" />
     </LinearLayout>
 
-    <!-- Tombol Pesan Motor -->
     <LinearLayout
         android:id="@+id/btnMotor"
         android:layout_width="0dp"
@@ -112,7 +110,6 @@
             android:textSize="18sp" />
     </LinearLayout>
 
-    <!-- Tombol Pesan Mobil -->
     <LinearLayout
         android:id="@+id/btnMobil"
         android:layout_width="0dp"
@@ -143,7 +140,6 @@
             android:textSize="18sp" />
     </LinearLayout>
 
-    <!-- Bottom Navigation -->
     <LinearLayout
         android:id="@+id/bottomNav"
         android:layout_width="0dp"
@@ -176,12 +172,12 @@
             android:layout_marginStart="24dp"
             android:src="@drawable/clock" />
 
-        <ImageView
-            android:id="@+id/navProfile"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_marginStart="24dp"
-            android:src="@drawable/profile" />
+<!--        <ImageView-->
+<!--            android:id="@+id/navProfile"-->
+<!--            android:layout_width="32dp"-->
+<!--            android:layout_height="32dp"-->
+<!--            android:layout_marginStart="24dp"-->
+<!--            android:src="@drawable/profile" />-->
 
         <ImageView
             android:id="@+id/navSettings"
