@@ -36,6 +36,8 @@ class LoginActivity : AppCompatActivity() , View.OnClickListener {
         val editTextPassword: EditText = findViewById(R.id.editTextPassword)
         val buttonLogin: Button = findViewById(R.id.buttonLogin)
         val goToRegister: TextView = findViewById(R.id.goToRegister)
+        val email = "admin@gmail.com"
+        val passwd = "1234"
 
         goToRegister.setOnClickListener {
             val intentLoginToRegister = Intent(this, RegisterActivity::class.java)
@@ -44,12 +46,21 @@ class LoginActivity : AppCompatActivity() , View.OnClickListener {
 
         buttonLogin.setOnClickListener {
             val username: String = editTextEmailAddress.text.toString()
+            val password: String = editTextPassword.text.toString()
 
-            val intentLoginToMain = Intent(this, HomepageActivity::class.java)
-            intentLoginToMain.putExtra(KEY_USERNAME,username)
-            startActivity(intentLoginToMain)
+            if (username.isEmpty() || password.isEmpty()) {
+                Toast.makeText(this, "Email & Password tidak boleh kosong", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            if (username == email && password == passwd) {
+                val intentLoginToMain = Intent(this, HomepageActivity::class.java)
+                intentLoginToMain.putExtra(KEY_USERNAME,username)
+                startActivity(intentLoginToMain)
 
-            Toast.makeText(this,"Selamat Datang, $username", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,"Selamat Datang, $username", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "Email & Password salah!", Toast.LENGTH_SHORT).show()
+            }
         }
     }
     companion object{
