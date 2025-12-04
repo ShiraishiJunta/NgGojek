@@ -4,13 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- MAP -->
     <org.osmdroid.views.MapView
         android:id="@+id/mapView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <!-- ====== LOKASI JEMPUT & TUJUAN (DIPINDAH KE TOP) ====== -->
     <LinearLayout
         android:id="@+id/topLocationBox"
         android:layout_width="match_parent"
@@ -19,7 +17,6 @@
         android:padding="16dp"
         android:layout_gravity="top">
 
-        <!-- Lokasi Jemput -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -54,7 +51,6 @@
 
     </LinearLayout>
 
-    <!-- ====== BOTTOM SHEET ====== -->
     <LinearLayout
         android:id="@+id/bottomSheet"
         android:layout_width="match_parent"
@@ -64,7 +60,6 @@
         android:background="@drawable/bg_rounded_top"
         app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
-        <!-- Judul Metode Pembayaran -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -76,24 +71,11 @@
             android:layout_marginTop="20dp" />
 
         <RadioGroup
-            android:id="@+id/groupPembayaran"
-            android:visibility="gone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <RadioButton android:id="@+id/rbCash" />
-            <RadioButton android:id="@+id/rbEW1" />
-            <RadioButton android:id="@+id/rbEW2" />
-
-        </RadioGroup>
-
-        <RadioGroup
             android:id="@+id/groupRightRadio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- CASH -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -106,29 +88,44 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
                     app:cardElevation="3dp"
-                    app:cardCornerRadius="14dp"
-                    android:padding="12dp">
+                    app:cardCornerRadius="14dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:padding="12dp">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Cash"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/icon_cash"
+                            android:scaleType="fitCenter"
+                            android:layout_marginEnd="12dp"/>
 
-                        <TextView
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Rp 200.000"
-                            android:textSize="15sp" />
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Cash"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Rp 200.000"
+                                android:textSize="15sp" />
+                        </LinearLayout>
+
                     </LinearLayout>
-
                 </androidx.cardview.widget.CardView>
 
                 <RadioButton
@@ -138,7 +135,6 @@
 
             </LinearLayout>
 
-            <!-- EWALLET 1 -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -151,27 +147,42 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
                     app:cardElevation="3dp"
-                    app:cardCornerRadius="14dp"
-                    android:padding="12dp">
+                    app:cardCornerRadius="14dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:padding="12dp">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="E-Wallet 1"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/icon_ewallet"
+                            android:scaleType="fitCenter"
+                            android:layout_marginEnd="12dp"/>
 
-                        <TextView
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Rp 200.000"
-                            android:textSize="15sp" />
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="E-Wallet 1"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Rp 200.000"
+                                android:textSize="15sp" />
+                        </LinearLayout>
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
@@ -183,7 +194,6 @@
 
             </LinearLayout>
 
-            <!-- EWALLET 2 -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -195,27 +205,42 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
                     app:cardElevation="3dp"
-                    app:cardCornerRadius="14dp"
-                    android:padding="12dp">
+                    app:cardCornerRadius="14dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:padding="12dp">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="E-Wallet 2"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/icon_ewallet"
+                            android:scaleType="fitCenter"
+                            android:layout_marginEnd="12dp"/>
 
-                        <TextView
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Rp 200.000"
-                            android:textSize="15sp" />
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="E-Wallet 2"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Rp 200.000"
+                                android:textSize="15sp" />
+                        </LinearLayout>
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
@@ -229,8 +254,6 @@
 
         </RadioGroup>
 
-
-        <!-- TOMBOL PESAN -->
         <Button
             android:id="@+id/btnPesan"
             android:layout_width="match_parent"
