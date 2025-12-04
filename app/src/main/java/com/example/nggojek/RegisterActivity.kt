@@ -13,29 +13,29 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-        val edtUsername = findViewById<EditText>(R.id.editTextUsername)
-        val edtEmail = findViewById<EditText>(R.id.editTextEmail)
-        val edtPassword = findViewById<EditText>(R.id.editTextPassword)
-        val edtConfirmPassword = findViewById<EditText>(R.id.editTextConfirmPassword)
+        val editUsername = findViewById<EditText>(R.id.editTextUsername)
+        val editEmail = findViewById<EditText>(R.id.editTextEmail)
+        val editPassword = findViewById<EditText>(R.id.editTextPassword)
+        val editConfirmPassword = findViewById<EditText>(R.id.editTextConfirmPassword)
         val btnRegister = findViewById<Button>(R.id.buttonRegister)
 
         btnRegister.setOnClickListener {
-            val username = edtUsername.text.toString()
-            val email = edtEmail.text.toString()
-            val pass = edtPassword.text.toString()
-            val confirm = edtConfirmPassword.text.toString()
+            val username = editUsername.text.toString()
+            val email = editEmail.text.toString()
+            val passwd = editPassword.text.toString()
+            val confirm = editConfirmPassword.text.toString()
 
-            if (username.isEmpty() || email.isEmpty() || pass.isEmpty() || confirm.isEmpty()) {
-                Toast.makeText(this, "Isi semua field!", Toast.LENGTH_SHORT).show()
+            if (username.isEmpty() || email.isEmpty() || passwd.isEmpty() || confirm.isEmpty()) {
+                Toast.makeText(this, "Isi semua field", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            if (pass != confirm) {
+            if (passwd != confirm) {
                 Toast.makeText(this, "Password tidak sama!", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            Toast.makeText(this, "Registrasi Berhasil!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Registrasi Berhasil...", Toast.LENGTH_SHORT).show()
 
             startActivity(Intent(this, LoginActivity::class.java))
             finish()
