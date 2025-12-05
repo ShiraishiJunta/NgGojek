@@ -24,10 +24,11 @@ class PesanMotorActivity : AppCompatActivity() {
 
         Configuration.getInstance().load(
             applicationContext,
-            getSharedPreferences("osmdroid", MODE_PRIVATE)
+            applicationContext.getSharedPreferences("osmdroid", MODE_PRIVATE)
         )
 
         setContentView(R.layout.activity_pesan_motor)
+
 
         mapView = findViewById(R.id.mapView)
         mapView.setMultiTouchControls(true)
