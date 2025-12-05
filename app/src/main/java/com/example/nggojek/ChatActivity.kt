@@ -3,6 +3,7 @@ package com.example.nggojek
 import android.os.Bundle
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -19,6 +20,9 @@ class ChatActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
+
+        val namaDriver = intent.getStringExtra("EXTRA_NAMA_DRIVER") ?: "Driver"
+        findViewById<TextView>(R.id.txtTitle).text = "namaDriver"
 
         recyclerChat = findViewById(R.id.recyclerChat)
         edtMessage = findViewById(R.id.editMessage)

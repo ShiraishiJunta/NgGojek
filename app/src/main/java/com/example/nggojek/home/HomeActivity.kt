@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
+import com.example.nggojek.ChatFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 // PENTING: Import R wajib ada agar R.id dan R.layout terbaca
