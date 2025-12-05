@@ -19,20 +19,20 @@ class HomepageActivity : AppCompatActivity() {
         val navHome = findViewById<ImageView>(R.id.navHome)
         val navChat = findViewById<ImageView>(R.id.navChat)
         val navRiwayat = findViewById<ImageView>(R.id.navRiwayat)
-        val navProfile = findViewById<ImageView>(R.id.navProfile)
+//        val navProfile = findViewById<ImageView>(R.id.navProfile)
         val navSettings = findViewById<ImageView>(R.id.navSettings)
 
         btnProfile.setOnClickListener {
             startActivity(Intent(this, ProfileActivity::class.java))
         }
+//
+        btnMotor.setOnClickListener {
+            startActivity(Intent(this, PesanMotorActivity::class.java))
+        }
 
-//        btnMotor.setOnClickListener {
-//            startActivity(Intent(this, MotorActivity::class.java))
-//        }
-
-//        btnMobil.setOnClickListener {
-//            startActivity(Intent(this, MobilActivity::class.java))
-//        }
+        btnMobil.setOnClickListener {
+            startActivity(Intent(this, PesanMobilActivity::class.java))
+        }
 
         navChat.setOnClickListener {
             startActivity(Intent(this, ChatActivity::class.java))
@@ -43,9 +43,15 @@ class HomepageActivity : AppCompatActivity() {
         }
 
         navProfile.setOnClickListener {
+//
+//        navProfile.setOnClickListener {
+//            startActivity(Intent(this, ProfileActivity::class.java))
+//        }
+
+        navSettings.setOnClickListener {
             startActivity(Intent(this, ProfileActivity::class.java))
         }
-
+//
 //        navSettings.setOnClickListener {
 //            startActivity(Intent(this, SettingsActivity::class.java))
 //        }

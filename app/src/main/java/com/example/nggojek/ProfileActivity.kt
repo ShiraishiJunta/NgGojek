@@ -10,12 +10,13 @@ class ProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
 
-        val btnRiwayat = findViewById<LinearLayout>(R.id.btnRiwayat)
+//        val btnRiwayat = findViewById<LinearLayout>(R.id.btnRiwayat)
         val btnLogout = findViewById<LinearLayout>(R.id.btnLogout)
 
-        btnRiwayat.setOnClickListener {
-            startActivity(Intent(this, RiwayatActivity::class.java))
-        }
+//        // menuju RiwayatActivity
+//        btnRiwayat.setOnClickListener {
+//            startActivity(Intent(this, RiwayatActivity::class.java))
+//        }
 
         btnLogout.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)

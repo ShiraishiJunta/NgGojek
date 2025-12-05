@@ -5,9 +5,8 @@ plugins {
 
 android {
     namespace = "com.example.nggojek"
-    compileSdk {
-        version = release(36)
-    }
+    compileSdk = 36
+
 
     defaultConfig {
         applicationId = "com.example.nggojek"
@@ -44,7 +43,7 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.recyclerview)
-    implementation(libs.play.services.maps)
+    implementation("org.osmdroid:osmdroid-android:6.1.18")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
