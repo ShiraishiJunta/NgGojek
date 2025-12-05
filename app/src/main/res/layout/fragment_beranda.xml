@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5">
+    <!-- GANTI: Background Neutral N-200 (Abu muda) agar modern -->
+
+    <!-- Tombol Profile (Pojok Kanan Atas) -->
+    <ImageView
+        android:id="@+id/btnProfile"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_margin="16dp"
+        android:background="@drawable/bg_circle"
+        android:padding="4dp"
+        android:src="@drawable/profile"
+        app:tint="#111827"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <!-- TINT: Neutral N-900 (Hitam Pekat) -->
+
+    <!-- Banner Promo -->
+    <LinearLayout
+        android:id="@+id/bannerPromo"
+        android:layout_width="0dp"
+        android:layout_height="140dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/bg_radius_light"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <!-- BACKGROUND: Pakai drawable hijau muda (P-100) -->
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/profile"
+            app:tint="#14B8A6"/>
+        <!-- TINT: Icon warna Primary (P-500) -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Promo Spesial"
+            android:fontFamily="@font/nunito"
+            android:textColor="#134E4A"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+        <!-- TEXT: Warna Hijau Gelap (P-900) agar kontras -->
+    </LinearLayout>
+
+    <!-- Kartu Saldo -->
+    <LinearLayout
+        android:id="@+id/saldoCard"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/bg_radius_primary"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bannerPromo">
+        <!-- BACKGROUND: Pakai drawable hijau utama (P-500) -->
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingStart="16dp"
+            android:text="Rp 250.000"
+            android:fontFamily="@font/poppins_bold"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="16dp"
+            android:padding="4dp"
+            android:src="@drawable/add"
+            app:tint="#FFFFFF" />
+    </LinearLayout>
+
+    <!-- Tombol Pesan Motor -->
+    <LinearLayout
+        android:id="@+id/btnMotor"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/bg_radius_white"
+        android:elevation="2dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/saldoCard">
+        <!-- BACKGROUND: Putih dengan radius + elevation agar timbul -->
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/motor"
+            app:tint="#14B8A6" />
+        <!-- TINT: Icon warna Primary (P-500) -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Pesan Motor"
+            android:fontFamily="@font/nunito"
+            android:textColor="#111827"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+        <!-- TEXT: Neutral Gelap (N-900) -->
+    </LinearLayout>
+
+    <!-- Tombol Pesan Mobil -->
+    <LinearLayout
+        android:id="@+id/btnMobil"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/bg_radius_white"
+        android:elevation="2dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnMotor">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/car"
+            app:tint="#14B8A6" />
+        <!-- TINT: Icon warna Primary (P-500) -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Pesan Mobil"
+            android:fontFamily="@font/nunito"
+            android:textColor="#111827"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
