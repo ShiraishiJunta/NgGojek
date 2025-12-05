@@ -14,20 +14,25 @@ class ChatActivity : AppCompatActivity() {
     private lateinit var edtMessage: EditText
     private lateinit var btnSend: ImageView
 
+    // Gunakan ChatMessage (yang baru dibuat)
     private val chatList = ArrayList<ChatMessage>()
+
+    // Gunakan ChatAdapter (yang baru dibuat)
     private lateinit var chatAdapter: ChatAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
 
+        // Ambil nama driver
         val namaDriver = intent.getStringExtra("EXTRA_NAMA_DRIVER") ?: "Driver"
-        findViewById<TextView>(R.id.txtTitle).text = "namaDriver"
+        findViewById<TextView>(R.id.txtTitle).text = namaDriver
 
         recyclerChat = findViewById(R.id.recyclerChat)
         edtMessage = findViewById(R.id.editMessage)
         btnSend = findViewById(R.id.btnSend)
 
+        // Inisialisasi Adapter yang BENAR
         chatAdapter = ChatAdapter(chatList)
 
         recyclerChat.layoutManager = LinearLayoutManager(this).apply {
@@ -41,12 +46,14 @@ class ChatActivity : AppCompatActivity() {
             val msg = edtMessage.text.toString()
 
             if (msg.isNotEmpty()) {
+                // Tambah pesan Kita (true)
                 addMessage(msg, true)
                 edtMessage.text.clear()
 
+                // Simulasi balasan Driver (false)
                 recyclerChat.postDelayed({
-                    addMessage("Iyo sek to sabar.", false)
-                }, 600)
+                    addMessage("Siap kak, otw.", false)
+                }, 1000)
             }
         }
     }
