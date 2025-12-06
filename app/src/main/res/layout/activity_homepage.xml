@@ -7,7 +7,7 @@
     android:background="#FFFFFF"
     tools:context=".MainActivity">
 
-    <!-- Tombol Profile (pojok kanan atas) -->
+    <!-- Tombol Profile-->
     <ImageView
         android:id="@+id/btnProfile"
         android:layout_width="32dp"
@@ -171,13 +171,6 @@
             android:layout_height="32dp"
             android:layout_marginStart="24dp"
             android:src="@drawable/clock" />
-
-<!--        <ImageView-->
-<!--            android:id="@+id/navProfile"-->
-<!--            android:layout_width="32dp"-->
-<!--            android:layout_height="32dp"-->
-<!--            android:layout_marginStart="24dp"-->
-<!--            android:src="@drawable/profile" />-->
 
         <ImageView
             android:id="@+id/navSettings"
