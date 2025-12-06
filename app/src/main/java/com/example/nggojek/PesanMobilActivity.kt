@@ -5,9 +5,10 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
-import android.widget.RadioGroup
+import android.widget.RadioButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import org.osmdroid.config.Configuration
@@ -17,8 +18,8 @@ import org.osmdroid.views.overlay.Marker
 
 class PesanMobilActivity : AppCompatActivity() {
 
-    private lateinit var mapView: MapView
-    private lateinit var bottomSheetBehavior: BottomSheetBehavior<LinearLayout>
+    lateinit var mapView: MapView
+    lateinit var bottomSheetBehavior: BottomSheetBehavior<LinearLayout>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,9 +28,10 @@ class PesanMobilActivity : AppCompatActivity() {
         // --- Setup Toolbar ---
         val toolbar = findViewById<MaterialToolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         toolbar.navigationIcon?.setTint(getColor(android.R.color.black))
         toolbar.setNavigationOnClickListener {
-            onBackPressedDispatcher.onBackPressed()
+            finish()
         }
 
         // --- Setup Map (OSMDroid) ---
@@ -41,71 +43,103 @@ class PesanMobilActivity : AppCompatActivity() {
         mapView = findViewById(R.id.mapView)
         mapView.setMultiTouchControls(true)
 
-        val jakarta = GeoPoint(-6.2, 106.816666)
+        val PNM = GeoPoint(-7.6476489, 111.5268208)
         val controller = mapView.controller
-        controller.setZoom(14.0)
-        controller.setCenter(jakarta)
+        controller.setZoom(20.0)
+        controller.setCenter(PNM)
 
         val marker = Marker(mapView)
-        marker.position = jakarta
-        marker.title = "Jakarta"
+        marker.position = PNM
+        marker.title = "PNM"
         mapView.overlays.add(marker)
 
-        // --- Setup Bottom Sheet ---
         val bottomSheet = findViewById<LinearLayout>(R.id.bottomSheet)
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
 
-
-        // --- LOGIKA UTAMA: Mengirim Data ke Konfirmasi ---
-
-        // 1. Definisikan komponen input
         val inputJemput = findViewById<EditText>(R.id.inputJemput)
         val inputTujuan = findViewById<EditText>(R.id.inputTujuan)
-        val groupRightRadio = findViewById<RadioGroup>(R.id.groupRightRadio)
         val btnPesan = findViewById<Button>(R.id.btnPesan)
 
+        val cardCash = findViewById<CardView>(R.id.cardCash)
+        val cardEW1 = findViewById<CardView>(R.id.cardEW1)
+        val cardEW2 = findViewById<CardView>(R.id.cardEW2)
+
+        val rbCashRight = findViewById<RadioButton>(R.id.rbCashRight)
+        val rbEW1Right = findViewById<RadioButton>(R.id.rbEW1Right)
+        val rbEW2Right = findViewById<RadioButton>(R.id.rbEW2Right)
+
+        fun selectPaymentMethod(selected: RadioButton) {
+            rbCashRight.isChecked = false
+            rbEW1Right.isChecked = false
+            rbEW2Right.isChecked = false
+            selected.isChecked = true
+        }
+
+        cardCash.setOnClickListener {
+            selectPaymentMethod(rbCashRight)
+        }
+
+        cardEW1.setOnClickListener {
+            selectPaymentMethod(rbEW1Right)
+        }
+
+        cardEW2.setOnClickListener {
+            selectPaymentMethod(rbEW2Right)
+        }
+
+        rbCashRight.setOnClickListener {
+            selectPaymentMethod(rbCashRight)
+        }
+
+        rbEW1Right.setOnClickListener {
+            selectPaymentMethod(rbEW1Right)
+        }
+
+        rbEW2Right.setOnClickListener {
+            selectPaymentMethod(rbEW2Right)
+        }
+
         btnPesan.setOnClickListener {
-            // 2. Ambil data teks dari EditText
+            // Ambil data teks dari EditText
             val alamatJemput = inputJemput.text.toString().trim()
             val alamatTujuan = inputTujuan.text.toString().trim()
 
-            // 3. Validasi sederhana (Cek apakah kosong)
             if (alamatJemput.isEmpty()) {
                 inputJemput.error = "Lokasi jemput harus diisi"
+                inputJemput.requestFocus()
                 return@setOnClickListener
             }
             if (alamatTujuan.isEmpty()) {
                 inputTujuan.error = "Tujuan harus diisi"
+                inputTujuan.requestFocus()
                 return@setOnClickListener
             }
 
-            // 4. Cek Metode Pembayaran yang dipilih
-            // Default ke "Tunai" jika tidak ada yang dipilih atau jika struktur layout radio group bersarang
-            var metodeBayar = "Tunai"
-
-            // Kita cek ID mana yang aktif
-            val selectedId = groupRightRadio.checkedRadioButtonId
-
-            when (selectedId) {
-                R.id.rbCashRight -> metodeBayar = "Tunai"
-                R.id.rbEW1Right -> metodeBayar = "E-Wallet 1"
-                R.id.rbEW2Right -> metodeBayar = "E-Wallet 2"
+            if (!rbCashRight.isChecked && !rbEW1Right.isChecked && !rbEW2Right.isChecked) {
+                Toast.makeText(this, "Silakan pilih metode pembayaran terlebih dahulu", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
             }
 
-            // 5. Masukkan data ke dalam Intent
-            val intent = Intent(this, KonfirmasiActivity::class.java)
+            var metodeBayar = "Tunai"
+            when {
+                rbCashRight.isChecked -> metodeBayar = "Tunai"
+                rbEW1Right.isChecked -> metodeBayar = "E-Wallet 1"
+                rbEW2Right.isChecked -> metodeBayar = "E-Wallet 2"
+            }
 
+            val intent = Intent(this, KonfirmasiActivity::class.java)
             intent.putExtra("EXTRA_ALAMAT_JEMPUT", alamatJemput)
             intent.putExtra("EXTRA_ALAMAT_TUJUAN", alamatTujuan)
-            intent.putExtra("EXTRA_JENIS_KENDARAAN", "Mobil") // Karena ini halaman Pesan Mobil
+            intent.putExtra("EXTRA_JENIS_KENDARAAN", "Mobil")
             intent.putExtra("EXTRA_METODE_BAYAR", metodeBayar)
-
-            // Harga kita set sesuai tampilan di XML kamu (Rp 200.000)
-            // Atau sesuaikan dengan logika hitungan jarak nanti
             intent.putExtra("EXTRA_HARGA", 200000)
 
-            // 6. Jalankan Activity Konfirmasi
             startActivity(intent)
         }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
     }
 }
