@@ -3,6 +3,7 @@ package com.example.nggojek
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 class OrderanBerlangsungActivity : AppCompatActivity() {
@@ -10,6 +11,9 @@ class OrderanBerlangsungActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_orderan_berlangsung)
+
+        // Tampilkan notifikasi driver ditemukan
+        Toast.makeText(this, "Driver ditemukan!", Toast.LENGTH_SHORT).show()
 
         // 1. Inisialisasi Views
         val btnBack = findViewById<ImageView>(R.id.btnBack)
