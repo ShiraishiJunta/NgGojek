@@ -134,7 +134,7 @@ class PesanMotorActivity : AppCompatActivity() {
             intent.putExtra("EXTRA_ALAMAT_TUJUAN", alamatTujuan)
             intent.putExtra("EXTRA_JENIS_KENDARAAN", "Motor")
             intent.putExtra("EXTRA_METODE_BAYAR", metodeBayar)
-            intent.putExtra("EXTRA_HARGA", 200.000)
+            intent.putExtra("EXTRA_HARGA", 200000)
 
             startActivity(intent)
         }
