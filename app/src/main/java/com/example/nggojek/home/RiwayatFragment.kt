@@ -24,7 +24,7 @@ class RiwayatFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Pastikan nama layout benar (misal fragment_riwayat)
+        //
         return inflater.inflate(R.layout.fragment_riwayat, container, false)
     }
 

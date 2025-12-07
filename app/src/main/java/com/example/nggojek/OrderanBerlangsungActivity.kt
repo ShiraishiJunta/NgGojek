@@ -1,20 +1,15 @@
 package com.example.nggojek
 
-import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
-class MencariDriverActivity : AppCompatActivity() {
+class OrderanBerlangsungActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_mencari_driver)
+        setContentView(R.layout.activity_orderan_berlangsung)
 
         // 1. Inisialisasi Views
         val btnBack = findViewById<ImageView>(R.id.btnBack)
@@ -23,7 +18,9 @@ class MencariDriverActivity : AppCompatActivity() {
         val imgTransportIcon = findViewById<ImageView>(R.id.imgTransportIcon)
         val tvJenisLayanan = findViewById<TextView>(R.id.tvJenisLayanan)
         val tvHargaLayanan = findViewById<TextView>(R.id.tvHargaLayanan)
-        val btnBatalkan = findViewById<Button>(R.id.btnBatalkan)
+        val tvNamaDriver = findViewById<TextView>(R.id.tvNamaDriver)
+        val tvNopolDriver = findViewById<TextView>(R.id.tvNopolDriver)
+        val tvRatingDriver = findViewById<TextView>(R.id.tvRatingDriver)
 
         // 2. Mengambil data dari Intent
         val alamatJemput = intent.getStringExtra("EXTRA_ALAMAT_JEMPUT") ?: "Alamat Jemput Kosong"
@@ -40,6 +37,11 @@ class MencariDriverActivity : AppCompatActivity() {
         tvAlamatTujuan.text = alamatTujuan
         tvHargaLayanan.text = hargaString
 
+        // Data dummy driver
+        tvNamaDriver.text = "Budi Santoso"
+        tvNopolDriver.text = "B 1234 XYZ"
+        tvRatingDriver.text = "4.8"
+
         // 5. Set icon dan nama layanan berdasarkan jenis kendaraan
         if (jenisKendaraan.equals("Mobil", ignoreCase = true)) {
             tvJenisLayanan.text = "Pesan Mobil"
@@ -49,46 +51,12 @@ class MencariDriverActivity : AppCompatActivity() {
             imgTransportIcon.setImageResource(R.drawable.motor)
         }
 
-        // 6. Back
+        // 6. Back Button
         btnBack.setOnClickListener {
             finish()
         }
-
-        // 7. Batalkan
-        btnBatalkan.setOnClickListener {
-            Toast.makeText(this, "Pencarian driver dibatalkan", Toast.LENGTH_SHORT).show()
-            finish()
-        }
-        
-        //  DELAY
-
-        Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(this, OrderanBerlangsungActivity::class.java)
-            intent.putExtra("EXTRA_ALAMAT_JEMPUT", alamatJemput)
-            intent.putExtra("EXTRA_ALAMAT_TUJUAN", alamatTujuan)
-            intent.putExtra("EXTRA_JENIS_KENDARAAN", jenisKendaraan)
-            intent.putExtra("EXTRA_METODE_BAYAR", metodeBayar)
-            intent.putExtra("EXTRA_HARGA", harga)
-            startActivity(intent)
-            finish()
-        }, 3000)
-
-        // ON CLICK
-
-        // val imgSearching = findViewById<ImageView>(R.id.imgSearching)
-        // imgSearching.setOnClickListener {
-        //     val intent = Intent(this, OrderanBerlangsungActivity::class.java)
-        //     intent.putExtra("EXTRA_ALAMAT_JEMPUT", alamatJemput)
-        //     intent.putExtra("EXTRA_ALAMAT_TUJUAN", alamatTujuan)
-        //     intent.putExtra("EXTRA_JENIS_KENDARAAN", jenisKendaraan)
-        //     intent.putExtra("EXTRA_METODE_BAYAR", metodeBayar)
-        //     intent.putExtra("EXTRA_HARGA", harga)
-        //     startActivity(intent)
-        //     finish()
-        // }
-
     }
-    // Override untuk menangani back button dari toolbar
+
     override fun onSupportNavigateUp(): Boolean {
         finish()
         return true

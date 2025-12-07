@@ -65,6 +65,10 @@
             android:exported="false" />
 
         <activity
+            android:name=".OrderanBerlangsungActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".ChatActivity"
             android:exported="false" />
 
