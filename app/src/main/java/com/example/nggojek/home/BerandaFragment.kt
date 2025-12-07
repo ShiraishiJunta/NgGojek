@@ -27,31 +27,28 @@ class BerandaFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // 1. Inisialisasi Tombol (pakai view.findViewById)
+        // 1. Inisialisasi Tombol
         val btnProfile = view.findViewById<ImageView>(R.id.btnProfile)
         val btnMotor = view.findViewById<LinearLayout>(R.id.btnMotor)
         val btnMobil = view.findViewById<LinearLayout>(R.id.btnMobil)
 
-        // 2. Aksi Tombol Profile
+        // 2.Tombol Profile
         btnProfile.setOnClickListener {
             val intent = Intent(requireContext(), ProfileActivity::class.java)
             startActivity(intent)
         }
 
-        // 3. Aksi Tombol Pesan Mobil
+        // 3.Tombol Pesan Mobil
         btnMobil.setOnClickListener {
             // Arahkan ke activity Pesan Mobil yang ada Map-nya
             val intent = Intent(requireContext(), PesanMobilActivity::class.java)
             startActivity(intent)
         }
 
-        // 4. Aksi Tombol Pesan Motor
+        // 4.Tombol Pesan Motor
         btnMotor.setOnClickListener {
              val intent = Intent(requireContext(), PesanMotorActivity::class.java)
              startActivity(intent)
         }
-
-        // PENTING: Kode navHome, navChat, dll DIHAPUS
-        // karena itu tugasnya HomeActivity, bukan Fragment ini.
     }
 }
