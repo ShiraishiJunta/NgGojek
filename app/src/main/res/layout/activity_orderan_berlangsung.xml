@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".OrderanBerlangsungActivity">
+
+    <!-- HEADER / TOOLBAR -->
+    <LinearLayout
+        android:id="@+id/headerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#E0E0E0"
+        android:padding="16dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:elevation="4dp">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="69dp"
+            android:layout_height="63dp"
+            android:src="@drawable/ic_arrow_back"
+            app:tint="#000000" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Orderan Berlangsung"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginEnd="24dp"/>
+    </LinearLayout>
+
+    <!-- MAP-->
+    <ImageView
+        android:id="@+id/imgMaps"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/maps"
+        android:scaleType="centerCrop"
+        android:layout_marginTop="95dp"
+        android:contentDescription="Maps View" />
+
+    <!-- BOTTOM SHEET -->
+    <LinearLayout
+        android:id="@+id/bottomSheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="@drawable/bg_rounded_top"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+        app:behavior_peekHeight="350dp">
+
+        <!-- Handle Bar untuk Bottom Sheet -->
+        <View
+            android:layout_width="40dp"
+            android:layout_height="4dp"
+            android:layout_gravity="center_horizontal"
+            android:background="#CCCCCC"
+            android:layout_marginBottom="16dp"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- STATUS INFO -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Driver sedang menuju lokasi penjemputan"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:gravity="center"
+                    android:layout_marginBottom="16dp"/>
+
+                <!-- INFORMASI DRIVER -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Informasi Driver"
+                    android:textStyle="bold"
+                    android:textColor="#000"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="12dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="16dp">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/profile"
+                        app:tint="#666666"
+                        android:layout_marginEnd="12dp"/>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvNamaDriver"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Budi Santoso"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:textColor="#000"/>
+
+                        <TextView
+                            android:id="@+id/tvNopolDriver"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="B 1234 XYZ"
+                            android:textSize="12sp"
+                            android:textColor="#666666"
+                            android:layout_marginTop="2dp"/>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginTop="2dp">
+
+                            <ImageView
+                                android:layout_width="14dp"
+                                android:layout_height="14dp"
+                                android:src="@android:drawable/btn_star_big_on"
+                                app:tint="#FFC107"
+                                android:layout_marginEnd="4dp"/>
+
+                            <TextView
+                                android:id="@+id/tvRatingDriver"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="4.8"
+                                android:textSize="12sp"
+                                android:textColor="#000"/>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Action buttons -->
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/call"
+                        app:tint="#4CAF50"
+                        android:padding="6dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"/>
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/chat"
+                        app:tint="#2196F3"
+                        android:padding="6dp"
+                        android:layout_marginStart="8dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"/>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#CCCCCC"
+                    android:layout_marginBottom="16dp"/>
+
+                <!-- DETAIL PESANAN -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Detail Pesanan"
+                    android:textStyle="bold"
+                    android:textColor="#000"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="12dp"/>
+
+                <!-- LAYANAN -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="12dp">
+
+                    <ImageView
+                        android:id="@+id/imgTransportIcon"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/motor"
+                        app:tint="#000"
+                        android:layout_marginEnd="12dp"/>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvJenisLayanan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Pesan Motor"
+                            android:textStyle="bold"
+                            android:textSize="14sp"
+                            android:textColor="#000"/>
+
+                        <TextView
+                            android:id="@+id/tvHargaLayanan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rp 200.000"
+                            android:textSize="12sp"
+                            android:textColor="#666666"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- LOKASI -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="8dp">
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@android:drawable/btn_radio"
+                        android:layout_marginEnd="8dp"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Titik Penjemputan"
+                            android:textStyle="bold"
+                            android:textColor="#000"
+                            android:textSize="11sp"/>
+                        <TextView
+                            android:id="@+id/tvAlamatJemput"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nama jalan"
+                            android:textSize="12sp"
+                            android:textColor="#666666"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="16dp"
+                    android:layout_height="wrap_content"
+                    android:text=":"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginTop="-2dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@android:drawable/ic_menu_myplaces"
+                        app:tint="#000"
+                        android:layout_marginEnd="8dp"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tujuan"
+                            android:textStyle="bold"
+                            android:textColor="#000"
+                            android:textSize="11sp"/>
+                        <TextView
+                            android:id="@+id/tvAlamatTujuan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nama Jalan"
+                            android:textSize="12sp"
+                            android:textColor="#666666"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

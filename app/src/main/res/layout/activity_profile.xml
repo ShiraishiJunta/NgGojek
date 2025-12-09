@@ -72,48 +72,20 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/btnRiwayat"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:padding="12dp"
-        android:background="#F5F5F5"
-        app:layout_constraintTop_toBottomOf="@id/btnEditProfile"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <ImageView
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:src="@drawable/clock" />
-
-        <TextView
-            android:layout_marginStart="16dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Riwayat Pesanan"
-            android:textSize="16sp"
-            android:textColor="#000000" />
-    </LinearLayout>
-
-    <LinearLayout
         android:id="@+id/btnLogout"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="280dp"
         android:layout_marginEnd="24dp"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:padding="12dp"
         android:background="#FFEEEE"
-        app:layout_constraintTop_toBottomOf="@id/btnRiwayat"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/btnEditProfile">
 
         <ImageView
             android:layout_width="28dp"
@@ -122,13 +94,13 @@
             app:tint="#FF0000" />
 
         <TextView
-            android:layout_marginStart="16dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:text="Logout"
+            android:textColor="#FF0000"
             android:textSize="16sp"
-            android:textStyle="bold"
-            android:textColor="#FF0000" />
+            android:textStyle="bold" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

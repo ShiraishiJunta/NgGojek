@@ -36,9 +36,9 @@
             android:name=".home.HomeActivity"
             android:exported="false" />
 
-        <activity
-            android:name=".OrderActivity"
-            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".OrderActivity"-->
+<!--            android:exported="false" />-->
 
         <activity
             android:name=".MainActivity"
@@ -48,8 +48,6 @@
             android:name=".ProfileActivity"
             android:exported="false" />
 
-        <!-- TAMBAHAN BARU DARI KODE SEBELUMNYA -->
-        <!-- Daftarkan Activity Konfirmasi & Pesan Mobil disini -->
         <activity
             android:name=".PesanMobilActivity"
             android:exported="false" />
@@ -60,6 +58,18 @@
 
         <activity
             android:name=".KonfirmasiActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".MencariDriverActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".OrderanBerlangsungActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ChatActivity"
             android:exported="false" />
 
         <!-- CATATAN: RiwayatActivity DIHAPUS karena sudah jadi Fragment -->

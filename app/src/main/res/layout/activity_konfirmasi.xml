@@ -19,9 +19,9 @@
 
         <ImageView
             android:id="@+id/btnBack"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/ic_launcher_foreground"
+            android:layout_width="69dp"
+            android:layout_height="63dp"
+            android:src="@drawable/ic_arrow_back"
             app:tint="#000000" />
         <!-- Ganti src di atas dengan icon panah back (ic_arrow_back) -->
 

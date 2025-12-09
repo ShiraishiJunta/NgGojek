@@ -33,7 +33,7 @@
         app:itemRippleColor="#D9FAF5"
         app:labelVisibilityMode="labeled"
         app:menu="@menu/bottom_menu"
-        app:itemActiveIndicatorColor="@android:color/transparent"
+        app:itemBackground="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

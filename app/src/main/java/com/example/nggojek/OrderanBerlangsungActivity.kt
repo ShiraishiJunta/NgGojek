@@ -1,19 +1,19 @@
 package com.example.nggojek
 
-import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.appbar.MaterialToolbar
 
-class KonfirmasiActivity : AppCompatActivity() {
+class OrderanBerlangsungActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_konfirmasi)
+        setContentView(R.layout.activity_orderan_berlangsung)
+
+        // Tampilkan notifikasi driver ditemukan
+        Toast.makeText(this, "Driver ditemukan!", Toast.LENGTH_SHORT).show()
 
         // 1. Inisialisasi Views
         val btnBack = findViewById<ImageView>(R.id.btnBack)
@@ -22,30 +22,31 @@ class KonfirmasiActivity : AppCompatActivity() {
         val imgTransportIcon = findViewById<ImageView>(R.id.imgTransportIcon)
         val tvJenisLayanan = findViewById<TextView>(R.id.tvJenisLayanan)
         val tvHargaLayanan = findViewById<TextView>(R.id.tvHargaLayanan)
-        val tvMetodePembayaran = findViewById<TextView>(R.id.tvMetodePembayaran)
-        val tvSubtotal = findViewById<TextView>(R.id.tvSubtotal)
-        val tvTotalRincian = findViewById<TextView>(R.id.tvTotalRincian)
-        val tvTotalFooter = findViewById<TextView>(R.id.tvTotalFooter)
-        val btnPesan = findViewById<Button>(R.id.btnPesan)
+        val tvNamaDriver = findViewById<TextView>(R.id.tvNamaDriver)
+        val tvNopolDriver = findViewById<TextView>(R.id.tvNopolDriver)
+        val tvRatingDriver = findViewById<TextView>(R.id.tvRatingDriver)
 
-        // 2. Mengambil data dari Halaman Sebelumnya (Intent)
+        // 2. Mengambil data dari Intent
         val alamatJemput = intent.getStringExtra("EXTRA_ALAMAT_JEMPUT") ?: "Alamat Jemput Kosong"
         val alamatTujuan = intent.getStringExtra("EXTRA_ALAMAT_TUJUAN") ?: "Alamat Tujuan Kosong"
         val jenisKendaraan = intent.getStringExtra("EXTRA_JENIS_KENDARAAN") ?: "Motor"
         val metodeBayar = intent.getStringExtra("EXTRA_METODE_BAYAR") ?: "Tunai"
         val harga = intent.getIntExtra("EXTRA_HARGA", 0)
 
+        // 3. Format harga
         val hargaString = "Rp ${String.format("%,d", harga).replace(',', '.')}"
 
+        // 4. Set data ke Views
         tvAlamatJemput.text = alamatJemput
         tvAlamatTujuan.text = alamatTujuan
-        tvMetodePembayaran.text = metodeBayar
-
         tvHargaLayanan.text = hargaString
-        tvSubtotal.text = hargaString
-        tvTotalRincian.text = hargaString
-        tvTotalFooter.text = hargaString
 
+        // Data dummy driver
+        tvNamaDriver.text = "Budi Santoso"
+        tvNopolDriver.text = "B 1234 XYZ"
+        tvRatingDriver.text = "4.8"
+
+        // 5. Set icon dan nama layanan berdasarkan jenis kendaraan
         if (jenisKendaraan.equals("Mobil", ignoreCase = true)) {
             tvJenisLayanan.text = "Pesan Mobil"
             imgTransportIcon.setImageResource(R.drawable.car)
@@ -54,27 +55,12 @@ class KonfirmasiActivity : AppCompatActivity() {
             imgTransportIcon.setImageResource(R.drawable.motor)
         }
 
-        //Back BUTTON
+        // 6. Back Button
         btnBack.setOnClickListener {
             finish()
         }
-
-        // 5. Tombol Pesan
-        btnPesan.setOnClickListener {
-            // Logika ketika tombol pesan ditekan
-            Toast.makeText(this, "Pesanan $jenisKendaraan berhasil dibuat!", Toast.LENGTH_SHORT).show()
-
-            // Pindah ke halaman 'Mencari Driver'
-            val intent = Intent(this, MencariDriverActivity::class.java)
-            intent.putExtra("EXTRA_ALAMAT_JEMPUT", alamatJemput)
-            intent.putExtra("EXTRA_ALAMAT_TUJUAN", alamatTujuan)
-            intent.putExtra("EXTRA_JENIS_KENDARAAN", jenisKendaraan)
-            intent.putExtra("EXTRA_METODE_BAYAR", metodeBayar)
-            intent.putExtra("EXTRA_HARGA", harga)
-            startActivity(intent)
-        }
     }
-    // Override untuk menangani back button dari toolbar
+
     override fun onSupportNavigateUp(): Boolean {
         finish()
         return true
