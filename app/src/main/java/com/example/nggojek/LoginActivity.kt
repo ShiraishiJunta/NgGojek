@@ -18,9 +18,6 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-
-        // Setup padding untuk system bar (status bar/nav bar)
-        // Pastikan root layout di XML memiliki android:id="@+id/main"
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -56,18 +53,13 @@ class LoginActivity : AppCompatActivity() {
 
             // 2. Cek Kesesuaian Akun
             if (username == email && password == passwd) {
-                // Berhasil Login -> Pindah ke HomeActivity
                 val intentLoginToMain = Intent(this, HomeActivity::class.java)
                 intentLoginToMain.putExtra(KEY_USERNAME, username)
-
                 startActivity(intentLoginToMain)
-
-                // PENTING: Tutup LoginActivity agar user tidak bisa kembali ke login saat tekan Back
                 finish()
 
                 Toast.makeText(this, "Selamat Datang, $username", Toast.LENGTH_SHORT).show()
             } else {
-                // Gagal Login
                 Toast.makeText(this, "Email atau Password salah!", Toast.LENGTH_SHORT).show()
             }
         }

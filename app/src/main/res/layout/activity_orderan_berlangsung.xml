@@ -155,24 +155,6 @@
                                 android:textColor="#000"/>
                         </LinearLayout>
                     </LinearLayout>
-
-                    <!-- Action buttons -->
-                    <ImageView
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
-                        android:src="@drawable/call"
-                        app:tint="#4CAF50"
-                        android:padding="6dp"
-                        android:background="?attr/selectableItemBackgroundBorderless"/>
-
-                    <ImageView
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
-                        android:src="@drawable/chat"
-                        app:tint="#2196F3"
-                        android:padding="6dp"
-                        android:layout_marginStart="8dp"
-                        android:background="?attr/selectableItemBackgroundBorderless"/>
                 </LinearLayout>
 
                 <View

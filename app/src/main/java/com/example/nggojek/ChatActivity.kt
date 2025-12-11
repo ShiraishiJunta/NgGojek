@@ -14,17 +14,15 @@ class ChatActivity : AppCompatActivity() {
     private lateinit var edtMessage: EditText
     private lateinit var btnSend: ImageView
 
-    // Gunakan ChatMessage (yang baru dibuat)
     private val chatList = ArrayList<ChatMessage>()
 
-    // Gunakan ChatAdapter (yang baru dibuat)
     private lateinit var chatAdapter: ChatAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
 
-        // Ambil nama driver
+        // nama driver
         val namaDriver = intent.getStringExtra("EXTRA_NAMA_DRIVER") ?: "Driver"
         findViewById<TextView>(R.id.txtTitle).text = namaDriver
 
@@ -32,7 +30,7 @@ class ChatActivity : AppCompatActivity() {
         edtMessage = findViewById(R.id.editMessage)
         btnSend = findViewById(R.id.btnSend)
 
-        // Inisialisasi Adapter yang BENAR
+        // Inisialisasi Adapter
         chatAdapter = ChatAdapter(chatList)
 
         recyclerChat.layoutManager = LinearLayoutManager(this).apply {

@@ -27,12 +27,11 @@ class HomeActivity : AppCompatActivity() {
 
         val bottomNav = findViewById<BottomNavigationView>(R.id.buttonNavButtom)
 
-        // 1. Tampilkan Fragment Beranda saat pertama kali dibuka
         if (savedInstanceState == null) {
             loadFragment(BerandaFragment())
         }
 
-        // 2. Logika Pindah Halaman (Navigasi)
+        // (Navigasi)
         bottomNav.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.berandaFragment -> {
@@ -52,7 +51,6 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-    // Fungsi untuk menukar fragment
     private fun loadFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragmentContainerView, fragment)
