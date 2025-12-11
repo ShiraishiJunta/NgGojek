@@ -1,6 +1,7 @@
 package com.example.nggojek
 
 import android.content.Intent
+import android.location.Geocoder
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -15,6 +16,7 @@ import org.osmdroid.config.Configuration
 import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.MapView
 import org.osmdroid.views.overlay.Marker
+import java.util.Locale
 
 class PesanMotorActivity : AppCompatActivity() {
 
@@ -23,12 +25,6 @@ class PesanMotorActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        Configuration.getInstance().load(
-            applicationContext,
-            applicationContext.getSharedPreferences("osmdroid", MODE_PRIVATE)
-        )
-
         setContentView(R.layout.activity_pesan_motor)
 
         // --- Setup Toolbar ---
@@ -40,26 +36,30 @@ class PesanMotorActivity : AppCompatActivity() {
             finish()
         }
 
-        // --- Setup Map ---
+        // --- Setup Map (OSMDroid) ---
+        Configuration.getInstance().load(
+            applicationContext,
+            applicationContext.getSharedPreferences("osmdroid", MODE_PRIVATE)
+        )
+
         mapView = findViewById(R.id.mapView)
         mapView.setMultiTouchControls(true)
 
-        val PNM = GeoPoint(-7.6476489, 111.5268208)
-
+        // Default Lokasi (Jakarta)
+        val defaultLoc = GeoPoint(-6.200000, 106.816666)
         val controller = mapView.controller
-        controller.setZoom(20.0)
-        controller.setCenter(PNM)
+        controller.setZoom(15.0)
+        controller.setCenter(defaultLoc)
 
-        val marker = Marker(mapView)
-        marker.position = PNM
-        marker.title = "PNM"
-        mapView.overlays.add(marker)
-
+        // --- Setup BottomSheet ---
         val bottomSheet = findViewById<LinearLayout>(R.id.bottomSheet)
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
+        bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
 
+        // --- Inisialisasi View ---
         val inputJemput = findViewById<EditText>(R.id.inputJemput)
         val inputTujuan = findViewById<EditText>(R.id.inputTujuan)
+        val btnPesan = findViewById<Button>(R.id.btnPesan)
 
         val cardCash = findViewById<CardView>(R.id.cardCash)
         val cardEW1 = findViewById<CardView>(R.id.cardEW1)
@@ -69,6 +69,7 @@ class PesanMotorActivity : AppCompatActivity() {
         val rbEW1Right = findViewById<RadioButton>(R.id.rbEW1Right)
         val rbEW2Right = findViewById<RadioButton>(R.id.rbEW2Right)
 
+        // --- Logika Pilihan Pembayaran ---
         fun selectPaymentMethod(selected: RadioButton) {
             rbCashRight.isChecked = false
             rbEW1Right.isChecked = false
@@ -76,68 +77,96 @@ class PesanMotorActivity : AppCompatActivity() {
             selected.isChecked = true
         }
 
-        cardCash.setOnClickListener {
-            selectPaymentMethod(rbCashRight)
-        }
+        // Klik pada Card (Kotak)
+        cardCash.setOnClickListener { selectPaymentMethod(rbCashRight) }
+        cardEW1.setOnClickListener { selectPaymentMethod(rbEW1Right) }
+        cardEW2.setOnClickListener { selectPaymentMethod(rbEW2Right) }
 
-        cardEW1.setOnClickListener {
-            selectPaymentMethod(rbEW1Right)
-        }
+        // Klik pada Radio Button
+        rbCashRight.setOnClickListener { selectPaymentMethod(rbCashRight) }
+        rbEW1Right.setOnClickListener { selectPaymentMethod(rbEW1Right) }
+        rbEW2Right.setOnClickListener { selectPaymentMethod(rbEW2Right) }
 
-        cardEW2.setOnClickListener {
-            selectPaymentMethod(rbEW2Right)
-        }
-
-        rbCashRight.setOnClickListener {
-            selectPaymentMethod(rbCashRight)
-        }
-
-        rbEW1Right.setOnClickListener {
-            selectPaymentMethod(rbEW1Right)
-        }
-
-        rbEW2Right.setOnClickListener {
-            selectPaymentMethod(rbEW2Right)
-        }
-
-        findViewById<Button>(R.id.btnPesan).setOnClickListener {
-            // Ambil data dari input
+        // --- TOMBOL PESAN (LOGIKA UTAMA) ---
+        btnPesan.setOnClickListener {
+            // 1. Ambil data teks
             val alamatJemput = inputJemput.text.toString().trim()
             val alamatTujuan = inputTujuan.text.toString().trim()
 
+            // 2. Validasi Input Kosong
             if (alamatJemput.isEmpty()) {
                 inputJemput.error = "Lokasi jemput harus diisi"
-                inputJemput.requestFocus()
                 return@setOnClickListener
             }
-
             if (alamatTujuan.isEmpty()) {
                 inputTujuan.error = "Tujuan harus diisi"
-                inputTujuan.requestFocus()
                 return@setOnClickListener
             }
 
+            // 3. Validasi Pembayaran Dipilih
             if (!rbCashRight.isChecked && !rbEW1Right.isChecked && !rbEW2Right.isChecked) {
                 Toast.makeText(this, "Silakan pilih metode pembayaran terlebih dahulu", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            val metodeBayar = when {
-                rbCashRight.isChecked -> "Tunai"
-                rbEW1Right.isChecked -> "E-Wallet 1"
-                rbEW2Right.isChecked -> "E-Wallet 2"
-                else -> "Tunai"
+            // 4. Tentukan String Metode Bayar
+            var metodeBayar = "Tunai"
+            when {
+                rbCashRight.isChecked -> metodeBayar = "Tunai"
+                rbEW1Right.isChecked -> metodeBayar = "Gopay" // Mapping ke nama Wallet
+                rbEW2Right.isChecked -> metodeBayar = "OVO"   // Mapping ke nama Wallet
             }
 
-            val intent = Intent(this, KonfirmasiActivity::class.java)
-            intent.putExtra("EXTRA_ALAMAT_JEMPUT", alamatJemput)
-            intent.putExtra("EXTRA_ALAMAT_TUJUAN", alamatTujuan)
-            intent.putExtra("EXTRA_JENIS_KENDARAAN", "Motor")
-            intent.putExtra("EXTRA_METODE_BAYAR", metodeBayar)
-            intent.putExtra("EXTRA_HARGA", 200000)
+            // 5. CARI KOORDINAT ASLI (GEOCODING)
+            val koordinatJemput = cariKoordinat(alamatJemput)
+            val koordinatTujuan = cariKoordinat(alamatTujuan)
 
-            startActivity(intent)
+            if (koordinatJemput != null && koordinatTujuan != null) {
+                // Jika lokasi ditemukan di peta:
+
+                // Pindahkan map ke lokasi jemput
+                mapView.controller.animateTo(koordinatJemput)
+                mapView.controller.setZoom(18.0)
+
+                // Siapkan Intent ke Konfirmasi
+                val intent = Intent(this, KonfirmasiActivity::class.java)
+
+                // Kirim Teks Alamat
+                intent.putExtra("EXTRA_ALAMAT_JEMPUT", alamatJemput)
+                intent.putExtra("EXTRA_ALAMAT_TUJUAN", alamatTujuan)
+
+                // KIRIM KOORDINAT (PENTING untuk Map Perjalanan)
+                intent.putExtra("EXTRA_LAT_JEMPUT", koordinatJemput.latitude)
+                intent.putExtra("EXTRA_LON_JEMPUT", koordinatJemput.longitude)
+                intent.putExtra("EXTRA_LAT_TUJUAN", koordinatTujuan.latitude)
+                intent.putExtra("EXTRA_LON_TUJUAN", koordinatTujuan.longitude)
+
+                // Kirim Data Lainnya
+                intent.putExtra("EXTRA_JENIS_KENDARAAN", "Motor") // Set Motor
+                intent.putExtra("EXTRA_METODE_BAYAR", metodeBayar)
+                intent.putExtra("EXTRA_HARGA", 20000) // Harga Motor lebih murah
+
+                startActivity(intent)
+
+            } else {
+                // Jika lokasi tidak ketemu
+                Toast.makeText(this, "Lokasi tidak ditemukan. Coba ketik nama tempat yang lebih jelas.", Toast.LENGTH_LONG).show()
+            }
         }
+    }
+
+    // Fungsi Helper: Ubah Nama Tempat jadi Koordinat
+    private fun cariKoordinat(namaTempat: String): GeoPoint? {
+        val geocoder = Geocoder(this, Locale.getDefault())
+        try {
+            val hasil = geocoder.getFromLocationName(namaTempat, 1)
+            if (hasil != null && hasil.isNotEmpty()) {
+                return GeoPoint(hasil[0].latitude, hasil[0].longitude)
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        return null
     }
 
     override fun onSupportNavigateUp(): Boolean {
