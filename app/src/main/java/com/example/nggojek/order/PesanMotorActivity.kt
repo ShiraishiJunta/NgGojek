@@ -50,7 +50,7 @@ class PesanMotorActivity : AppCompatActivity() {
         mapView = findViewById(R.id.mapView)
         mapView.setMultiTouchControls(true)
 
-        // Lokasi awal peta (Madiun)
+        // Lokasi awal peta (PNM)
         val defaultLoc = GeoPoint(-7.6476489, 111.5268208)
         val controller = mapView.controller
         controller.setZoom(20.0)
