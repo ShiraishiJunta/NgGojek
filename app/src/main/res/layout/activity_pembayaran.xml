@@ -5,21 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#FFFFFF"
+    android:background="@color/white"
     android:padding="24dp"
     android:gravity="center_horizontal"
     tools:context=".order.PembayaranActivity">
 
+    <!-- JUDUL HALAMAN -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Rincian Pembayaran"
         android:textSize="22sp"
         android:textStyle="bold"
-        android:textColor="#000000"
+        android:textColor="@color/blackText"
         android:layout_marginTop="20dp"/>
 
-    <!-- TOTAL HARGA -->
+    <!-- TOTAL HARGA (Highlight Merah) -->
     <TextView
         android:id="@+id/tvTotalBayar"
         android:layout_width="wrap_content"
@@ -27,23 +28,26 @@
         android:text="Rp 0"
         android:textSize="40sp"
         android:textStyle="bold"
-        android:textColor="#00AA13"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="8dp"/>
+        android:textColor="@color/primaryRed"
+        android:fontFamily="sans-serif-black"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="4dp"/>
 
     <TextView
         android:id="@+id/tvMetodeTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Metode Pembayaran"
-        android:textColor="#888888"/>
+        android:textSize="14sp"
+        android:textColor="@color/greyText"/>
 
+    <!-- GARIS PEMBATAS -->
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#EEEEEE"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="24dp"/>
+        android:background="@color/lightGrey"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="32dp"/>
 
     <!-- TAMPILAN 1: JIKA PEMBAYARAN TUNAI (CASH) -->
     <LinearLayout
@@ -54,12 +58,16 @@
         android:gravity="center"
         android:visibility="gone">
 
+        <!-- Icon Cash -->
         <ImageView
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:src="@drawable/ewallet_icon"
-            app:tint="#000000"
-            android:layout_marginBottom="16dp"/>
+            android:src="@drawable/cash_icon"
+            app:tint="@color/primaryRed"
+            android:background="@drawable/bg_circle"
+            android:backgroundTint="@color/softRed"
+            android:padding="16dp"
+            android:layout_marginBottom="24dp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -67,15 +75,17 @@
             android:text="Pembayaran Tunai"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:layout_marginBottom="8dp"/>
+            android:textColor="@color/blackText"
+            android:layout_marginBottom="12dp"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Silakan serahkan uang tunai sejumlah total tagihan langsung kepada Driver."
+            android:text="Silakan serahkan uang tunai sejumlah total tagihan langsung kepada Driver saat sampai tujuan."
             android:gravity="center"
-            android:textSize="16sp"
-            android:textColor="#555555"/>
+            android:textSize="14sp"
+            android:lineSpacingExtra="4dp"
+            android:textColor="@color/greyText"/>
     </LinearLayout>
 
     <!-- TAMPILAN 2: JIKA E-WALLET (VIRTUAL ACCOUNT) -->
@@ -92,21 +102,25 @@
             android:layout_height="wrap_content"
             android:text="Nomor Virtual Account"
             android:textSize="14sp"
-            android:textColor="#666666"
-            android:layout_marginBottom="8dp"/>
+            android:textStyle="bold"
+            android:textColor="@color/blackText"
+            android:layout_marginBottom="12dp"/>
 
-        <androidx.cardview.widget.CardView
+        <!-- Box VA Modern -->
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="8dp"
-            app:cardBackgroundColor="#F2F2F2"
+            app:cardCornerRadius="12dp"
+            app:cardBackgroundColor="@color/offWhite"
+            app:strokeColor="@color/lightGrey"
+            app:strokeWidth="1dp"
             app:cardElevation="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:padding="16dp"
+                android:padding="20dp"
                 android:gravity="center_vertical">
 
                 <TextView
@@ -115,25 +129,30 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="8800 0812 3456"
-                    android:textSize="24sp"
+                    android:textSize="22sp"
                     android:textStyle="bold"
-                    android:textColor="#000000"
-                    android:letterSpacing="0.1"/>
+                    android:textColor="@color/primaryRed"
+                    android:letterSpacing="0.05"/>
 
-                <!-- Icon Copy -->
                 <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@android:drawable/ic_menu_save"/>
+                    android:id="@+id/btnSalinVa"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@android:drawable/ic_menu_save"
+                    android:padding="4dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    app:tint="@color/greyText" />
+
             </LinearLayout>
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Silakan lakukan transfer ke nomor Virtual Account di atas sebelum batas waktu berakhir."
+            android:text="Silakan lakukan transfer ke nomor Virtual Account di atas sebelum pesanan selesai."
             android:layout_marginTop="16dp"
-            android:textColor="#555555"/>
+            android:textSize="13sp"
+            android:textColor="@color/greyText"/>
     </LinearLayout>
 
     <View
@@ -141,27 +160,37 @@
         android:layout_height="0dp"
         android:layout_weight="1"/>
 
-    <!-- STATUS MENUNGGU (LOADING) -->
-    <LinearLayout
+    <!-- STATUS MENUNGGU (LOADING CARD) -->
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:padding="16dp"
-        android:background="#F9F9F9"
+        app:cardCornerRadius="50dp"
+        app:cardBackgroundColor="@color/offWhite"
+        app:cardElevation="0dp"
         android:layout_marginBottom="16dp">
 
-        <ProgressBar
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginEnd="12dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Menunggu konfirmasi driver..."
-            android:textStyle="bold"
-            android:textColor="#666666"/>
-    </LinearLayout>
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:paddingVertical="16dp"
+            android:paddingHorizontal="24dp">
+
+            <ProgressBar
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:indeterminateTint="@color/primaryRed"
+                android:layout_marginEnd="12dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Menunggu konfirmasi driver..."
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:textColor="@color/greyText"/>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 
 </LinearLayout>

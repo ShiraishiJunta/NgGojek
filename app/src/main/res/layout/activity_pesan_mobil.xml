@@ -1,27 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/offWhite">
 
-    <!-- TOOLBAR -->
+    <!-- 1. TOOLBAR -->
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/white"
+        android:elevation="4dp"
         app:title="Pesan Mobil"
-        app:titleTextColor="@android:color/black"
+        app:titleTextColor="@color/blackText"
+        app:titleCentered="true"
         app:navigationIcon="@drawable/ic_arrow_back" />
 
-    <!-- MAP -->
+    <!-- 2. MAP (Layer Paling Bawah) -->
     <org.osmdroid.views.MapView
         android:id="@+id/mapView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="?attr/actionBarSize" />
 
-    <!--TOP INPUT AREA-->
+    <!-- 3. INPUT AREA (Floating Box - Melayang di atas Map) -->
+    <!-- Diberi margin bottom agar tidak ketutupan bottom sheet saat peek -->
     <LinearLayout
         android:id="@+id/topLocationBox"
         android:layout_width="match_parent"
@@ -29,265 +34,342 @@
         android:orientation="vertical"
         android:padding="16dp"
         android:layout_marginTop="70dp"
-        android:layout_gravity="top">
+        android:layout_gravity="top"
+        android:elevation="8dp">
 
-        <!-- Lokasi Jemput -->
-        <androidx.cardview.widget.CardView
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
-            app:cardCornerRadius="30dp"
-            app:cardElevation="4dp">
+            app:cardCornerRadius="16dp"
+            app:cardElevation="6dp"
+            app:cardBackgroundColor="@color/white">
 
-            <EditText
-                android:id="@+id/inputJemput"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:paddingStart="20dp"
-                android:paddingEnd="20dp"
-                android:background="@android:color/transparent"
-                android:hint="Lokasi saat ini"
-                android:textSize="16sp" />
-        </androidx.cardview.widget.CardView>
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
 
-        <!-- Lokasi Tujuan -->
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardElevation="4dp"
-            app:cardCornerRadius="30dp">
+                <!-- Input Jemput -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/inputTujuan"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:paddingStart="20dp"
-                android:paddingEnd="20dp"
-                android:background="@android:color/transparent"
-                android:hint="Kamu mau kemana?"
-                android:textSize="16sp" />
-        </androidx.cardview.widget.CardView>
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_arrow_back"
+                        android:rotation="90"
+                        app:tint="@color/primaryRed"/>
 
+                    <EditText
+                        android:id="@+id/inputJemput"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:padding="8dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Lokasi jemput"
+                        android:textSize="14sp"
+                        android:textColor="@color/blackText"/>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/lightGrey"
+                    android:layout_marginVertical="8dp"/>
+
+                <!-- Input Tujuan -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_arrow_back"
+                        android:rotation="270"
+                        app:tint="@color/primaryRedDark"/>
+
+                    <EditText
+                        android:id="@+id/inputTujuan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:padding="8dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Mau ke mana?"
+                        android:textSize="14sp"
+                        android:textColor="@color/blackText"/>
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
 
-    <!-- BOTTOM SHEET  -->
-    <LinearLayout
+    <!-- 4. BOTTOM SHEET (Panel Pembayaran) -->
+    <!-- PERBAIKAN: behavior_peekHeight dan behavior_hideable -->
+    <androidx.core.widget.NestedScrollView
         android:id="@+id/bottomSheet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp"
+        android:padding="20dp"
         android:background="@drawable/bg_rounded_top"
-        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+        android:backgroundTint="@color/white"
+        android:elevation="16dp"
+        android:fillViewport="true"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+        app:behavior_peekHeight="120dp"
+        app:behavior_hideable="false"
+        app:behavior_draggable="true">
 
-        <TextView
+        <!-- 
+           peekHeight="120dp": Tinggi nongol sedikit saat map aktif.
+           hideable="false": Agar tidak bisa di-swipe hilang sampai bawah.
+        -->
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Metode Pembayaran"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:textSize="20sp"
-            android:layout_marginBottom="12dp"
-            android:layout_marginTop="20dp" />
+            android:orientation="vertical"
+            android:paddingBottom="50dp">
 
-        <RadioGroup
-            android:id="@+id/groupRightRadio"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            <!-- Handle Bar (Indikator Geser) -->
+            <View
+                android:layout_width="40dp"
+                android:layout_height="4dp"
+                android:background="@color/lightGrey"
+                android:layout_gravity="center"
+                android:layout_marginBottom="24dp"/>
 
-            <!-- CASH -->
-            <LinearLayout
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:layout_marginBottom="12dp">
+                android:text="Pilih Metode Pembayaran"
+                android:textColor="@color/blackText"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_marginBottom="16dp" />
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cardCash"
-                    android:layout_width="0dp"
+            <RadioGroup
+                android:id="@+id/groupRightRadio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- CASH -->
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginEnd="8dp"
-                    app:cardElevation="3dp"
-                    app:cardCornerRadius="14dp">
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="12dp">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardCash"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical"
-                        android:padding="12dp">
-
-                        <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:src="@drawable/cash_icon"
-                            android:scaleType="fitCenter"
-                            android:layout_marginEnd="12dp"/>
+                        android:layout_weight="1"
+                        android:layout_marginEnd="8dp"
+                        app:cardElevation="0dp"
+                        app:strokeColor="@color/lightGrey"
+                        app:strokeWidth="1dp"
+                        app:cardCornerRadius="8dp"
+                        app:cardBackgroundColor="@color/white">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical">
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:padding="12dp">
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Cash"
-                                android:textSize="18sp"
-                                android:textStyle="bold" />
+                            <ImageView
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:src="@drawable/cash_icon"
+                                android:scaleType="fitCenter"
+                                android:layout_marginEnd="12dp"/>
 
-                            <TextView
-                                android:layout_width="wrap_content"
+                            <LinearLayout
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Rp 200.000"
-                                android:textSize="15sp" />
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Tunai"
+                                    android:textColor="@color/blackText"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Rp 45.000"
+                                    android:textColor="@color/greyText"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
                         </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
 
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
-                <RadioButton
-                    android:id="@+id/rbCashRight"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
-
-            <!-- EWALLET -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:layout_marginBottom="12dp">
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cardEW1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginEnd="8dp"
-                    app:cardElevation="3dp"
-                    app:cardCornerRadius="14dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
+                    <RadioButton
+                        android:id="@+id/rbCashRight"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical"
-                        android:padding="12dp">
+                        android:buttonTint="@color/primaryRed"/>
+                </LinearLayout>
 
-                        <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:src="@drawable/ewallet_icon"
-                            android:scaleType="fitCenter"
-                            android:layout_marginEnd="12dp"/>
+                <!-- EWALLET 1 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="12dp">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardEW1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="8dp"
+                        app:cardElevation="0dp"
+                        app:strokeColor="@color/lightGrey"
+                        app:strokeWidth="1dp"
+                        app:cardCornerRadius="8dp"
+                        app:cardBackgroundColor="@color/white">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical">
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:padding="12dp">
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="E-Wallet 1"
-                                android:textSize="18sp"
-                                android:textStyle="bold" />
+                            <ImageView
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:src="@drawable/ewallet_icon"
+                                android:scaleType="fitCenter"
+                                android:layout_marginEnd="12dp"/>
 
-                            <TextView
-                                android:layout_width="wrap_content"
+                            <LinearLayout
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Rp 200.000"
-                                android:textSize="15sp" />
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Gopay"
+                                    android:textColor="@color/blackText"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Rp 45.000"
+                                    android:textColor="@color/greyText"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
                         </LinearLayout>
-                    </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
 
-                </androidx.cardview.widget.CardView>
-
-                <RadioButton
-                    android:id="@+id/rbEW1Right"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
-
-            <!-- EWALLET -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cardEW2"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginEnd="8dp"
-                    app:cardElevation="3dp"
-                    app:cardCornerRadius="14dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
+                    <RadioButton
+                        android:id="@+id/rbEW1Right"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical"
-                        android:padding="12dp">
+                        android:buttonTint="@color/primaryRed"/>
+                </LinearLayout>
 
-                        <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:src="@drawable/ewallet_icon"
-                            android:scaleType="fitCenter"
-                            android:layout_marginEnd="12dp"/>
+                <!-- EWALLET 2 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardEW2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="8dp"
+                        app:cardElevation="0dp"
+                        app:strokeColor="@color/lightGrey"
+                        app:strokeWidth="1dp"
+                        app:cardCornerRadius="8dp"
+                        app:cardBackgroundColor="@color/white">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical">
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:padding="12dp">
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="E-Wallet 2"
-                                android:textSize="18sp"
-                                android:textStyle="bold" />
+                            <ImageView
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:src="@drawable/ewallet_icon"
+                                android:scaleType="fitCenter"
+                                android:layout_marginEnd="12dp"/>
 
-                            <TextView
-                                android:layout_width="wrap_content"
+                            <LinearLayout
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Rp 200.000"
-                                android:textSize="15sp" />
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Dana"
+                                    android:textColor="@color/blackText"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Rp 45.000"
+                                    android:textColor="@color/greyText"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
                         </LinearLayout>
-                    </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
 
-                </androidx.cardview.widget.CardView>
+                    <RadioButton
+                        android:id="@+id/rbEW2Right"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/primaryRed"/>
+                </LinearLayout>
 
-                <RadioButton
-                    android:id="@+id/rbEW2Right"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+            </RadioGroup>
 
-            </LinearLayout>
+            <!-- TOMBOL PESAN -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnPesan"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="Pesan Mobil Sekarang"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:backgroundTint="@color/primaryRed"
+                android:textColor="@color/white"
+                app:cornerRadius="12dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="24dp"/>
 
-        </RadioGroup>
-
-        <!-- TOMBOL PESAN -->
-        <Button
-            android:id="@+id/btnPesan"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:text="Pesan"
-            android:textSize="18sp"
-            android:background="#000000"
-            android:textColor="#FFFFFF"
-            android:layout_marginTop="20dp" />
-
-    </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

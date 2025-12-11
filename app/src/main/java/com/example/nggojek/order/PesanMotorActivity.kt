@@ -5,14 +5,17 @@ import android.location.Geocoder
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
-import android.widget.LinearLayout
 import android.widget.RadioButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat
+import androidx.core.widget.NestedScrollView // 1. IMPORT WAJIB
 import com.example.nggojek.R
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.button.MaterialButton // 2. IMPORT WAJIB
+import com.google.android.material.card.MaterialCardView // 3. IMPORT WAJIB
 import org.osmdroid.config.Configuration
 import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.MapView
@@ -21,22 +24,24 @@ import java.util.Locale
 class PesanMotorActivity : AppCompatActivity() {
 
     lateinit var mapView: MapView
-    lateinit var bottomSheetBehavior: BottomSheetBehavior<LinearLayout>
+
+    // 4. UBAH TIPE KE NestedScrollView
+    lateinit var bottomSheetBehavior: BottomSheetBehavior<NestedScrollView>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pesan_motor)
 
-        //Setup Toolbar
+        // Setup Toolbar
         val toolbar = findViewById<MaterialToolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        toolbar.navigationIcon?.setTint(getColor(android.R.color.black))
+        toolbar.navigationIcon?.setTint(ContextCompat.getColor(this, R.color.blackText))
         toolbar.setNavigationOnClickListener {
             finish()
         }
 
-        //Setup Map (OSMDroid)
+        // Setup Map (OSMDroid)
         Configuration.getInstance().load(
             applicationContext,
             applicationContext.getSharedPreferences("osmdroid", MODE_PRIVATE)
@@ -45,31 +50,32 @@ class PesanMotorActivity : AppCompatActivity() {
         mapView = findViewById(R.id.mapView)
         mapView.setMultiTouchControls(true)
 
-        // Default Lokasi (Jakarta)
         val defaultLoc = GeoPoint(-6.200000, 106.816666)
         val controller = mapView.controller
         controller.setZoom(15.0)
         controller.setCenter(defaultLoc)
 
-        //Setup BottomSheet
-        val bottomSheet = findViewById<LinearLayout>(R.id.bottomSheet)
+        // 5. SETUP BOTTOM SHEET (NestedScrollView)
+        val bottomSheet = findViewById<NestedScrollView>(R.id.bottomSheet)
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
-        bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
 
-        //Inisialisasi View
+        // Agar Map terlihat, set Collapsed awalnya
+        bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+
+        // Inisialisasi View
         val inputJemput = findViewById<EditText>(R.id.inputJemput)
         val inputTujuan = findViewById<EditText>(R.id.inputTujuan)
-        val btnPesan = findViewById<Button>(R.id.btnPesan)
+        val btnPesan = findViewById<MaterialButton>(R.id.btnPesan)
 
-        val cardCash = findViewById<CardView>(R.id.cardCash)
-        val cardEW1 = findViewById<CardView>(R.id.cardEW1)
-        val cardEW2 = findViewById<CardView>(R.id.cardEW2)
+        val cardCash = findViewById<MaterialCardView>(R.id.cardCash)
+        val cardEW1 = findViewById<MaterialCardView>(R.id.cardEW1)
+        val cardEW2 = findViewById<MaterialCardView>(R.id.cardEW2)
 
         val rbCashRight = findViewById<RadioButton>(R.id.rbCashRight)
         val rbEW1Right = findViewById<RadioButton>(R.id.rbEW1Right)
         val rbEW2Right = findViewById<RadioButton>(R.id.rbEW2Right)
 
-        //Logika Pilihan Pembayaran
+        // Logika Pilihan Pembayaran
         fun selectPaymentMethod(selected: RadioButton) {
             rbCashRight.isChecked = false
             rbEW1Right.isChecked = false
@@ -77,23 +83,19 @@ class PesanMotorActivity : AppCompatActivity() {
             selected.isChecked = true
         }
 
-        // Klik pada Card (Kotak)
         cardCash.setOnClickListener { selectPaymentMethod(rbCashRight) }
         cardEW1.setOnClickListener { selectPaymentMethod(rbEW1Right) }
         cardEW2.setOnClickListener { selectPaymentMethod(rbEW2Right) }
 
-        // Klik pada Radio Button
         rbCashRight.setOnClickListener { selectPaymentMethod(rbCashRight) }
         rbEW1Right.setOnClickListener { selectPaymentMethod(rbEW1Right) }
         rbEW2Right.setOnClickListener { selectPaymentMethod(rbEW2Right) }
 
-        //TOMBOL PESAN
+        // TOMBOL PESAN
         btnPesan.setOnClickListener {
-            // 1. Ambil data teks
             val alamatJemput = inputJemput.text.toString().trim()
             val alamatTujuan = inputTujuan.text.toString().trim()
 
-            // 2. Validasi Input Kosong
             if (alamatJemput.isEmpty()) {
                 inputJemput.error = "Lokasi jemput harus diisi"
                 return@setOnClickListener
@@ -103,59 +105,63 @@ class PesanMotorActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // 3. Validasi Pembayaran Dipilih
             if (!rbCashRight.isChecked && !rbEW1Right.isChecked && !rbEW2Right.isChecked) {
-                Toast.makeText(this, "Silakan pilih metode pembayaran terlebih dahulu", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Silakan pilih metode pembayaran", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            // 4. Tentukan String Metode Bayar
             var metodeBayar = "Tunai"
             when {
                 rbCashRight.isChecked -> metodeBayar = "Tunai"
-                rbEW1Right.isChecked -> metodeBayar = "Gopay" // Mapping ke nama Wallet
-                rbEW2Right.isChecked -> metodeBayar = "OVO"   // Mapping ke nama Wallet
+                rbEW1Right.isChecked -> metodeBayar = "Gopay"
+                rbEW2Right.isChecked -> metodeBayar = "OVO"
             }
 
-            // 5. CARI KOORDINAT ASLI (GEOCODING)
-            val koordinatJemput = cariKoordinat(alamatJemput)
-            val koordinatTujuan = cariKoordinat(alamatTujuan)
+            // 6. JALANKAN DI BACKGROUND (Agar Tidak Crash)
+            Toast.makeText(this, "Mencari lokasi...", Toast.LENGTH_SHORT).show()
 
-            if (koordinatJemput != null && koordinatTujuan != null) {
-                // Jika lokasi ditemukan di peta:
+            Thread {
+                try {
+                    val koordinatJemput = cariKoordinat(alamatJemput)
+                    val koordinatTujuan = cariKoordinat(alamatTujuan)
 
-                // Pindahkan map ke lokasi jemput
-                mapView.controller.animateTo(koordinatJemput)
-                mapView.controller.setZoom(18.0)
+                    // Kembali ke UI Thread
+                    runOnUiThread {
+                        if (koordinatJemput != null && koordinatTujuan != null) {
+                            mapView.controller.animateTo(koordinatJemput)
+                            mapView.controller.setZoom(18.0)
 
-                // Siapkan Intent ke Konfirmasi
-                val intent = Intent(this, KonfirmasiActivity::class.java)
+                            // Pindah ke Konfirmasi
+                            try {
+                                val intent = Intent(this@PesanMotorActivity, KonfirmasiActivity::class.java)
+                                intent.putExtra("EXTRA_ALAMAT_JEMPUT", alamatJemput)
+                                intent.putExtra("EXTRA_ALAMAT_TUJUAN", alamatTujuan)
+                                intent.putExtra("EXTRA_LAT_JEMPUT", koordinatJemput.latitude)
+                                intent.putExtra("EXTRA_LON_JEMPUT", koordinatJemput.longitude)
+                                intent.putExtra("EXTRA_LAT_TUJUAN", koordinatTujuan.latitude)
+                                intent.putExtra("EXTRA_LON_TUJUAN", koordinatTujuan.longitude)
+                                intent.putExtra("EXTRA_JENIS_KENDARAAN", "Motor")
+                                intent.putExtra("EXTRA_METODE_BAYAR", metodeBayar)
+                                intent.putExtra("EXTRA_HARGA", 20000)
 
-                // Kirim Teks Alamat
-                intent.putExtra("EXTRA_ALAMAT_JEMPUT", alamatJemput)
-                intent.putExtra("EXTRA_ALAMAT_TUJUAN", alamatTujuan)
+                                startActivity(intent)
+                            } catch (e: Exception) {
+                                Toast.makeText(this@PesanMotorActivity, "Gagal membuka konfirmasi.", Toast.LENGTH_SHORT).show()
+                            }
 
-                // KIRIM KOORDINAT (PENTING untuk Map Perjalanan)
-                intent.putExtra("EXTRA_LAT_JEMPUT", koordinatJemput.latitude)
-                intent.putExtra("EXTRA_LON_JEMPUT", koordinatJemput.longitude)
-                intent.putExtra("EXTRA_LAT_TUJUAN", koordinatTujuan.latitude)
-                intent.putExtra("EXTRA_LON_TUJUAN", koordinatTujuan.longitude)
-
-                // Kirim Data Lainnya
-                intent.putExtra("EXTRA_JENIS_KENDARAAN", "Motor") // Set Motor
-                intent.putExtra("EXTRA_METODE_BAYAR", metodeBayar)
-                intent.putExtra("EXTRA_HARGA", 20000) // Harga Motor lebih murah
-
-                startActivity(intent)
-
-            } else {
-                // Jika lokasi tidak ketemu
-                Toast.makeText(this, "Lokasi tidak ditemukan. Coba ketik nama tempat yang lebih jelas.", Toast.LENGTH_LONG).show()
-            }
+                        } else {
+                            Toast.makeText(this@PesanMotorActivity, "Lokasi tidak ditemukan.", Toast.LENGTH_LONG).show()
+                        }
+                    }
+                } catch (e: Exception) {
+                    runOnUiThread {
+                        Toast.makeText(this@PesanMotorActivity, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }.start()
         }
     }
 
-    // Fungsi Helper: Ubah Nama Tempat jadi Koordinat
     private fun cariKoordinat(namaTempat: String): GeoPoint? {
         val geocoder = Geocoder(this, Locale.getDefault())
         try {

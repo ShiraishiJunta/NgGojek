@@ -1,12 +1,17 @@
 package com.example.nggojek.order
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.View
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.nggojek.R
@@ -43,6 +48,7 @@ class PembayaranActivity : AppCompatActivity() {
         val layoutEWallet = findViewById<LinearLayout>(R.id.layoutEWallet)
         val tvNamaBank = findViewById<TextView>(R.id.tvNamaBank)
         val tvNoVa = findViewById<TextView>(R.id.tvNoVa)
+        val btnSalinVa = findViewById<ImageView>(R.id.btnSalinVa)
 
         tvTotalBayar.text = "Rp ${String.format("%,d", harga).replace(',', '.')}"
         tvMetodeTitle.text = "Metode: $metodeBayar"
@@ -55,6 +61,15 @@ class PembayaranActivity : AppCompatActivity() {
             layoutEWallet.visibility = View.VISIBLE
             tvNamaBank.text = "Virtual Account ($metodeBayar)"
             tvNoVa.text = "8800 1234 5678"
+        }
+
+        // Tambahkan Listener untuk menyalin teks
+        btnSalinVa.setOnClickListener {
+            val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            val clip = ClipData.newPlainText("Nomor VA", tvNoVa.text.toString())
+            clipboard.setPrimaryClip(clip)
+
+            Toast.makeText(this, "Nomor VA berhasil disalin!", Toast.LENGTH_SHORT).show()
         }
 
         // Timer Simulasi Bayar

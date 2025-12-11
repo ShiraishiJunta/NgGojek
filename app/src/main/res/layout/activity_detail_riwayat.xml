@@ -62,8 +62,7 @@
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/ic_arrow_back"
-                    android:rotation="270"
+                    android:src="@drawable/check"
                     android:background="@drawable/bg_circle"
                     android:padding="10dp"
                     android:backgroundTint="#E8F5E9"

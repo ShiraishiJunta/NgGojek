@@ -1,38 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F2F2F2">
+    android:background="@color/offWhite">
 
-    <!-- TOP BAR -->
+    <!-- TOP BAR (Header) -->
     <LinearLayout
         android:id="@+id/topBar"
         android:layout_width="0dp"
-        android:layout_height="56dp"
+        android:layout_height="?attr/actionBarSize"
         android:orientation="horizontal"
         android:gravity="center_vertical"
         android:background="@color/white"
-        android:paddingStart="16dp"
+        android:paddingStart="12dp"
         android:paddingEnd="16dp"
+        android:elevation="4dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
         <ImageView
             android:id="@+id/btnBack"
-            android:src="@drawable/back"
-            android:layout_width="24dp"
-            android:layout_height="24dp"/>
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_arrow_back"
+            android:padding="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            app:tint="@color/blackText" />
+        <!-- Pastikan src pakai ic_arrow_back yg kamu punya -->
+
+        <!-- Avatar Driver Kecil (Opsional, pemanis visual) -->
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/profile"
+            android:padding="2dp"
+            android:background="@drawable/bg_circle"
+            app:tint="@color/primaryRed"
+            android:layout_marginStart="8dp"/>
 
         <TextView
             android:id="@+id/txtTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="Nama Driver"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:layout_marginStart="12dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:textColor="@color/blackText"
+            android:layout_marginStart="12dp" />
     </LinearLayout>
 
     <!-- RECYCLER VIEW CHAT -->
@@ -40,39 +57,60 @@
         android:id="@+id/recyclerChat"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:padding="8dp"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="8dp"
+        android:clipToPadding="false"
+        android:scrollbars="vertical"
         app:layout_constraintTop_toBottomOf="@id/topBar"
         app:layout_constraintBottom_toTopOf="@id/bottomInput"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!-- INPUT MESSAGE -->
+    <!-- INPUT MESSAGE AREA -->
     <LinearLayout
         android:id="@+id/bottomInput"
         android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:padding="10dp"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="12dp"
         android:background="@color/white"
         android:orientation="horizontal"
         android:gravity="center_vertical"
+        android:elevation="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
+        <!-- Kolom Input Rounded -->
         <EditText
             android:id="@+id/editMessage"
             android:layout_width="0dp"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="Message..."
-            android:paddingStart="12dp" />
+            android:hint="Tulis pesan..."
+            android:textColorHint="@color/greyText"
+            android:textColor="@color/blackText"
+            android:textSize="16sp"
+            android:background="@drawable/bg_chat_input"
+            android:paddingVertical="12dp"
+            android:paddingHorizontal="16dp"
+            android:maxLines="4"
+            android:inputType="textCapSentences|textMultiLine"
+            android:minHeight="48dp"/>
 
+        <!-- Tombol Send -->
         <ImageView
             android:id="@+id/btnSend"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:src="@drawable/send"
-            android:padding="8dp"
-            android:layout_width="40dp"
-            android:layout_height="40dp" />
+            android:padding="10dp"
+            android:layout_marginStart="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            app:tint="@color/primaryRed" />
+        <!-- Pastikan punya icon send (bisa pakai ic_arrow_back rotasi 180 kalau darurat) -->
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

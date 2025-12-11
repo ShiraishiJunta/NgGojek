@@ -6,80 +6,109 @@
     android:layout_height="match_parent"
     tools:context=".order.PerjalananActivity">
 
-    <!-- 1. PETA  -->
+    <!-- 1. PETA (Full Screen) -->
     <org.osmdroid.views.MapView
         android:id="@+id/mapView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <!-- 2. INFO PANEL  -->
-    <androidx.cardview.widget.CardView
+    <!-- 2. INFO PANEL (Floating Card) -->
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_margin="16dp"
         app:cardCornerRadius="16dp"
-        app:cardElevation="10dp">
+        app:cardElevation="12dp"
+        app:cardBackgroundColor="@color/white"
+        app:strokeColor="@color/lightGrey"
+        app:strokeWidth="1dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="20dp">
+
+            <!-- HEADER HANDLE -->
+            <View
+                android:layout_width="40dp"
+                android:layout_height="4dp"
+                android:background="@color/lightGrey"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="16dp"/>
 
             <!-- STATUS PERJALANAN -->
-            <TextView
-                android:id="@+id/tvStatusPerjalanan"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Sedang menuju lokasi tujuan..."
-                android:textStyle="bold"
-                android:textColor="#00AA13"
-                android:textSize="18sp"
-                android:layout_marginBottom="4dp"/>
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="4dp">
+
+                <TextView
+                    android:id="@+id/tvStatusPerjalanan"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Sedang menuju lokasi tujuan..."
+                    android:textStyle="bold"
+                    android:textColor="#00AA13"
+                    android:textSize="16sp"/>
+
+                <!-- Animasi Pulse / Dot (Visual Saja) -->
+                <ImageView
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:src="@drawable/bg_circle"
+                    app:tint="#00AA13"/>
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/tvEstimasi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Estimasi tiba dalam beberapa detik"
-                android:textColor="#666666"
+                android:textColor="@color/greyText"
                 android:textSize="14sp"
-                android:layout_marginBottom="12dp"/>
+                android:layout_marginBottom="16dp"/>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#EEEEEE"
-                android:layout_marginBottom="12dp"/>
+                android:background="@color/lightGrey"
+                android:layout_marginBottom="16dp"/>
 
-            <!-- INFO DRIVER -->
+            <!-- INFO DRIVER & CHAT -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:layout_marginBottom="16dp">
+                android:layout_marginBottom="20dp">
 
                 <ImageView
                     android:id="@+id/imgDriver"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
                     android:src="@drawable/profile"
-                    android:background="@drawable/bg_circle"/>
+                    android:padding="2dp"
+                    android:background="@drawable/bg_circle"
+                    app:tint="@color/greyText"/>
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:orientation="vertical"
-                    android:layout_marginStart="12dp">
+                    android:layout_marginStart="16dp">
 
                     <TextView
                         android:id="@+id/tvNamaDriver"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Budi Santoso"
+                        android:textColor="@color/blackText"
                         android:textStyle="bold"
                         android:textSize="16sp"/>
 
@@ -88,63 +117,72 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="B 1234 KYN"
-                        android:textColor="#666666"/>
+                        android:textColor="@color/blackText"
+                        android:background="@drawable/bg_input_field"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="2dp"
+                        android:textSize="12sp"
+                        android:layout_marginTop="4dp"/>
                 </LinearLayout>
 
-                <!-- Tombol Chat -->
+                <!-- TOMBOL CHAT (ID DITAMBAHKAN: btnChat) -->
                 <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:id="@+id/btnChat"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
                     android:src="@drawable/chat"
-                    android:padding="8dp"
-                    android:background="@drawable/bg_circle"/>
+                    android:padding="12dp"
+                    android:background="@drawable/bg_circle"
+                    android:backgroundTint="#E8F5E9"
+                    app:tint="#4CAF50"
+                    android:clickable="true"
+                    android:focusable="true"/>
             </LinearLayout>
 
-            <!-- TUJUAN -->
+            <!-- TUJUAN BOX -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="#F9F9F9"
-                android:padding="12dp">
+                android:orientation="horizontal"
+                android:background="@drawable/bg_input_field"
+                android:backgroundTint="@color/offWhite"
+                android:padding="12dp"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_arrow_back"
+                    android:rotation="270"
+                    app:tint="@color/primaryRedDark"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:src="@drawable/ic_launcher_foreground"
-                        app:tint="#FF0000"/> <!-- Icon Pin Merah -->
+                    android:orientation="vertical"
+                    android:layout_marginStart="12dp">
 
-                    <LinearLayout
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tujuan Perjalanan"
+                        android:textSize="12sp"
+                        android:textColor="@color/greyText"/>
+
+                    <TextView
+                        android:id="@+id/tvAlamatTujuan"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginStart="12dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Tujuan"
-                            android:textSize="12sp"
-                            android:textColor="#666666"/>
-
-                        <TextView
-                            android:id="@+id/tvAlamatTujuan"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Mall Grand Indonesia"
-                            android:textStyle="bold"
-                            android:textSize="14sp"
-                            android:maxLines="2"
-                            android:ellipsize="end"/>
-                    </LinearLayout>
+                        android:text="Mall Grand Indonesia"
+                        android:textStyle="bold"
+                        android:textColor="@color/blackText"
+                        android:textSize="14sp"
+                        android:maxLines="2"
+                        android:ellipsize="end"/>
                 </LinearLayout>
             </LinearLayout>
 
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
 </RelativeLayout>

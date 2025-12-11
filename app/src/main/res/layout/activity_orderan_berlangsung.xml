@@ -85,7 +85,6 @@
                 android:backgroundTint="#E3F2FD"
                 android:padding="12dp"
                 android:layout_marginBottom="24dp">
-                <!-- Background biru muda lembut -->
 
                 <ImageView
                     android:layout_width="24dp"
@@ -94,7 +93,6 @@
                     android:rotation="180"
                     app:tint="#1976D2"
                     android:layout_marginEnd="12dp"/>
-                <!-- Icon panah/info biru -->
 
                 <TextView
                     android:layout_width="match_parent"
@@ -186,8 +184,10 @@
                     </LinearLayout>
                 </LinearLayout>
 
-                <!-- Tombol Chat / Telepon (Opsional - Visual Saja) -->
+                <!-- Tombol Chat / Telepon -->
+                <!-- SAYA MENAMBAHKAN ID DISINI: @+id/btnChat -->
                 <ImageView
+                    android:id="@+id/btnChat"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:src="@drawable/chat"
@@ -255,8 +255,7 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <!-- LOKASI (Timeline Style Modern) -->
-
+            <!-- LOKASI -->
             <!-- Titik Jemput -->
             <LinearLayout
                 android:layout_width="match_parent"

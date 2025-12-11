@@ -8,9 +8,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.widget.NestedScrollView // WAJIB: Sesuai XML baru
+import androidx.core.widget.NestedScrollView
 import com.example.nggojek.R
-import com.google.android.material.bottomsheet.BottomSheetBehavior // WAJIB: Untuk mengatur behavior
+import com.example.nggojek.chat.ChatActivity
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 
 class OrderanBerlangsungActivity : AppCompatActivity() {
 
@@ -18,22 +19,19 @@ class OrderanBerlangsungActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_orderan_berlangsung)
 
-        // --- MULAI PENYESUAIAN XML ---
-        // Karena di XML kamu menggunakan NestedScrollView untuk BottomSheet
+        // --- BOTTOM SHEET  ---
         try {
             val bottomSheet = findViewById<NestedScrollView>(R.id.bottomSheet)
             val bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
-            // Pastikan Bottom Sheet terbuka agar user melihat info driver
             bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
         } catch (e: Exception) {
             e.printStackTrace()
         }
-        // --- SELESAI PENYESUAIAN XML ---
 
         // Tampilkan notifikasi awal
         Toast.makeText(this, "Driver ditemukan! Menuju lokasi jemput...", Toast.LENGTH_SHORT).show()
 
-        // 1. Inisialisasi Views
+        // Inisialisasi Views
         val btnBack = findViewById<ImageView>(R.id.btnBack)
         val tvAlamatJemput = findViewById<TextView>(R.id.tvAlamatJemput)
         val tvAlamatTujuan = findViewById<TextView>(R.id.tvAlamatTujuan)
@@ -44,22 +42,19 @@ class OrderanBerlangsungActivity : AppCompatActivity() {
         val tvNopolDriver = findViewById<TextView>(R.id.tvNopolDriver)
         val tvRatingDriver = findViewById<TextView>(R.id.tvRatingDriver)
 
-        // 2. Mengambil data dari Intent (Dari MencariDriverActivity)
-        val alamatJemput = intent.getStringExtra("EXTRA_ALAMAT_JEMPUT") ?: "Alamat Jemput Kosong"
-        val alamatTujuan = intent.getStringExtra("EXTRA_ALAMAT_TUJUAN") ?: "Alamat Tujuan Kosong"
+        // Inisialisasi Tombol Chat
+        val btnChat = findViewById<ImageView>(R.id.btnChat)
+
+        // Mengambil data dari Intent
+        val alamatJemput = intent.getStringExtra("EXTRA_ALAMAT_JEMPUT") ?: "-"
+        val alamatTujuan = intent.getStringExtra("EXTRA_ALAMAT_TUJUAN") ?: "-"
         val jenisKendaraan = intent.getStringExtra("EXTRA_JENIS_KENDARAAN") ?: "Motor"
         val metodeBayar = intent.getStringExtra("EXTRA_METODE_BAYAR") ?: "Cash"
         val harga = intent.getIntExtra("EXTRA_HARGA", 0)
 
-        // Ambil Koordinat juga (jika ada) untuk diteruskan
-        val latJemput = intent.getDoubleExtra("EXTRA_LAT_JEMPUT", 0.0)
-        val lonJemput = intent.getDoubleExtra("EXTRA_LON_JEMPUT", 0.0)
-        val latTujuan = intent.getDoubleExtra("EXTRA_LAT_TUJUAN", 0.0)
-        val lonTujuan = intent.getDoubleExtra("EXTRA_LON_TUJUAN", 0.0)
-
         val namaDriver = "Budi Santoso"
 
-        // 3. Format harga & Set View
+        // Format harga & Set View
         val hargaString = "Rp ${String.format("%,d", harga).replace(',', '.')}"
         tvAlamatJemput.text = alamatJemput
         tvAlamatTujuan.text = alamatTujuan
@@ -76,9 +71,18 @@ class OrderanBerlangsungActivity : AppCompatActivity() {
             imgTransportIcon.setImageResource(R.drawable.motor)
         }
 
+        // LOGIKA TOMBOL BACK
         btnBack.setOnClickListener { finish() }
 
-        // Delay 5 detik (Simulasi Driver jalan)
+        // LOGIKA TOMBOL CHAT
+        btnChat.setOnClickListener {
+            val intentChat = Intent(this, ChatActivity::class.java)
+            // Kirim Nama Driver agar judul Chat sesuai
+            intentChat.putExtra("EXTRA_NAMA_DRIVER", namaDriver)
+            startActivity(intentChat)
+        }
+
+        // SIMULASI PERJALANAN (5 Detik)
         Handler(Looper.getMainLooper()).postDelayed({
 
             Toast.makeText(this, "Driver sudah sampai di titik jemput!", Toast.LENGTH_LONG).show()
@@ -86,26 +90,22 @@ class OrderanBerlangsungActivity : AppCompatActivity() {
             // Delay 2 detik lagi lalu pindah
             Handler(Looper.getMainLooper()).postDelayed({
 
-                val intent = Intent(this, PerjalananActivity::class.java) // Pastikan PerjalananActivity ada
+                // Cek apakah PerjalananActivity ada
+                try {
+                    val intent = Intent(this, PerjalananActivity::class.java)
 
-                // 1. KIRIM ULANG ALAMAT JEMPUT
-                intent.putExtra("EXTRA_ALAMAT_JEMPUT", alamatJemput)
+                    intent.putExtra("EXTRA_ALAMAT_JEMPUT", alamatJemput)
+                    intent.putExtra("EXTRA_ALAMAT_TUJUAN", alamatTujuan)
+                    intent.putExtra("EXTRA_JENIS_KENDARAAN", jenisKendaraan)
+                    intent.putExtra("EXTRA_NAMA_DRIVER", namaDriver)
+                    intent.putExtra("EXTRA_METODE_BAYAR", metodeBayar)
+                    intent.putExtra("EXTRA_HARGA", harga)
 
-                // 2. Kirim data lainnya
-                intent.putExtra("EXTRA_ALAMAT_TUJUAN", alamatTujuan)
-                intent.putExtra("EXTRA_JENIS_KENDARAAN", jenisKendaraan)
-                intent.putExtra("EXTRA_NAMA_DRIVER", namaDriver)
-                intent.putExtra("EXTRA_METODE_BAYAR", metodeBayar)
-                intent.putExtra("EXTRA_HARGA", harga)
-
-                // 3. Kirim Koordinat
-                intent.putExtra("EXTRA_LAT_JEMPUT", latJemput)
-                intent.putExtra("EXTRA_LON_JEMPUT", lonJemput)
-                intent.putExtra("EXTRA_LAT_TUJUAN", latTujuan)
-                intent.putExtra("EXTRA_LON_TUJUAN", lonTujuan)
-
-                startActivity(intent)
-                finish()
+                    startActivity(intent)
+                    finish()
+                } catch (e: Exception) {
+                    Toast.makeText(this, "PerjalananActivity belum dibuat", Toast.LENGTH_SHORT).show()
+                }
 
             }, 2000)
 
