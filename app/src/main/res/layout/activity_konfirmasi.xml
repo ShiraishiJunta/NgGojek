@@ -17,13 +17,14 @@
         android:orientation="horizontal"
         android:gravity="center_vertical">
 
+        <!-- PERBAIKAN DI SINI: Ukuran dikecilkan -->
         <ImageView
             android:id="@+id/btnBack"
-            android:layout_width="69dp"
-            android:layout_height="63dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:src="@drawable/ic_arrow_back"
+            android:layout_marginEnd="16dp"
             app:tint="#000000" />
-        <!-- Ganti src di atas dengan icon panah back (ic_arrow_back) -->
 
         <TextView
             android:layout_width="match_parent"
@@ -32,8 +33,7 @@
             android:textColor="#000000"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:gravity="center"
-            android:layout_marginEnd="24dp"/>
+            android:gravity="center_vertical" />
     </LinearLayout>
 
     <!-- KONTEN SCROLL -->
@@ -70,7 +70,6 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
-                        <!-- Icon bulat (placeholder) -->
                         <ImageView
                             android:layout_width="20dp"
                             android:layout_height="20dp"
@@ -96,15 +95,14 @@
                         </LinearLayout>
                     </LinearLayout>
 
-                    <!-- Titik 3 vertikal (Hiasan) -->
-                    <TextView
-                        android:layout_width="20dp"
-                        android:layout_height="wrap_content"
-                        android:text=":"
-                        android:gravity="center"
-                        android:textStyle="bold"
-                        android:layout_marginBottom="4dp"
-                        android:layout_marginTop="-4dp"/>
+                    <!-- Hiasan Garis -->
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="12dp"
+                        android:background="#888888"
+                        android:layout_marginStart="9dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginBottom="2dp"/>
 
                     <!-- Tujuan -->
                     <LinearLayout
@@ -112,7 +110,6 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
-                        <!-- Icon Pin (placeholder) -->
                         <ImageView
                             android:layout_width="20dp"
                             android:layout_height="20dp"
@@ -169,7 +166,6 @@
                         android:gravity="center_vertical"
                         android:orientation="horizontal">
 
-                        <!-- Icon Transportasi -->
                         <ImageView
                             android:id="@+id/imgTransportIcon"
                             android:layout_width="40dp"
