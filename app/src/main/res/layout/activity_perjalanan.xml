@@ -6,13 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".order.PerjalananActivity">
 
-    <!-- 1. PETA (Full Screen) -->
+    <!-- 1. PETA  -->
     <org.osmdroid.views.MapView
         android:id="@+id/mapView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <!-- 2. INFO PANEL (CardView di Bawah) -->
+    <!-- 2. INFO PANEL  -->
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -91,7 +91,7 @@
                         android:textColor="#666666"/>
                 </LinearLayout>
 
-                <!-- Tombol Chat (Hiasan) -->
+                <!-- Tombol Chat -->
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"

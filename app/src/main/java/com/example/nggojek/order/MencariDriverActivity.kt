@@ -75,7 +75,7 @@ class MencariDriverActivity : AppCompatActivity() {
             intent.putExtra("EXTRA_METODE_BAYAR", metodeBayar)
             intent.putExtra("EXTRA_HARGA", harga)
 
-            // OPER DATA KOORDINAT (JANGAN LUPA!)
+            // OPER DATA KOORDINAT
             intent.putExtra("EXTRA_LAT_JEMPUT", latJemput)
             intent.putExtra("EXTRA_LON_JEMPUT", lonJemput)
             intent.putExtra("EXTRA_LAT_TUJUAN", latTujuan)
