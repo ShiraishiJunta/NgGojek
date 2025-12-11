@@ -35,16 +35,6 @@
             android:layout_marginEnd="24dp"/>
     </LinearLayout>
 
-    <!-- MAP-->
-    <ImageView
-        android:id="@+id/imgMaps"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/maps"
-        android:scaleType="centerCrop"
-        android:layout_marginTop="95dp"
-        android:contentDescription="Maps View" />
-
     <!-- BOTTOM SHEET -->
     <LinearLayout
         android:id="@+id/bottomSheet"
