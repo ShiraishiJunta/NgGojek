@@ -50,10 +50,10 @@ class PesanMotorActivity : AppCompatActivity() {
         mapView = findViewById(R.id.mapView)
         mapView.setMultiTouchControls(true)
 
-        // Lokasi awal peta (Jakarta)
-        val defaultLoc = GeoPoint(-6.200000, 106.816666)
+        // Lokasi awal peta (Madiun)
+        val defaultLoc = GeoPoint(-7.6476489, 111.5268208)
         val controller = mapView.controller
-        controller.setZoom(15.0)
+        controller.setZoom(20.0)
         controller.setCenter(defaultLoc)
 
         // Mengatur bottom sheet untuk input formulir
