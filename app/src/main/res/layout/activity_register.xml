@@ -1,84 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".RegisterActivity">
 
-    <LinearLayout
-        android:id="@+id/containerRegister"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+    <!-- Tombol Back -->
+
+    <ImageView
+        android:id="@+id/btnBack"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="28dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="12dp"
+        android:src="@drawable/ic_arrow_back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.368">
+        app:tint="@color/blackText" />
 
-        <ImageView
-            android:id="@+id/imageViewLogo"
-            android:layout_width="wrap_content"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnBack">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
-            android:src="@drawable/logo" />
+            android:paddingBottom="30dp">
 
-        <ImageView
-            android:id="@+id/imageViewAppName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:src="@drawable/nggojek" />
+            <!-- LOGO AREA -->
 
-        <EditText
-            android:id="@+id/editTextUsername"
-            android:layout_width="300dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="10dp"
-            android:background="@android:drawable/edit_text"
-            android:hint="Username"
-            android:padding="12dp" />
+            <!-- FORM SECTION -->
 
-        <EditText
-            android:id="@+id/editTextEmail"
-            android:layout_width="300dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="12dp"
-            android:background="@android:drawable/edit_text"
-            android:hint="Email"
-            android:inputType="textEmailAddress"
-            android:padding="12dp" />
+            <LinearLayout
+                android:id="@+id/headerContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="68dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
-            android:id="@+id/editTextPassword"
-            android:layout_width="300dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="12dp"
-            android:background="@android:drawable/edit_text"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:padding="12dp" />
+                <ImageView
+                    android:id="@+id/imageViewLogo"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/logo" />
 
-        <EditText
-            android:id="@+id/editTextConfirmPassword"
-            android:layout_width="300dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="12dp"
-            android:background="@android:drawable/edit_text"
-            android:hint="Confirm Password"
-            android:inputType="textPassword"
-            android:padding="12dp" />
+                <ImageView
+                    android:id="@+id/imageViewAppName"
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="8dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/nggojek" />
+            </LinearLayout>
 
-        <Button
-            android:id="@+id/buttonRegister"
-            android:layout_width="140dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="20dp"
-            android:text="Register" />
+            <EditText
+                android:id="@+id/editTextUsername"
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/bg_input_field"
+                android:hint="Username"
+                android:inputType="textPersonName"
+                android:paddingHorizontal="16dp"
+                android:textColor="@color/blackText"
+                android:textColorHint="@color/greyText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/headerContainer" />
 
-    </LinearLayout>
+            <EditText
+                android:id="@+id/editTextEmail"
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_input_field"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:paddingHorizontal="16dp"
+                android:textColor="@color/blackText"
+                android:textColorHint="@color/greyText"
+                app:layout_constraintEnd_toEndOf="@+id/editTextUsername"
+                app:layout_constraintStart_toStartOf="@+id/editTextUsername"
+                app:layout_constraintTop_toBottomOf="@+id/editTextUsername" />
+
+            <EditText
+                android:id="@+id/editTextPassword"
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_input_field"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:paddingHorizontal="16dp"
+                android:textColor="@color/blackText"
+                android:textColorHint="@color/greyText"
+                app:layout_constraintEnd_toEndOf="@+id/editTextEmail"
+                app:layout_constraintStart_toStartOf="@+id/editTextEmail"
+                app:layout_constraintTop_toBottomOf="@+id/editTextEmail" />
+
+            <EditText
+                android:id="@+id/editTextConfirmPassword"
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_input_field"
+                android:hint="Confirm Password"
+                android:inputType="textPassword"
+                android:paddingHorizontal="16dp"
+                android:textColor="@color/blackText"
+                android:textColorHint="@color/greyText"
+                app:layout_constraintEnd_toEndOf="@+id/editTextPassword"
+                app:layout_constraintStart_toStartOf="@+id/editTextPassword"
+                app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
+
+            <Button
+                android:id="@+id/buttonRegister"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="32dp"
+                android:backgroundTint="@color/primaryRed"
+                android:text="Daftar Sekarang"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:cornerRadius="12dp"
+                app:layout_constraintEnd_toEndOf="@+id/editTextConfirmPassword"
+                app:layout_constraintStart_toStartOf="@+id/editTextConfirmPassword"
+                app:layout_constraintTop_toBottomOf="@+id/editTextConfirmPassword" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

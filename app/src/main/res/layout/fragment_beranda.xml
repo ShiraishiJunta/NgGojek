@@ -5,131 +5,233 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F5F5">
+    android:background="@color/offWhite">
 
-    <!-- Tombol Profile -->
-
-    <TextView
-        android:layout_width="wrap_content"
+    <!-- Header -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/headerContainer"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="NgGojek"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/bannerPromo"
-        app:layout_constraintEnd_toStartOf="@+id/btnProfile"
-        app:layout_constraintHorizontal_bias="0.051"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.707" />
+        android:background="@color/white"
+        android:paddingHorizontal="20dp"
+        android:paddingTop="24dp"
+        android:paddingBottom="16dp"
+        android:elevation="0dp"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <ImageView
-        android:id="@+id/btnProfile"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_margin="16dp"
-        android:background="@drawable/bg_circle"
-        android:padding="4dp"
-        android:src="@drawable/profile"
-        app:tint="#111827"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-    <!-- TINT: Neutral N-900 (Hitam Pekat) -->
+        <!-- Sapaan -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Selamat Datang di "
+                android:textColor="@color/greyText"
+                android:textSize="12sp"
+                android:fontFamily="sans-serif" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NgGojek"
+                android:textColor="@color/primaryRed"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-black" />
+        </LinearLayout>
+
+        <!-- Profile Image  -->
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/btnProfile"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/profile"
+            android:padding="0dp"
+            android:scaleType="centerCrop"
+            app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full"
+            app:strokeColor="@color/offWhite"
+            app:strokeWidth="1dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Content -->
 
     <!-- Banner Promo -->
-    <LinearLayout
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/bannerPromo"
         android:layout_width="0dp"
-        android:layout_height="140dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/bg_radius_light"
-        android:gravity="center"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="160dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="0dp"
+        app:strokeColor="@color/lightGrey"
+        app:strokeWidth="1dp"
+        app:cardBackgroundColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/headerContainer"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-        <!-- BACKGROUND: drawable hijau muda (P-100) -->
+        app:layout_constraintEnd_toEndOf="parent">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="140dp"
-            android:scaleType="fitCenter"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
             android:src="@drawable/promo" />
 
-    </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 
-    <!-- Tombol Pesan Motor -->
-    <LinearLayout
+    <!-- Label Menu -->
+    <TextView
+        android:id="@+id/labelLayanan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Layanan Kami"
+        android:textColor="@color/blackText"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bannerPromo"/>
+
+    <!-- Pesan Motor -->
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/btnMotor"
         android:layout_width="0dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="32dp"
-        android:background="@drawable/bg_radius_white"
-        android:elevation="2dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="12dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="0dp"
+        app:cardBackgroundColor="@color/white"
+        app:strokeColor="@color/offWhite"
+        app:strokeWidth="1dp"
+        app:rippleColor="@color/softRed"
+        app:layout_constraintTop_toBottomOf="@id/labelLayanan"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bannerPromo">
-        <!-- BACKGROUND: Putih dengan radius + elevation -->
+        app:layout_constraintEnd_toEndOf="parent">
 
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/motor"
-            app:tint="#14B8A6" />
-        <!-- TINT: Icon warna Primary (P-500) -->
-
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="Pesan Motor"
-            android:fontFamily="@font/nunito"
-            android:textColor="#111827"
-            android:textSize="18sp"
-            android:textStyle="bold"/>
-        <!-- TEXT: Neutral Gelap (N-900) -->
-    </LinearLayout>
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="16dp">
 
-    <!-- Tombol Pesan Mobil -->
-    <LinearLayout
+            <FrameLayout
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/bg_circle_soft">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/motor"
+                    app:tint="@color/primaryRed" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pesan Motor"
+                    android:textColor="@color/blackText"
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Perjalanan cepat anti macet"
+                    android:textColor="@color/greyText"
+                    android:textSize="12sp"
+                    android:layout_marginTop="2dp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Pesan Mobil -->
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/btnMobil"
         android:layout_width="0dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="32dp"
-        android:background="@drawable/bg_radius_white"
-        android:elevation="2dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="12dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="0dp"
+        app:cardBackgroundColor="@color/white"
+        app:strokeColor="@color/offWhite"
+        app:strokeWidth="1dp"
+        app:rippleColor="@color/softRed"
+        app:layout_constraintTop_toBottomOf="@id/btnMotor"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnMotor">
+        app:layout_constraintEnd_toEndOf="parent">
 
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/car"
-            app:tint="#14B8A6" />
-        <!-- TINT: Icon warna Primary (P-500) -->
-
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="Pesan Mobil"
-            android:fontFamily="@font/nunito"
-            android:textColor="#111827"
-            android:textSize="18sp"
-            android:textStyle="bold"/>
-    </LinearLayout>
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="16dp">
+
+            <FrameLayout
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/bg_circle_soft">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/car"
+                    app:tint="@color/primaryRed" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pesan Mobil"
+                    android:textColor="@color/blackText"
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nyaman ber-AC sampai tujuan"
+                    android:textColor="@color/greyText"
+                    android:textSize="12sp"
+                    android:layout_marginTop="2dp"/>
+            </LinearLayout>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

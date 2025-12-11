@@ -7,29 +7,32 @@
     android:orientation="vertical"
     android:gravity="center_horizontal"
     android:padding="24dp"
-    android:background="#FFFFFF"
+    android:background="@color/white"
     tools:context=".order.RatingActivity">
 
+    <!-- Judul -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Bagaimana perjalananmu?"
         android:textSize="22sp"
         android:textStyle="bold"
-        android:textColor="#000000"
+        android:textColor="@color/blackText"
         android:layout_marginTop="40dp"
         android:layout_marginBottom="32dp"/>
 
     <!-- INFO DRIVER -->
+    <!-- Foto Driver -->
     <ImageView
         android:id="@+id/imgDriver"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:src="@drawable/profile"
         android:background="@drawable/bg_circle"
-        android:padding="2dp"
+        android:padding="4dp"
         android:layout_marginBottom="16dp"/>
 
+    <!-- Nama Driver -->
     <TextView
         android:id="@+id/tvNamaDriver"
         android:layout_width="wrap_content"
@@ -37,13 +40,15 @@
         android:text="Budi Santoso"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:textColor="#000000"/>
+        android:textColor="@color/blackText"/>
 
+    <!-- Subtitle -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Berikan penilaian untuk driver"
-        android:textColor="#888888"
+        android:textColor="@color/greyText"
+        android:textSize="14sp"
         android:layout_marginBottom="24dp"/>
 
     <!-- RATING BAR (BINTANG) -->
@@ -58,15 +63,19 @@
         android:secondaryProgressTint="#FFC107"
         android:layout_marginBottom="32dp"/>
 
-    <!-- INPUT ULASAN -->
+    <!-- INPUT ULASAN (Style Modern Outline) -->
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Tulis ulasan (Opsional)"
-        app:boxCornerRadiusTopStart="12dp"
-        app:boxCornerRadiusTopEnd="12dp"
-        app:boxCornerRadiusBottomStart="12dp"
-        app:boxCornerRadiusBottomEnd="12dp"
+        app:boxCornerRadiusTopStart="16dp"
+        app:boxCornerRadiusTopEnd="16dp"
+        app:boxCornerRadiusBottomStart="16dp"
+        app:boxCornerRadiusBottomEnd="16dp"
+        app:boxStrokeColor="@color/primaryRed"
+        app:boxStrokeWidth="1dp"
+        app:boxBackgroundColor="@color/offWhite"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_marginBottom="24dp">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -75,24 +84,27 @@
             android:layout_height="wrap_content"
             android:inputType="textMultiLine"
             android:lines="3"
-            android:gravity="top|start"/>
+            android:gravity="top|start"
+            android:textColor="@color/blackText"/>
     </com.google.android.material.textfield.TextInputLayout>
 
+    <!-- Spacer untuk mendorong tombol ke bawah (Opsional) -->
     <View
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"/>
 
-    <!-- TOMBOL KIRIM -->
-    <Button
+    <!-- TOMBOL KIRIM (Material Button Merah) -->
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnKirim"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="60dp"
         android:text="Kirim Ulasan"
-        android:backgroundTint="#00AA13"
-        android:textColor="#FFFFFF"
+        android:backgroundTint="@color/primaryRed"
+        android:textColor="@color/white"
         android:textStyle="bold"
         android:textSize="16sp"
+        app:cornerRadius="12dp"
         android:layout_marginBottom="16dp"/>
 
 </LinearLayout>

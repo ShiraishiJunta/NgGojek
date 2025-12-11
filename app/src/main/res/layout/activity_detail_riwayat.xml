@@ -1,28 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#F5F5F5"
+    android:background="@color/offWhite"
     tools:context=".riwayat.DetailRiwayatActivity">
 
-    <!-- HEADER -->
+    <!-- 1. HEADER -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#FFFFFF"
+        android:background="@color/white"
         android:padding="16dp"
         android:gravity="center_vertical"
         android:elevation="4dp">
 
         <ImageView
             android:id="@+id/btnBack"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:src="@drawable/ic_arrow_back"
-            app:tint="#000000"/>
+            app:tint="@color/blackText"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -30,28 +34,40 @@
             android:text="Detail Pesanan"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:textColor="#000000"
+            android:textColor="@color/blackText"
             android:layout_marginStart="16dp"/>
     </LinearLayout>
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="20dp">
 
-            <!-- STATUS PESANAN -->
+            <!-- 2. STATUS PESANAN -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:orientation="vertical"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="24dp"
                 android:layout_marginTop="8dp">
+
+                <!-- Ikon Centang Sederhana -->
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_arrow_back"
+                    android:rotation="270"
+                    android:background="@drawable/bg_circle"
+                    android:padding="10dp"
+                    android:backgroundTint="#E8F5E9"
+                    app:tint="#4CAF50"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -59,51 +75,57 @@
                     android:text="Pesanan Selesai"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:textColor="#00AA13"
-                    android:layout_marginTop="4dp"/>
+                    android:textColor="#4CAF50"
+                    android:layout_marginTop="12dp"/>
 
                 <TextView
                     android:id="@+id/tvWaktuPesan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Terima kasih telah menggunakan layanan kami"
+                    android:text="Transaksi Berhasil"
                     android:textSize="12sp"
-                    android:textColor="#666666"/>
+                    android:textColor="@color/greyText"
+                    android:layout_marginTop="4dp"/>
             </LinearLayout>
 
-            <!-- CARD DETAIL -->
-            <androidx.cardview.widget.CardView
+            <!-- 3. CARD DETAIL UTAMA -->
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="12dp"
-                app:cardElevation="2dp"
-                app:contentPadding="16dp">
+                app:cardElevation="0dp"
+                app:strokeColor="@color/lightGrey"
+                app:strokeWidth="1dp"
+                app:cardBackgroundColor="@color/white">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:padding="20dp">
 
-                    <!-- INFO DRIVER -->
+                    <!-- A. INFO DRIVER -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:gravity="center_vertical"
-                        android:layout_marginBottom="16dp">
+                        android:layout_marginBottom="20dp">
 
                         <ImageView
                             android:layout_width="50dp"
                             android:layout_height="50dp"
                             android:src="@drawable/profile"
-                            android:background="@drawable/bg_circle"/>
+                            android:padding="2dp"
+                            android:background="@drawable/bg_circle"
+                            app:tint="@color/primaryRed"/>
 
                         <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:orientation="vertical"
-                            android:layout_marginStart="12dp">
+                            android:layout_marginStart="16dp">
 
                             <TextView
                                 android:id="@+id/tvNamaDriver"
@@ -112,36 +134,37 @@
                                 android:text="Nama Driver"
                                 android:textStyle="bold"
                                 android:textSize="16sp"
-                                android:textColor="#000"/>
+                                android:textColor="@color/blackText"/>
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Mitra Pengemudi"
                                 android:textSize="12sp"
-                                android:textColor="#666666"/>
+                                android:textColor="@color/greyText"/>
                         </LinearLayout>
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:background="#EEEEEE"
-                        android:layout_marginBottom="16dp"/>
+                        android:background="@color/lightGrey"
+                        android:layout_marginBottom="20dp"/>
 
-                    <!-- LAYANAN -->
+                    <!-- B. JENIS LAYANAN -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:gravity="center_vertical"
-                        android:layout_marginBottom="12dp">
+                        android:layout_marginBottom="20dp">
 
                         <ImageView
                             android:id="@+id/imgTransportIcon"
-                            android:layout_width="32dp"
-                            android:layout_height="32dp"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
                             android:src="@drawable/motor"
+                            app:tint="@color/primaryRed"
                             android:layout_marginEnd="12dp"/>
 
                         <TextView
@@ -149,94 +172,110 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Pesan Motor"
+                            android:textSize="14sp"
                             android:textStyle="bold"
-                            android:textColor="#000"/>
+                            android:textColor="@color/blackText"/>
                     </LinearLayout>
 
-                    <!-- LOKASI (ALUR PERJALANAN) -->
+                    <!-- C. ALUR PERJALANAN (ICON DISAMAKAN DENGAN KONFIRMASI) -->
+
                     <!-- Titik Jemput -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
+
+                        <!-- Icon Arrow 90 Derajat (Merah) -->
                         <ImageView
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
-                            android:src="@android:drawable/btn_radio"
-                            android:layout_marginEnd="12dp"/>
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_arrow_back"
+                            android:rotation="90"
+                            app:tint="@color/primaryRed"
+                            android:layout_marginTop="2dp"/>
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            android:layout_marginStart="12dp">
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Titik Jemput"
                                 android:textSize="12sp"
-                                android:textStyle="bold"/>
+                                android:textColor="@color/greyText"/>
                             <TextView
                                 android:id="@+id/tvDetailJemput"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Alamat Jemput"
-                                android:textColor="#666666"
-                                android:textSize="12sp"/>
+                                android:textColor="@color/blackText"
+                                android:textSize="14sp"
+                                android:textStyle="bold"/>
                         </LinearLayout>
                     </LinearLayout>
 
                     <!-- Garis Penghubung -->
                     <View
                         android:layout_width="1dp"
-                        android:layout_height="12dp"
-                        android:background="#AAAAAA"
-                        android:layout_marginStart="7dp"
-                        android:layout_marginTop="2dp"
-                        android:layout_marginBottom="2dp"/>
+                        android:layout_height="20dp"
+                        android:background="@color/lightGrey"
+                        android:layout_marginStart="9dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="4dp"/>
 
                     <!-- Tujuan -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:layout_marginBottom="16dp">
+                        android:layout_marginBottom="20dp">
+
+                        <!-- Icon Arrow 270 Derajat (Merah Gelap) -->
                         <ImageView
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
-                            android:src="@drawable/ic_launcher_foreground"
-                            app:tint="#FF0000"
-                            android:layout_marginEnd="12dp"/>
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_arrow_back"
+                            android:rotation="270"
+                            app:tint="@color/primaryRedDark"
+                            android:layout_marginTop="2dp"/>
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            android:layout_marginStart="12dp">
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Tujuan"
                                 android:textSize="12sp"
-                                android:textStyle="bold"/>
+                                android:textColor="@color/greyText"/>
                             <TextView
                                 android:id="@+id/tvDetailTujuan"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Alamat Tujuan"
-                                android:textColor="#666666"
-                                android:textSize="12sp"/>
+                                android:textColor="@color/blackText"
+                                android:textSize="14sp"
+                                android:textStyle="bold"/>
                         </LinearLayout>
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:background="#EEEEEE"
-                        android:layout_marginBottom="16dp"/>
+                        android:background="@color/lightGrey"
+                        android:layout_marginBottom="20dp"/>
 
-                    <!-- PENILAIAN ANDA -->
+                    <!-- D. PENILAIAN & ULASAN -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Ulasan Anda"
                         android:textStyle="bold"
+                        android:textColor="@color/blackText"
                         android:layout_marginBottom="8dp"/>
 
                     <RatingBar
@@ -244,26 +283,28 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:numStars="5"
-                        style="?android:attr/ratingBarStyleIndicator"
+                        style="?android:attr/ratingBarStyleSmall"
+                        android:theme="@style/Widget.AppCompat.RatingBar.Small"
                         android:rating="0"
                         android:progressTint="#FFC107"
-                        android:layout_marginBottom="8dp"/>
+                        android:secondaryProgressTint="#FFC107"
+                        android:layout_marginBottom="12dp"/>
 
-                    <!-- BOX ULASAN -->
+                    <!-- Box Ulasan -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="#F9F9F9"
-                        android:padding="12dp"
+                        android:background="@drawable/bg_input_field"
+                        android:padding="16dp"
                         android:orientation="vertical"
-                        android:layout_marginBottom="16dp">
+                        android:layout_marginBottom="20dp">
 
                         <TextView
                             android:id="@+id/tvUlasanPengguna"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Driver sangat ramah"
-                            android:textColor="#333333"
+                            android:textColor="@color/blackText"
                             android:textSize="14sp"
                             android:textStyle="italic"/>
                     </LinearLayout>
@@ -271,34 +312,36 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:background="#EEEEEE"
-                        android:layout_marginBottom="16dp"/>
+                        android:background="@color/lightGrey"
+                        android:layout_marginBottom="20dp"/>
 
-                    <!-- TOTAL PEMBAYARAN -->
+                    <!-- E. TOTAL PEMBAYARAN -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Total Pembayaran"
-                            android:textSize="16sp"/>
+                            android:textColor="@color/greyText"
+                            android:textSize="14sp"/>
 
                         <TextView
                             android:id="@+id/tvTotalHarga"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Rp 0"
+                            android:text="Rp 20.000"
                             android:textStyle="bold"
-                            android:textColor="#000"
-                            android:textSize="18sp"/>
+                            android:textColor="@color/primaryRed"
+                            android:textSize="20sp"/>
                     </LinearLayout>
 
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
         </LinearLayout>
     </ScrollView>

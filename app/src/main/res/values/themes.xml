@@ -1,10 +1,22 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.NgGojek" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    <style name="Base.Theme.NgGojek" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/primaryRed</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimaryContainer">@color/softRed</item>
+        <item name="colorOnPrimaryContainer">@color/primaryRedDark</item>
+
+        <item name="colorSecondary">@color/primaryRed</item>
+        <item name="colorOnSecondary">@color/white</item>
+
+        <item name="colorSecondaryContainer">@color/softRed</item>
+        <item name="colorOnSecondaryContainer">@color/primaryRedDark</item>
+
         <item name="android:windowBackground">@color/white</item>
-        <item name="colorSecondaryContainer">@android:color/transparent</item>
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:textColorPrimary">@color/blackText</item>
+        <item name="android:textColorSecondary">@color/greyText</item>
+
     </style>
 
     <style name="Theme.NgGojek" parent="Base.Theme.NgGojek" />

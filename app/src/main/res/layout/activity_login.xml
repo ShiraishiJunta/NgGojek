@@ -1,94 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity"
-    tools:layout_editor_absoluteX="0dp"
-    tools:layout_editor_absoluteY="-28dp">
+    android:background="@color/white"
+    tools:context=".LoginActivity">
 
-    <ImageView
-        android:id="@+id/imageViewLogo"
+    <!-- Logo & Nama Aplikasi -->
+    <LinearLayout
+        android:id="@+id/headerContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.191"
-        app:srcCompat="@drawable/logo" />
-
-    <ImageView
-        android:id="@+id/imageViewAppName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        app:layout_constraintVertical_bias="0.15"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewLogo"
-        app:layout_constraintVertical_bias="0.019"
-        app:srcCompat="@drawable/nggojek" />
+        app:layout_constraintTop_toTopOf="parent">
 
+        <ImageView
+            android:id="@+id/imageViewLogo"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/logo"
+            android:contentDescription="Logo Aplikasi"/>
+
+        <ImageView
+            android:id="@+id/imageViewAppName"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="16dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/nggojek"
+            android:contentDescription="Nama Aplikasi"/>
+    </LinearLayout>
+
+    <!-- FORM SECTION -->
     <EditText
         android:id="@+id/editTextEmailAddress"
-        android:layout_width="320dp"
-        android:layout_height="48dp"
-        android:background="@android:drawable/edit_text"
-        android:hint="Email"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="48dp"
+        android:background="@drawable/bg_input_field"
+        android:hint="Email Address"
+        android:textColorHint="@color/greyText"
         android:inputType="textEmailAddress"
-        android:padding="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:paddingHorizontal="16dp"
+        android:textColor="@color/blackText"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewAppName"
-        app:layout_constraintVertical_bias="0.059" />
+        app:layout_constraintTop_toBottomOf="@+id/headerContainer" />
 
+    <!-- Password Input -->
     <EditText
         android:id="@+id/editTextPassword"
         android:layout_width="0dp"
-        android:layout_height="48dp"
+        android:layout_height="56dp"
         android:layout_marginTop="16dp"
-        android:background="@android:drawable/edit_text"
+        android:background="@drawable/bg_input_field"
         android:hint="Password"
+        android:textColorHint="@color/greyText"
         android:inputType="textPassword"
-        android:padding="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:paddingHorizontal="16dp"
+        android:textColor="@color/blackText"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/editTextEmailAddress"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/editTextEmailAddress"
-        app:layout_constraintTop_toBottomOf="@id/editTextEmailAddress"
-        app:layout_constraintVertical_bias="0.004" />
+        app:layout_constraintTop_toBottomOf="@id/editTextEmailAddress" />
 
+    <!-- Login Button -->
     <Button
         android:id="@+id/buttonLogin"
-        android:layout_width="120dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="348dp"
-        android:text="Login"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="@color/primaryRed"
+        android:text="Masuk"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:cornerRadius="12dp"
         app:layout_constraintEnd_toEndOf="@+id/editTextPassword"
-        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="@+id/editTextPassword"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPassword"
-        app:layout_constraintVertical_bias="0.235"/>
+        app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
 
+    <!-- Register Link -->
     <TextView
         android:id="@+id/goToRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="24dp"
         android:clickable="true"
         android:focusable="true"
         android:text="Belum punya akun? Daftar"
-        android:textColor="@android:color/holo_blue_dark"
+        android:textColor="#38b6ff"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonLogin" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

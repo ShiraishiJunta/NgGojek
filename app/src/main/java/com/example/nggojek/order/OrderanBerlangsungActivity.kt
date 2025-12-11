@@ -8,13 +8,27 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.NestedScrollView // WAJIB: Sesuai XML baru
 import com.example.nggojek.R
+import com.google.android.material.bottomsheet.BottomSheetBehavior // WAJIB: Untuk mengatur behavior
 
 class OrderanBerlangsungActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_orderan_berlangsung)
+
+        // --- MULAI PENYESUAIAN XML ---
+        // Karena di XML kamu menggunakan NestedScrollView untuk BottomSheet
+        try {
+            val bottomSheet = findViewById<NestedScrollView>(R.id.bottomSheet)
+            val bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
+            // Pastikan Bottom Sheet terbuka agar user melihat info driver
+            bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        // --- SELESAI PENYESUAIAN XML ---
 
         // Tampilkan notifikasi awal
         Toast.makeText(this, "Driver ditemukan! Menuju lokasi jemput...", Toast.LENGTH_SHORT).show()
@@ -31,7 +45,7 @@ class OrderanBerlangsungActivity : AppCompatActivity() {
         val tvRatingDriver = findViewById<TextView>(R.id.tvRatingDriver)
 
         // 2. Mengambil data dari Intent (Dari MencariDriverActivity)
-        val alamatJemput = intent.getStringExtra("EXTRA_ALAMAT_JEMPUT") ?: "Alamat Jemput Kosong" // Data diterima disini
+        val alamatJemput = intent.getStringExtra("EXTRA_ALAMAT_JEMPUT") ?: "Alamat Jemput Kosong"
         val alamatTujuan = intent.getStringExtra("EXTRA_ALAMAT_TUJUAN") ?: "Alamat Tujuan Kosong"
         val jenisKendaraan = intent.getStringExtra("EXTRA_JENIS_KENDARAAN") ?: "Motor"
         val metodeBayar = intent.getStringExtra("EXTRA_METODE_BAYAR") ?: "Cash"
@@ -72,9 +86,7 @@ class OrderanBerlangsungActivity : AppCompatActivity() {
             // Delay 2 detik lagi lalu pindah
             Handler(Looper.getMainLooper()).postDelayed({
 
-                val intent = Intent(this, PerjalananActivity::class.java)
-
-                //BAGIAN PENTING YANG SEBELUMNYA KURANG
+                val intent = Intent(this, PerjalananActivity::class.java) // Pastikan PerjalananActivity ada
 
                 // 1. KIRIM ULANG ALAMAT JEMPUT
                 intent.putExtra("EXTRA_ALAMAT_JEMPUT", alamatJemput)

@@ -1,87 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="120dp"
-    android:layout_marginStart="16dp"
-    android:layout_marginEnd="16dp"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="20dp"
     android:layout_marginBottom="12dp"
     app:cardCornerRadius="12dp"
-    app:cardElevation="4dp"
-    android:background="@android:color/white">
+    app:cardElevation="0dp"
+    app:strokeColor="@color/lightGrey"
+    app:strokeWidth="1dp"
+    app:cardBackgroundColor="@color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="12dp"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:gravity="center_vertical"
         android:orientation="horizontal">
 
+        <!-- 1. IMAGE (ID Tetap: imageView) -->
+        <!-- Diberi background lingkaran soft agar modern -->
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:src="@drawable/profile"
+            android:padding="8dp"
             android:background="@drawable/bg_circle"
-            android:padding="12dp" />
+            app:tint="@color/primaryRed" />
+        <!-- Tips: Jika gambarnya foto orang, hapus app:tint -->
 
+        <!-- 2. INFO TENGAH -->
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="96dp"
-            android:layout_marginStart="12dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_weight="1"
             android:orientation="vertical">
 
+            <!-- ID Tetap: txtNamaDriver -->
             <TextView
                 android:id="@+id/txtNamaDriver"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Nama Driver"
+                android:textColor="@color/blackText"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
+            <!-- ID Tetap: txtTotal -->
             <TextView
                 android:id="@+id/txtTotal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="Total"
-                android:textColor="#555555" />
+                android:layout_marginTop="2dp"
+                android:text="Total Pembayaran"
+                android:textSize="12sp"
+                android:textColor="@color/greyText" />
 
+            <!-- ID Tetap: txtHarga -->
             <TextView
                 android:id="@+id/txtHarga"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Rp 200.000"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:text="Rp 20.000"
+                android:textColor="@color/primaryRed"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginTop="2dp"/>
 
         </LinearLayout>
 
+        <!-- 3. RATING KANAN -->
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:gravity="center">
+            android:gravity="end">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Beri Rating"
-                android:textStyle="bold"
-                android:textSize="14sp"
+                android:text="Rating"
+                android:textSize="12sp"
+                android:textColor="@color/greyText"
                 android:layout_marginBottom="4dp"/>
 
+            <!-- ID Tetap: ratingBar -->
             <RatingBar
                 android:id="@+id/ratingBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:numStars="5"
                 android:stepSize="1"
-                android:rating="0"
-                style="?android:attr/ratingBarStyleSmall" />
+                android:rating="5"
+                style="?android:attr/ratingBarStyleSmall"
+                android:progressTint="#FFC107"
+                android:secondaryProgressTint="#FFC107" />
 
         </LinearLayout>
 
     </LinearLayout>
 
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>
