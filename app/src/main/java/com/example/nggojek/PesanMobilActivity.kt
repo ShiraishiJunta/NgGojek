@@ -25,7 +25,7 @@ class PesanMobilActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pesan_mobil)
 
-        // --- Setup Toolbar ---
+        // Setup Toolbar
         val toolbar = findViewById<MaterialToolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -34,7 +34,7 @@ class PesanMobilActivity : AppCompatActivity() {
             finish()
         }
 
-        // --- Setup Map (OSMDroid) ---
+        // Setup Map (OSMDroid)
         Configuration.getInstance().load(
             applicationContext,
             applicationContext.getSharedPreferences("osmdroid", MODE_PRIVATE)

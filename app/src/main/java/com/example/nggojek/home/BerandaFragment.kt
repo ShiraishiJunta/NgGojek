@@ -20,7 +20,6 @@ class BerandaFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Hubungkan dengan layout fragment_beranda.xml
         return inflater.inflate(R.layout.fragment_beranda, container, false)
     }
 
@@ -40,7 +39,6 @@ class BerandaFragment : Fragment() {
 
         // 3.Tombol Pesan Mobil
         btnMobil.setOnClickListener {
-            // Arahkan ke activity Pesan Mobil yang ada Map-nya
             val intent = Intent(requireContext(), PesanMobilActivity::class.java)
             startActivity(intent)
         }

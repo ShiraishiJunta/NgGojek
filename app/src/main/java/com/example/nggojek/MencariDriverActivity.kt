@@ -49,18 +49,14 @@ class MencariDriverActivity : AppCompatActivity() {
             imgTransportIcon.setImageResource(R.drawable.motor)
         }
 
-        // 6. Back
         btnBack.setOnClickListener {
             finish()
         }
 
-        // 7. Batalkan
         btnBatalkan.setOnClickListener {
             Toast.makeText(this, "Pencarian driver dibatalkan", Toast.LENGTH_SHORT).show()
             finish()
         }
-        
-        //  DELAY
 
         Handler(Looper.getMainLooper()).postDelayed({
             val intent = Intent(this, OrderanBerlangsungActivity::class.java)
@@ -72,20 +68,6 @@ class MencariDriverActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }, 3000)
-
-        // ON CLICK
-
-        // val imgSearching = findViewById<ImageView>(R.id.imgSearching)
-        // imgSearching.setOnClickListener {
-        //     val intent = Intent(this, OrderanBerlangsungActivity::class.java)
-        //     intent.putExtra("EXTRA_ALAMAT_JEMPUT", alamatJemput)
-        //     intent.putExtra("EXTRA_ALAMAT_TUJUAN", alamatTujuan)
-        //     intent.putExtra("EXTRA_JENIS_KENDARAAN", jenisKendaraan)
-        //     intent.putExtra("EXTRA_METODE_BAYAR", metodeBayar)
-        //     intent.putExtra("EXTRA_HARGA", harga)
-        //     startActivity(intent)
-        //     finish()
-        // }
 
     }
     // Override untuk menangani back button dari toolbar

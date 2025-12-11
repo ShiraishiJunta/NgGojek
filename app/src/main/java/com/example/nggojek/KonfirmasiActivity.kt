@@ -7,7 +7,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.appbar.MaterialToolbar
 
 class KonfirmasiActivity : AppCompatActivity() {
 
@@ -28,7 +27,7 @@ class KonfirmasiActivity : AppCompatActivity() {
         val tvTotalFooter = findViewById<TextView>(R.id.tvTotalFooter)
         val btnPesan = findViewById<Button>(R.id.btnPesan)
 
-        // 2. Mengambil data dari Halaman Sebelumnya (Intent)
+        // 2. Mengambil data dari Halaman Sebelumnya
         val alamatJemput = intent.getStringExtra("EXTRA_ALAMAT_JEMPUT") ?: "Alamat Jemput Kosong"
         val alamatTujuan = intent.getStringExtra("EXTRA_ALAMAT_TUJUAN") ?: "Alamat Tujuan Kosong"
         val jenisKendaraan = intent.getStringExtra("EXTRA_JENIS_KENDARAAN") ?: "Motor"
@@ -54,17 +53,14 @@ class KonfirmasiActivity : AppCompatActivity() {
             imgTransportIcon.setImageResource(R.drawable.motor)
         }
 
-        //Back BUTTON
         btnBack.setOnClickListener {
             finish()
         }
 
         // 5. Tombol Pesan
         btnPesan.setOnClickListener {
-            // Logika ketika tombol pesan ditekan
             Toast.makeText(this, "Pesanan $jenisKendaraan berhasil dibuat!", Toast.LENGTH_SHORT).show()
 
-            // Pindah ke halaman 'Mencari Driver'
             val intent = Intent(this, MencariDriverActivity::class.java)
             intent.putExtra("EXTRA_ALAMAT_JEMPUT", alamatJemput)
             intent.putExtra("EXTRA_ALAMAT_TUJUAN", alamatTujuan)
