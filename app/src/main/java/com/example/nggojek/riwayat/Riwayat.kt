@@ -1,4 +1,4 @@
-package com.example.nggojek
+package com.example.nggojek.riwayat
 
 data class Riwayat(
     val namaDriver: String,

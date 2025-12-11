@@ -8,10 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.nggojek.DetailRiwayatActivity // Nanti kita buat ini
+import com.example.nggojek.riwayat.DetailRiwayatActivity // Nanti kita buat ini
 import com.example.nggojek.R
-import com.example.nggojek.RiwayatAdapter
-import com.example.nggojek.RiwayatData
+import com.example.nggojek.riwayat.RiwayatAdapter
+import com.example.nggojek.riwayat.RiwayatData
 
 class RiwayatFragment : Fragment() {
 

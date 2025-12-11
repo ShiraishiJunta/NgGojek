@@ -1,4 +1,4 @@
-package com.example.nggojek
+package com.example.nggojek.riwayat
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.nggojek.R
 
 class RiwayatAdapter(
     private val items: List<Riwayat>,
