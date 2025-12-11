@@ -1,10 +1,11 @@
-package com.example.nggojek
+package com.example.nggojek.chat
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.nggojek.R
 
 class ChatInboxAdapter(
     private val inboxList: List<InboxModel>,

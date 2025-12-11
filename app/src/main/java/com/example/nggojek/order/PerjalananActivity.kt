@@ -1,4 +1,4 @@
-package com.example.nggojek
+package com.example.nggojek.order
 
 import android.animation.Animator
 import android.animation.ValueAnimator
@@ -12,6 +12,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.example.nggojek.R
 import org.osmdroid.config.Configuration
 import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.MapView

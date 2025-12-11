@@ -8,7 +8,7 @@
     android:background="#FFFFFF"
     android:padding="24dp"
     android:gravity="center_horizontal"
-    tools:context=".PembayaranActivity">
+    tools:context=".order.PembayaranActivity">
 
     <TextView
         android:layout_width="wrap_content"

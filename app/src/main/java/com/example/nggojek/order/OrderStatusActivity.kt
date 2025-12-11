@@ -1,11 +1,9 @@
-package com.example.nggojek
+package com.example.nggojek.order
 
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import android.widget.ImageView
 import android.widget.TextView
+import com.example.nggojek.R
 
 class OrderStatusActivity : AppCompatActivity() {
 

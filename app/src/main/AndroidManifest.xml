@@ -18,16 +18,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NgGojek">
         <activity
-            android:name=".DetailRiwayatActivity"
+            android:name=".riwayat.DetailRiwayatActivity"
             android:exported="false" />
         <activity
-            android:name=".PembayaranActivity"
+            android:name=".order.PembayaranActivity"
             android:exported="false" />
         <activity
-            android:name=".RatingActivity"
+            android:name=".order.RatingActivity"
             android:exported="false" />
         <activity
-            android:name=".PerjalananActivity"
+            android:name=".order.PerjalananActivity"
             android:exported="false" /> <!-- Activity Utama (Launcher) -->
         <activity
             android:name=".LoginActivity"
@@ -50,22 +50,22 @@
             android:name=".ProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".PesanMobilActivity"
+            android:name=".order.PesanMobilActivity"
             android:exported="false" />
         <activity
-            android:name=".PesanMotorActivity"
+            android:name=".order.PesanMotorActivity"
             android:exported="false" />
         <activity
-            android:name=".KonfirmasiActivity"
+            android:name=".order.KonfirmasiActivity"
             android:exported="false" />
         <activity
-            android:name=".MencariDriverActivity"
+            android:name=".order.MencariDriverActivity"
             android:exported="false" />
         <activity
-            android:name=".OrderanBerlangsungActivity"
+            android:name=".order.OrderanBerlangsungActivity"
             android:exported="false" />
         <activity
-            android:name=".ChatActivity"
+            android:name=".chat.ChatActivity"
             android:exported="false" /> <!-- CATATAN: RiwayatActivity DIHAPUS karena sudah jadi Fragment -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"

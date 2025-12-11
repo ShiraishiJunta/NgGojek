@@ -1,4 +1,4 @@
-package com.example.nggojek
+package com.example.nggojek.order
 
 import android.content.Intent
 import android.location.Geocoder
@@ -10,24 +10,24 @@ import android.widget.RadioButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
+import com.example.nggojek.R
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import org.osmdroid.config.Configuration
 import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.MapView
-import org.osmdroid.views.overlay.Marker
 import java.util.Locale
 
-class PesanMobilActivity : AppCompatActivity() {
+class PesanMotorActivity : AppCompatActivity() {
 
     lateinit var mapView: MapView
     lateinit var bottomSheetBehavior: BottomSheetBehavior<LinearLayout>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_pesan_mobil)
+        setContentView(R.layout.activity_pesan_motor)
 
-        // Setup Toolbar
+        // --- Setup Toolbar ---
         val toolbar = findViewById<MaterialToolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -36,7 +36,7 @@ class PesanMobilActivity : AppCompatActivity() {
             finish()
         }
 
-        // Setup Map (OSMDroid)
+        // --- Setup Map (OSMDroid) ---
         Configuration.getInstance().load(
             applicationContext,
             applicationContext.getSharedPreferences("osmdroid", MODE_PRIVATE)
@@ -109,12 +109,12 @@ class PesanMobilActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // 4. Tentukan String Metode Bayar (PENTING UNTUK HALAMAN AKHIR)
+            // 4. Tentukan String Metode Bayar
             var metodeBayar = "Tunai"
             when {
                 rbCashRight.isChecked -> metodeBayar = "Tunai"
-                rbEW1Right.isChecked -> metodeBayar = "Gopay" // Mapping E-Wallet 1 ke Gopay
-                rbEW2Right.isChecked -> metodeBayar = "OVO"   // Mapping E-Wallet 2 ke OVO
+                rbEW1Right.isChecked -> metodeBayar = "Gopay" // Mapping ke nama Wallet
+                rbEW2Right.isChecked -> metodeBayar = "OVO"   // Mapping ke nama Wallet
             }
 
             // 5. CARI KOORDINAT ASLI (GEOCODING)
@@ -135,16 +135,16 @@ class PesanMobilActivity : AppCompatActivity() {
                 intent.putExtra("EXTRA_ALAMAT_JEMPUT", alamatJemput)
                 intent.putExtra("EXTRA_ALAMAT_TUJUAN", alamatTujuan)
 
-                // KIRIM KOORDINAT (Agar animasi mobil nanti akurat)
+                // KIRIM KOORDINAT (PENTING untuk Map Perjalanan)
                 intent.putExtra("EXTRA_LAT_JEMPUT", koordinatJemput.latitude)
                 intent.putExtra("EXTRA_LON_JEMPUT", koordinatJemput.longitude)
                 intent.putExtra("EXTRA_LAT_TUJUAN", koordinatTujuan.latitude)
                 intent.putExtra("EXTRA_LON_TUJUAN", koordinatTujuan.longitude)
 
                 // Kirim Data Lainnya
-                intent.putExtra("EXTRA_JENIS_KENDARAAN", "Mobil")
-                intent.putExtra("EXTRA_METODE_BAYAR", metodeBayar) // <-- Ini yang dikirim ke Konfirmasi -> Perjalanan -> Pembayaran
-                intent.putExtra("EXTRA_HARGA", 200000)
+                intent.putExtra("EXTRA_JENIS_KENDARAAN", "Motor") // Set Motor
+                intent.putExtra("EXTRA_METODE_BAYAR", metodeBayar)
+                intent.putExtra("EXTRA_HARGA", 20000) // Harga Motor lebih murah
 
                 startActivity(intent)
 

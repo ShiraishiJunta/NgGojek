@@ -1,4 +1,4 @@
-package com.example.nggojek
+package com.example.nggojek.chat
 
 import android.os.Bundle
 import android.widget.EditText
@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.nggojek.R
 
 class ChatActivity : AppCompatActivity() {
 

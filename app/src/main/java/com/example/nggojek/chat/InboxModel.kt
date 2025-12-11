@@ -1,4 +1,4 @@
-package com.example.nggojek
+package com.example.nggojek.chat
 
 data class InboxModel(
     val name: String,

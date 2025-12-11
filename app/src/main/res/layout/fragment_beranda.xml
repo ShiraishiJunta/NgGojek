@@ -39,7 +39,7 @@
     <!-- Banner Promo -->
     <LinearLayout
         android:id="@+id/bannerPromo"
-        android:layout_width="0dp"
+        android:layout_width="299dp"
         android:layout_height="140dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="60dp"
@@ -53,21 +53,11 @@
         <!-- BACKGROUND: Pakai drawable hijau muda (P-100) -->
 
         <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/profile"
-            app:tint="#14B8A6"/>
-        <!-- TINT: Icon warna Primary (P-500) -->
-
-        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Promo Spesial"
-            android:fontFamily="@font/nunito"
-            android:textColor="#134E4A"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:src="@drawable/promo" />
+        <!-- TINT: Icon warna Primary (P-500) -->
+
         <!-- TEXT: Warna Hijau Gelap (P-900) agar kontras -->
     </LinearLayout>
 

@@ -7,10 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.example.nggojek.PesanMobilActivity
-import com.example.nggojek.PesanMotorActivity
+import com.example.nggojek.order.PesanMobilActivity
+import com.example.nggojek.order.PesanMotorActivity
 import com.example.nggojek.ProfileActivity
 import com.example.nggojek.R // Import R wajib!
 

@@ -1,4 +1,4 @@
-package com.example.nggojek
+package com.example.nggojek.chat
 
 import android.view.Gravity
 import android.view.LayoutInflater
@@ -8,6 +8,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.nggojek.R
 
 class ChatAdapter(private val messageList: ArrayList<ChatMessage>) :
     RecyclerView.Adapter<ChatAdapter.ChatViewHolder>() {

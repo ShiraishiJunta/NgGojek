@@ -8,7 +8,7 @@
     android:gravity="center_horizontal"
     android:padding="24dp"
     android:background="#FFFFFF"
-    tools:context=".RatingActivity">
+    tools:context=".order.RatingActivity">
 
     <TextView
         android:layout_width="wrap_content"
