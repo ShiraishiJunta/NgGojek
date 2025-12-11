@@ -27,7 +27,7 @@ class PesanMotorActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pesan_motor)
 
-        // --- Setup Toolbar ---
+        //Setup Toolbar
         val toolbar = findViewById<MaterialToolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -36,7 +36,7 @@ class PesanMotorActivity : AppCompatActivity() {
             finish()
         }
 
-        // --- Setup Map (OSMDroid) ---
+        //Setup Map (OSMDroid)
         Configuration.getInstance().load(
             applicationContext,
             applicationContext.getSharedPreferences("osmdroid", MODE_PRIVATE)
@@ -51,12 +51,12 @@ class PesanMotorActivity : AppCompatActivity() {
         controller.setZoom(15.0)
         controller.setCenter(defaultLoc)
 
-        // --- Setup BottomSheet ---
+        //Setup BottomSheet
         val bottomSheet = findViewById<LinearLayout>(R.id.bottomSheet)
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
 
-        // --- Inisialisasi View ---
+        //Inisialisasi View
         val inputJemput = findViewById<EditText>(R.id.inputJemput)
         val inputTujuan = findViewById<EditText>(R.id.inputTujuan)
         val btnPesan = findViewById<Button>(R.id.btnPesan)
@@ -69,7 +69,7 @@ class PesanMotorActivity : AppCompatActivity() {
         val rbEW1Right = findViewById<RadioButton>(R.id.rbEW1Right)
         val rbEW2Right = findViewById<RadioButton>(R.id.rbEW2Right)
 
-        // --- Logika Pilihan Pembayaran ---
+        //Logika Pilihan Pembayaran
         fun selectPaymentMethod(selected: RadioButton) {
             rbCashRight.isChecked = false
             rbEW1Right.isChecked = false
@@ -87,7 +87,7 @@ class PesanMotorActivity : AppCompatActivity() {
         rbEW1Right.setOnClickListener { selectPaymentMethod(rbEW1Right) }
         rbEW2Right.setOnClickListener { selectPaymentMethod(rbEW2Right) }
 
-        // --- TOMBOL PESAN (LOGIKA UTAMA) ---
+        //TOMBOL PESAN
         btnPesan.setOnClickListener {
             // 1. Ambil data teks
             val alamatJemput = inputJemput.text.toString().trim()

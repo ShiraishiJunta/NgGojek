@@ -35,7 +35,7 @@ class PembayaranActivity : AppCompatActivity() {
         metodeBayar = intent.getStringExtra("EXTRA_METODE_BAYAR") ?: "Tunai"
         namaDriver = intent.getStringExtra("EXTRA_NAMA_DRIVER") ?: "Driver"
 
-        // ... (Kode Inisialisasi View & Logika Tampilan Cash/Ewallet SAMA SEPERTI SEBELUMNYA) ...
+        //(Kode Inisialisasi View & Logika Tampilan Cash/Ewallet SAMA SEPERTI SEBELUMNYA)
 
         val tvTotalBayar = findViewById<TextView>(R.id.tvTotalBayar)
         val tvMetodeTitle = findViewById<TextView>(R.id.tvMetodeTitle)

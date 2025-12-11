@@ -64,10 +64,6 @@ class OrderanBerlangsungActivity : AppCompatActivity() {
 
         btnBack.setOnClickListener { finish() }
 
-        // ==================================================================
-        // LOGIKA OTOMATIS PINDAH HALAMAN
-        // ==================================================================
-
         // Delay 5 detik (Simulasi Driver jalan)
         Handler(Looper.getMainLooper()).postDelayed({
 
@@ -78,9 +74,9 @@ class OrderanBerlangsungActivity : AppCompatActivity() {
 
                 val intent = Intent(this, PerjalananActivity::class.java)
 
-                // --- BAGIAN PENTING YANG SEBELUMNYA KURANG ---
+                //BAGIAN PENTING YANG SEBELUMNYA KURANG
 
-                // 1. KIRIM ULANG ALAMAT JEMPUT (Inilah penyebab datanya hilang sebelumnya)
+                // 1. KIRIM ULANG ALAMAT JEMPUT
                 intent.putExtra("EXTRA_ALAMAT_JEMPUT", alamatJemput)
 
                 // 2. Kirim data lainnya

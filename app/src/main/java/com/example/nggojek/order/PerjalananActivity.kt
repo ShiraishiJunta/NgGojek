@@ -59,7 +59,7 @@ class PerjalananActivity : AppCompatActivity() {
         val latTujuan = intent.getDoubleExtra("EXTRA_LAT_TUJUAN", 0.0)
         val lonTujuan = intent.getDoubleExtra("EXTRA_LON_TUJUAN", 0.0)
 
-        // --- SETUP VIEW ---
+        //SETUP VIEW
         val tvAlamatTujuan = findViewById<TextView>(R.id.tvAlamatTujuan)
         val tvNamaDriver = findViewById<TextView>(R.id.tvNamaDriver)
         tvStatus = findViewById(R.id.tvStatusPerjalanan)
@@ -68,7 +68,7 @@ class PerjalananActivity : AppCompatActivity() {
         tvAlamatTujuan.text = alamatTujuan ?: "Tujuan"
         tvNamaDriver.text = namaDriver ?: "Driver"
 
-        // --- SETUP MAP ---
+        //SETUP MAP
         mapView = findViewById(R.id.mapView)
         mapView.setMultiTouchControls(true)
 
@@ -87,7 +87,7 @@ class PerjalananActivity : AppCompatActivity() {
         markerKendaraan.title = "Kendaraan"
         markerKendaraan.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
 
-        // Ganti Icon sesuai kendaraan
+        //Icon sesuai kendaraan
         if (jenisKendaraan.equals("Mobil", ignoreCase = true)) {
             markerKendaraan.icon = ContextCompat.getDrawable(this, R.drawable.car)
         } else {
@@ -102,7 +102,7 @@ class PerjalananActivity : AppCompatActivity() {
         markerTujuan.icon = ContextCompat.getDrawable(this, R.drawable.ic_launcher_foreground)
         mapView.overlays.add(markerTujuan)
 
-        // 3. GAMBAR GARIS RUTE (Polyline)
+        // 3. GAMBAR GARIS RUTE
         val line = Polyline()
         line.addPoint(startPoint)
         line.addPoint(endPoint)
@@ -112,7 +112,7 @@ class PerjalananActivity : AppCompatActivity() {
 
         mapView.invalidate()
 
-        // --- MULAI ANIMASI PERJALANAN ---
+        //MULAI ANIMASI PERJALANAN
         Handler(Looper.getMainLooper()).postDelayed({
             mulaiAnimasiPerjalanan(startPoint, endPoint)
         }, 1000)

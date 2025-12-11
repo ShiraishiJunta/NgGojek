@@ -40,7 +40,7 @@ class KonfirmasiActivity : AppCompatActivity() {
         val metodeBayar = intent.getStringExtra("EXTRA_METODE_BAYAR") ?: "Tunai"
         val harga = intent.getIntExtra("EXTRA_HARGA", 0)
 
-        // AMBIL DATA KOORDINAT (Agar map di akhir nanti bisa jalan)
+        // AMBIL DATA KOORDINAT
         val latJemput = intent.getDoubleExtra("EXTRA_LAT_JEMPUT", 0.0)
         val lonJemput = intent.getDoubleExtra("EXTRA_LON_JEMPUT", 0.0)
         val latTujuan = intent.getDoubleExtra("EXTRA_LAT_TUJUAN", 0.0)
@@ -71,12 +71,11 @@ class KonfirmasiActivity : AppCompatActivity() {
             finish()
         }
 
-        // 5. Tombol Pesan (Lanjut ke Cari Driver / Perjalanan)
+        // 5. Tombol Pesan
         btnPesan.setOnClickListener {
             Toast.makeText(this, "Pesanan $jenisKendaraan berhasil dibuat!", Toast.LENGTH_SHORT).show()
 
-            // Pindah ke halaman 'Mencari Driver' (Punya temanmu)
-            // Pastikan nama activity di bawah ini benar (sesuai kode temanmu)
+            // Pindah ke halaman 'Mencari Driver'
             val intent = Intent(this, MencariDriverActivity::class.java)
 
             // OPER SEMUA DATA AGAR TIDAK HILANG

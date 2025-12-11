@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="#F5F5F5">
 
-    <!-- Tombol Profile (Pojok Kanan Atas) -->
+    <!-- Tombol Profile -->
 
     <TextView
         android:layout_width="wrap_content"
@@ -39,7 +39,7 @@
     <!-- Banner Promo -->
     <LinearLayout
         android:id="@+id/bannerPromo"
-        android:layout_width="299dp"
+        android:layout_width="0dp"
         android:layout_height="140dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="60dp"
@@ -50,18 +50,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-        <!-- BACKGROUND: Pakai drawable hijau muda (P-100) -->
+        <!-- BACKGROUND: drawable hijau muda (P-100) -->
 
         <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="140dp"
+            android:scaleType="fitCenter"
             android:src="@drawable/promo" />
-        <!-- TINT: Icon warna Primary (P-500) -->
 
-        <!-- TEXT: Warna Hijau Gelap (P-900) agar kontras -->
     </LinearLayout>
-
-
 
     <!-- Tombol Pesan Motor -->
     <LinearLayout
@@ -79,7 +76,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bannerPromo">
-        <!-- BACKGROUND: Putih dengan radius + elevation agar timbul -->
+        <!-- BACKGROUND: Putih dengan radius + elevation -->
 
         <ImageView
             android:layout_width="40dp"
