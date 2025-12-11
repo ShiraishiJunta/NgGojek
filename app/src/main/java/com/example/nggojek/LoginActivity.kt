@@ -31,8 +31,8 @@ class LoginActivity : AppCompatActivity() {
         val goToRegister: TextView = findViewById(R.id.goToRegister)
 
         // Hardcode akun untuk testing
-        val email = "admin@gmail.com"
-        val passwd = "1234"
+        val email = "a"
+        val passwd = "a"
 
         // Pindah ke halaman Register
         goToRegister.setOnClickListener {

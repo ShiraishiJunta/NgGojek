@@ -33,6 +33,7 @@ class OrderanBerlangsungActivity : AppCompatActivity() {
         val alamatJemput = intent.getStringExtra("EXTRA_ALAMAT_JEMPUT") ?: "Alamat Jemput Kosong" // Data diterima disini
         val alamatTujuan = intent.getStringExtra("EXTRA_ALAMAT_TUJUAN") ?: "Alamat Tujuan Kosong"
         val jenisKendaraan = intent.getStringExtra("EXTRA_JENIS_KENDARAAN") ?: "Motor"
+        val metodeBayar = intent.getStringExtra("EXTRA_METODE_BAYAR") ?: "Tunai"
         val harga = intent.getIntExtra("EXTRA_HARGA", 0)
 
         // Ambil Koordinat juga (jika ada) untuk diteruskan

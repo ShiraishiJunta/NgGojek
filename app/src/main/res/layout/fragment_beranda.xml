@@ -6,9 +6,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F5F5F5">
-    <!-- GANTI: Background Neutral N-200 (Abu muda) agar modern -->
 
     <!-- Tombol Profile (Pojok Kanan Atas) -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NgGojek"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/bannerPromo"
+        app:layout_constraintEnd_toStartOf="@+id/btnProfile"
+        app:layout_constraintHorizontal_bias="0.051"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.707" />
+
     <ImageView
         android:id="@+id/btnProfile"
         android:layout_width="32dp"
@@ -57,41 +71,7 @@
         <!-- TEXT: Warna Hijau Gelap (P-900) agar kontras -->
     </LinearLayout>
 
-    <!-- Kartu Saldo -->
-    <LinearLayout
-        android:id="@+id/saldoCard"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/bg_radius_primary"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bannerPromo">
-        <!-- BACKGROUND: Pakai drawable hijau utama (P-500) -->
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:paddingStart="16dp"
-            android:text="Rp 250.000"
-            android:fontFamily="@font/poppins_bold"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginEnd="16dp"
-            android:padding="4dp"
-            android:src="@drawable/add"
-            app:tint="#FFFFFF" />
-    </LinearLayout>
 
     <!-- Tombol Pesan Motor -->
     <LinearLayout
@@ -108,7 +88,7 @@
         android:padding="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/saldoCard">
+        app:layout_constraintTop_toBottomOf="@+id/bannerPromo">
         <!-- BACKGROUND: Putih dengan radius + elevation agar timbul -->
 
         <ImageView
