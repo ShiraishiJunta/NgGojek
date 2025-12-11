@@ -115,7 +115,7 @@
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
-                        android:src="@drawable/ic_launcher_foreground"
+                        android:src="@android:drawable/ic_menu_myplaces"
                         app:tint="#FF0000"/> <!-- Icon Pin Merah -->
 
                     <LinearLayout
