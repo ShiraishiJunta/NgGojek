@@ -6,108 +6,80 @@
     android:layout_height="match_parent"
     tools:context=".order.PerjalananActivity">
 
-    <!-- PETA  -->
+    <!-- 1. PETA  -->
     <org.osmdroid.views.MapView
         android:id="@+id/mapView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <!-- INFO PANEL -->
-    <com.google.android.material.card.MaterialCardView
+    <!-- 2. INFO PANEL  -->
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_margin="16dp"
         app:cardCornerRadius="16dp"
-        app:cardElevation="12dp"
-        app:cardBackgroundColor="@color/white"
-        app:strokeColor="@color/lightGrey"
-        app:strokeWidth="1dp">
+        app:cardElevation="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="20dp">
-
-            <!-- HEADER HANDLE -->
-            <View
-                android:layout_width="40dp"
-                android:layout_height="4dp"
-                android:background="@color/lightGrey"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="16dp"/>
+            android:padding="16dp">
 
             <!-- STATUS PERJALANAN -->
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/tvStatusPerjalanan"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:layout_marginBottom="4dp">
-
-                <TextView
-                    android:id="@+id/tvStatusPerjalanan"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Sedang menuju lokasi tujuan..."
-                    android:textStyle="bold"
-                    android:textColor="#00AA13"
-                    android:textSize="16sp"/>
-
-                <ImageView
-                    android:layout_width="12dp"
-                    android:layout_height="12dp"
-                    android:src="@drawable/bg_circle"
-                    app:tint="#00AA13"/>
-            </LinearLayout>
+                android:text="Sedang menuju lokasi tujuan..."
+                android:textStyle="bold"
+                android:textColor="#00AA13"
+                android:textSize="18sp"
+                android:layout_marginBottom="4dp"/>
 
             <TextView
                 android:id="@+id/tvEstimasi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Estimasi tiba dalam beberapa detik"
-                android:textColor="@color/greyText"
+                android:textColor="#666666"
                 android:textSize="14sp"
-                android:layout_marginBottom="16dp"/>
+                android:layout_marginBottom="12dp"/>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/lightGrey"
-                android:layout_marginBottom="16dp"/>
+                android:background="#EEEEEE"
+                android:layout_marginBottom="12dp"/>
 
-            <!-- INFO DRIVER & CHAT -->
+            <!-- INFO DRIVER -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:layout_marginBottom="20dp">
+                android:layout_marginBottom="16dp">
 
                 <ImageView
                     android:id="@+id/imgDriver"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:src="@drawable/profile"
-                    android:padding="2dp"
-                    android:background="@drawable/bg_circle"
-                    app:tint="@color/greyText"/>
+                    android:background="@drawable/bg_circle"/>
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:orientation="vertical"
-                    android:layout_marginStart="16dp">
+                    android:layout_marginStart="12dp">
 
                     <TextView
                         android:id="@+id/tvNamaDriver"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Budi Santoso"
-                        android:textColor="@color/blackText"
                         android:textStyle="bold"
                         android:textSize="16sp"/>
 
@@ -116,72 +88,63 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="B 1234 KYN"
-                        android:textColor="@color/blackText"
-                        android:background="@drawable/bg_input_field"
-                        android:paddingHorizontal="8dp"
-                        android:paddingVertical="2dp"
-                        android:textSize="12sp"
-                        android:layout_marginTop="4dp"/>
+                        android:textColor="#666666"/>
                 </LinearLayout>
 
-                <!-- TOMBOL CHAT (ID DITAMBAHKAN: btnChat) -->
+                <!-- Tombol Chat -->
                 <ImageView
-                    android:id="@+id/btnChat"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:src="@drawable/chat"
-                    android:padding="12dp"
-                    android:background="@drawable/bg_circle"
-                    android:backgroundTint="#E8F5E9"
-                    app:tint="#4CAF50"
-                    android:clickable="true"
-                    android:focusable="true"/>
+                    android:padding="8dp"
+                    android:background="@drawable/bg_circle"/>
             </LinearLayout>
 
-            <!-- TUJUAN BOX -->
+            <!-- TUJUAN -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:background="@drawable/bg_input_field"
-                android:backgroundTint="@color/offWhite"
-                android:padding="12dp"
-                android:gravity="center_vertical">
-
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/ic_arrow_back"
-                    android:rotation="270"
-                    app:tint="@color/primaryRedDark"/>
+                android:orientation="vertical"
+                android:background="#F9F9F9"
+                android:padding="12dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginStart="12dp">
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@android:drawable/ic_menu_myplaces"
+                        app:tint="#FF0000"/> <!-- Icon Pin Merah -->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Tujuan Perjalanan"
-                        android:textSize="12sp"
-                        android:textColor="@color/greyText"/>
-
-                    <TextView
-                        android:id="@+id/tvAlamatTujuan"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Mall Grand Indonesia"
-                        android:textStyle="bold"
-                        android:textColor="@color/blackText"
-                        android:textSize="14sp"
-                        android:maxLines="2"
-                        android:ellipsize="end"/>
+                        android:orientation="vertical"
+                        android:layout_marginStart="12dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tujuan"
+                            android:textSize="12sp"
+                            android:textColor="#666666"/>
+
+                        <TextView
+                            android:id="@+id/tvAlamatTujuan"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Mall Grand Indonesia"
+                            android:textStyle="bold"
+                            android:textSize="14sp"
+                            android:maxLines="2"
+                            android:ellipsize="end"/>
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
 
         </LinearLayout>
-    </com.google.android.material.card.MaterialCardView>
+    </androidx.cardview.widget.CardView>
 
 </RelativeLayout>

@@ -9,12 +9,18 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nggojek.R
 
+// =====================================================
+// ChatActivity: Halaman untuk chat dengan driver
+// Menampilkan percakapan dengan bubble chat
+// =====================================================
+
 class ChatActivity : AppCompatActivity() {
 
     private lateinit var recyclerChat: RecyclerView
     private lateinit var edtMessage: EditText
     private lateinit var btnSend: ImageView
 
+    // Daftar untuk menyimpan semua pesan
     private val chatList = ArrayList<ChatMessage>()
 
     private lateinit var chatAdapter: ChatAdapter
@@ -23,33 +29,35 @@ class ChatActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
 
-        // nama driver
+        // Mengambil nama driver dari halaman sebelumnya
         val namaDriver = intent.getStringExtra("EXTRA_NAMA_DRIVER") ?: "Driver"
         findViewById<TextView>(R.id.txtTitle).text = namaDriver
 
+        // Menghubungkan komponen dengan ID dari layout
         recyclerChat = findViewById(R.id.recyclerChat)
         edtMessage = findViewById(R.id.editMessage)
         btnSend = findViewById(R.id.btnSend)
 
-        // Inisialisasi Adapter
+        // Mengatur adapter untuk menampilkan chat
         chatAdapter = ChatAdapter(chatList)
-
         recyclerChat.layoutManager = LinearLayoutManager(this).apply {
             stackFromEnd = true
         }
         recyclerChat.adapter = chatAdapter
 
+        // Tombol untuk kembali ke halaman sebelumnya
         findViewById<ImageView>(R.id.btnBack).setOnClickListener { finish() }
 
+        // Tombol untuk mengirim pesan
         btnSend.setOnClickListener {
             val msg = edtMessage.text.toString()
 
             if (msg.isNotEmpty()) {
-                // Tambah pesan Kita (true)
+                // Menambahkan pesan dari pengguna
                 addMessage(msg, true)
                 edtMessage.text.clear()
 
-                // Simulasi balasan Driver (false)
+                // Simulasi balasan otomatis dari driver
                 recyclerChat.postDelayed({
                     addMessage("Saya udah di depan, kak.", false)
                 }, 1000)
@@ -57,6 +65,9 @@ class ChatActivity : AppCompatActivity() {
         }
     }
 
+    // Fungsi untuk menambahkan pesan baru
+    // true = pesan dari pengguna (kanan)
+    // false = pesan dari driver (kiri)
     private fun addMessage(text: String, isSender: Boolean) {
         chatList.add(ChatMessage(text, isSender))
         chatAdapter.notifyItemInserted(chatList.size - 1)

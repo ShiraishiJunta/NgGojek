@@ -11,13 +11,19 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.nggojek.R
 
+// =====================================================
+// MencariDriverActivity: Halaman untuk mencari driver
+// Menampilkan animasi pencarian selama 3 detik
+// Setelah itu otomatis pindah ke halaman orderan berlangsung
+// =====================================================
+
 class MencariDriverActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mencari_driver)
 
-        // Inisialisasi Views
+        // Menghubungkan komponen dengan ID dari layout
         val btnBack = findViewById<ImageView>(R.id.btnBack)
         val tvAlamatJemput = findViewById<TextView>(R.id.tvAlamatJemput)
         val tvAlamatTujuan = findViewById<TextView>(R.id.tvAlamatTujuan)
@@ -26,28 +32,28 @@ class MencariDriverActivity : AppCompatActivity() {
         val tvHargaLayanan = findViewById<TextView>(R.id.tvHargaLayanan)
         val btnBatalkan = findViewById<Button>(R.id.btnBatalkan)
 
-        // Mengambil data dari Intent (TERMASUK KOORDINAT)
+        // Mengambil data dari halaman sebelumnya
         val alamatJemput = intent.getStringExtra("EXTRA_ALAMAT_JEMPUT") ?: "Alamat Jemput Kosong"
         val alamatTujuan = intent.getStringExtra("EXTRA_ALAMAT_TUJUAN") ?: "Alamat Tujuan Kosong"
         val jenisKendaraan = intent.getStringExtra("EXTRA_JENIS_KENDARAAN") ?: "Motor"
         val metodeBayar = intent.getStringExtra("EXTRA_METODE_BAYAR") ?: "Tunai"
         val harga = intent.getIntExtra("EXTRA_HARGA", 0)
 
-        // AMBIL KOORDINAT PENTING
+        // Mengambil koordinat GPS
         val latJemput = intent.getDoubleExtra("EXTRA_LAT_JEMPUT", 0.0)
         val lonJemput = intent.getDoubleExtra("EXTRA_LON_JEMPUT", 0.0)
         val latTujuan = intent.getDoubleExtra("EXTRA_LAT_TUJUAN", 0.0)
         val lonTujuan = intent.getDoubleExtra("EXTRA_LON_TUJUAN", 0.0)
 
-        // Format harga
+        // Mengubah harga menjadi format Rupiah
         val hargaString = "Rp ${String.format("%,d", harga).replace(',', '.')}"
 
-        // Set data ke Views
+        // Menampilkan data ke layar
         tvAlamatJemput.text = alamatJemput
         tvAlamatTujuan.text = alamatTujuan
         tvHargaLayanan.text = hargaString
 
-        // Set icon dan nama layanan
+        // Menampilkan jenis layanan dan icon yang sesuai
         if (jenisKendaraan.equals("Mobil", ignoreCase = true)) {
             tvJenisLayanan.text = "Pesan Mobil"
             imgTransportIcon.setImageResource(R.drawable.car)
@@ -56,43 +62,43 @@ class MencariDriverActivity : AppCompatActivity() {
             imgTransportIcon.setImageResource(R.drawable.motor)
         }
 
-        // Back Button
+        // Tombol untuk kembali ke halaman sebelumnya
         btnBack.setOnClickListener {
             finish()
         }
 
-        // Tombol Batalkan
+        // Mengatur timer untuk otomatis mencari driver
         val handler = Handler(Looper.getMainLooper())
         val runnable = Runnable {
-            // Logika pindah halaman setelah delay
+            // Setelah 3 detik, pindah ke halaman orderan berlangsung
             val intent = Intent(this, OrderanBerlangsungActivity::class.java)
 
-            // OPER DATA TEKS
+            // Mengirim semua data pesanan
             intent.putExtra("EXTRA_ALAMAT_JEMPUT", alamatJemput)
             intent.putExtra("EXTRA_ALAMAT_TUJUAN", alamatTujuan)
             intent.putExtra("EXTRA_JENIS_KENDARAAN", jenisKendaraan)
             intent.putExtra("EXTRA_METODE_BAYAR", metodeBayar)
             intent.putExtra("EXTRA_HARGA", harga)
 
-            // OPER DATA KOORDINAT
+            // Mengirim koordinat GPS
             intent.putExtra("EXTRA_LAT_JEMPUT", latJemput)
             intent.putExtra("EXTRA_LON_JEMPUT", lonJemput)
             intent.putExtra("EXTRA_LAT_TUJUAN", latTujuan)
             intent.putExtra("EXTRA_LON_TUJUAN", lonTujuan)
 
-            // Simulasi nama driver
+            // Mengirim nama driver (simulasi)
             intent.putExtra("EXTRA_NAMA_DRIVER", "Budi Santoso")
 
             startActivity(intent)
             finish()
         }
 
-        // Mulai Timer 3 Detik
+        // Memulai timer 3 detik
         handler.postDelayed(runnable, 3000)
 
-        // Tombol Batal
+        // Tombol untuk membatalkan pencarian driver
         btnBatalkan.setOnClickListener {
-            // Menghentikan timer agar tidak pindah halaman sendiri setelah dibatalkan
+            // Menghentikan timer agar tidak pindah halaman otomatis
             handler.removeCallbacks(runnable)
 
             Toast.makeText(this, "Pencarian driver dibatalkan", Toast.LENGTH_SHORT).show()

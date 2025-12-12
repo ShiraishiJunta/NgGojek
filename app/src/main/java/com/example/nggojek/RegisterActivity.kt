@@ -4,9 +4,13 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+
+// =====================================================
+// RegisterActivity: Halaman untuk registrasi akun baru
+// Pengguna mengisi username, email, password, dan konfirmasi password
+// =====================================================
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -14,43 +18,37 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-        // Inisialisasi Views
+        // Menghubungkan komponen dengan ID dari layout
         val editUsername = findViewById<EditText>(R.id.editTextUsername)
         val editEmail = findViewById<EditText>(R.id.editTextEmail)
         val editPassword = findViewById<EditText>(R.id.editTextPassword)
         val editConfirmPassword = findViewById<EditText>(R.id.editTextConfirmPassword)
         val btnRegister = findViewById<Button>(R.id.buttonRegister)
-        val btnBack = findViewById<ImageView>(R.id.btnBack)
 
-        // Tombol Back
-        btnBack.setOnClickListener {
-            onBackPressedDispatcher.onBackPressed()
-        }
-
-        // Logika Register
+        // Tombol untuk melakukan registrasi
         btnRegister.setOnClickListener {
+            // Mengambil input dari pengguna
             val username = editUsername.text.toString()
             val email = editEmail.text.toString()
             val passwd = editPassword.text.toString()
             val confirm = editConfirmPassword.text.toString()
 
+            // Validasi: Semua field harus diisi
             if (username.isEmpty() || email.isEmpty() || passwd.isEmpty() || confirm.isEmpty()) {
-                Toast.makeText(this, "Mohon isi semua data", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Isi semua field", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
+            // Validasi: Password harus sama dengan konfirmasi password
             if (passwd != confirm) {
                 Toast.makeText(this, "Password tidak sama!", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            Toast.makeText(this, "Registrasi Berhasil! Silakan Login.", Toast.LENGTH_SHORT).show()
+            // Registrasi berhasil - kembali ke halaman login
+            Toast.makeText(this, "Registrasi Berhasil...", Toast.LENGTH_SHORT).show()
 
-            // Mengarahkan ke Login
-            val intent = Intent(this, LoginActivity::class.java)
-            // Menghapus stack agar tidak masuk halaman register
-            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
-            startActivity(intent)
+            startActivity(Intent(this, LoginActivity::class.java))
             finish()
         }
     }
