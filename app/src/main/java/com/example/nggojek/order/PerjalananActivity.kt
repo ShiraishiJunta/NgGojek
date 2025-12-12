@@ -80,7 +80,6 @@ class PerjalananActivity : AppCompatActivity() {
         mapView.setMultiTouchControls(true)
 
         // Menentukan titik awal (lokasi jemput) dan titik akhir (tujuan)
-        // Jika koordinat ada, gunakan koordinat asli. Jika tidak, gunakan lokasi default Jakarta
         val startPoint = if (latJemput != 0.0) GeoPoint(latJemput, lonJemput) else GeoPoint(-6.200000, 106.816666)
         val endPoint = if (latTujuan != 0.0) GeoPoint(latTujuan, lonTujuan) else GeoPoint(-6.175392, 106.827153)
 
@@ -107,7 +106,7 @@ class PerjalananActivity : AppCompatActivity() {
         val markerTujuan = Marker(mapView)
         markerTujuan.position = endPoint
         markerTujuan.title = "Tujuan"
-        markerTujuan.icon = ContextCompat.getDrawable(this, R.drawable.ic_launcher_foreground)
+        markerTujuan.icon = ContextCompat.getDrawable(this, R.drawable.location)
         mapView.overlays.add(markerTujuan)
 
         // Menggambar garis rute dari lokasi jemput ke tujuan

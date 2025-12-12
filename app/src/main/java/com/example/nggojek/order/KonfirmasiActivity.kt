@@ -4,15 +4,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
-import android.widget.RatingBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.nggojek.R
-import com.example.nggojek.home.HomeActivity
-import com.example.nggojek.riwayat.Riwayat
-import com.example.nggojek.riwayat.RiwayatData
-import com.google.android.material.textfield.TextInputEditText
+
 
 // =====================================================
 // KonfirmasiActivity: Halaman konfirmasi pesanan

@@ -31,7 +31,7 @@ class HomeActivity : AppCompatActivity() {
         }
 
         // Menghubungkan bottom navigation dengan ID dari layout
-        val bottomNav = findViewById<BottomNavigationView>(R.id.buttonNavButtom)
+        val bottomNav = findViewById<BottomNavigationView>(R.id.buttonNavBottom)
 
         // Menampilkan fragment Beranda saat pertama kali dibuka
         if (savedInstanceState == null) {

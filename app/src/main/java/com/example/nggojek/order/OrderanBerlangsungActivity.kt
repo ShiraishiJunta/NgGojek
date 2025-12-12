@@ -18,17 +18,14 @@ class OrderanBerlangsungActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_orderan_berlangsung)
 
-        // --- MULAI PENYESUAIAN XML ---
-        // Karena di XML kamu menggunakan NestedScrollView untuk BottomSheet
         try {
             val bottomSheet = findViewById<NestedScrollView>(R.id.bottomSheet)
             val bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
-            // Pastikan Bottom Sheet terbuka agar user melihat info driver
-            bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+              bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
         } catch (e: Exception) {
             e.printStackTrace()
         }
-        // --- SELESAI PENYESUAIAN XML ---
+
 
         // Tampilkan notifikasi awal
         Toast.makeText(this, "Driver ditemukan! Menuju lokasi jemput...", Toast.LENGTH_SHORT).show()

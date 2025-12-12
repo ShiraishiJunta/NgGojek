@@ -41,7 +41,8 @@ class ChatFragment : Fragment() {
         val inboxData = listOf(
             InboxModel("Nama Driver", "Saya udah di depan kak", "11:00"),
             InboxModel("Supir Ojol", "Oke siap, ditunggu ya", "10:45"),
-            InboxModel("Mang Bakso", "Pesanan sudah sampai", "09:30")
+            InboxModel("Mang Bakso", "Pesanan sudah sampai", "09:30"),
+            InboxModel("Mi ayam", "Enak", "10:00")
         )
 
         // Membuat adapter dan mengatur aksi ketika item diklik
