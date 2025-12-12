@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,7 +12,7 @@
         android:id="@+id/headerLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#E0E0E0"
+        android:background="@color/white"
         android:padding="16dp"
         android:orientation="horizontal"
         android:gravity="center_vertical"
@@ -19,56 +20,81 @@
 
         <ImageView
             android:id="@+id/btnBack"
-            android:layout_width="69dp"
-            android:layout_height="63dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:src="@drawable/ic_arrow_back"
-            app:tint="#000000" />
+            app:tint="@color/blackText"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Orderan Berlangsung"
-            android:textColor="#000000"
+            android:textColor="@color/blackText"
             android:textSize="18sp"
             android:textStyle="bold"
             android:gravity="center"
             android:layout_marginEnd="24dp"/>
     </LinearLayout>
 
+
     <!-- BOTTOM SHEET -->
-    <LinearLayout
+    <androidx.core.widget.NestedScrollView
         android:id="@+id/bottomSheet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp"
+        android:padding="20dp"
         android:background="@drawable/bg_rounded_top"
+        android:backgroundTint="@color/white"
         app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
-        app:behavior_peekHeight="500dp">
-
-        <!-- Handle Bar untuk Bottom Sheet -->
-        <View
-            android:layout_width="40dp"
-            android:layout_height="4dp"
-            android:layout_gravity="center_horizontal"
-            android:background="#CCCCCC"
-            android:layout_marginBottom="16dp"/>
+        app:behavior_peekHeight="300dp"
+        android:elevation="16dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <!-- Handle Bar -->
+            <View
+                android:layout_width="40dp"
+                android:layout_height="4dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@color/lightGrey"
+                android:layout_marginBottom="24dp"/>
+
             <!-- STATUS INFO -->
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Driver sedang menuju lokasi penjemputan"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                android:textColor="#000000"
-                android:gravity="center"
-                android:layout_marginBottom="16dp"/>
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/bg_input_field"
+                android:backgroundTint="#E3F2FD"
+                android:padding="12dp"
+                android:layout_marginBottom="24dp">
+                <!-- Background biru muda lembut -->
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_arrow_back"
+                    android:rotation="180"
+                    app:tint="#1976D2"
+                    android:layout_marginEnd="12dp"/>
+                <!-- Icon panah/info biru -->
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Driver sedang menuju lokasi penjemputan"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="#1976D2"/>
+            </LinearLayout>
 
             <!-- INFORMASI DRIVER -->
             <TextView
@@ -76,23 +102,25 @@
                 android:layout_height="wrap_content"
                 android:text="Informasi Driver"
                 android:textStyle="bold"
-                android:textColor="#000"
+                android:textColor="@color/blackText"
                 android:textSize="16sp"
-                android:layout_marginBottom="12dp"/>
+                android:layout_marginBottom="16dp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:layout_marginBottom="16dp">
+                android:layout_marginBottom="20dp">
 
                 <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
                     android:src="@drawable/profile"
-                    app:tint="#666666"
-                    android:layout_marginEnd="12dp"/>
+                    android:padding="2dp"
+                    android:background="@drawable/bg_circle"
+                    app:tint="@color/greyText"
+                    android:layout_marginEnd="16dp"/>
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -107,29 +135,36 @@
                         android:text="Budi Santoso"
                         android:textStyle="bold"
                         android:textSize="16sp"
-                        android:textColor="#000"/>
+                        android:textColor="@color/blackText"/>
 
                     <TextView
                         android:id="@+id/tvNopolDriver"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="B 1234 XYZ"
-                        android:textSize="12sp"
-                        android:textColor="#666666"
-                        android:layout_marginTop="2dp"/>
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:background="@drawable/bg_input_field"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="2dp"
+                        android:textColor="@color/blackText"
+                        android:layout_marginTop="4dp"/>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:gravity="center_vertical"
-                        android:layout_marginTop="2dp">
+                        android:layout_marginTop="4dp">
 
-                        <ImageView
-                            android:layout_width="14dp"
-                            android:layout_height="14dp"
-                            android:src="@android:drawable/btn_star_big_on"
-                            app:tint="#FFC107"
+                        <RatingBar
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:numStars="1"
+                            android:rating="1"
+                            style="?android:attr/ratingBarStyleSmall"
+                            android:theme="@style/Widget.AppCompat.RatingBar.Small"
+                            android:progressTint="#FFC107"
                             android:layout_marginEnd="4dp"/>
 
                         <TextView
@@ -138,7 +173,7 @@
                             android:layout_height="wrap_content"
                             android:text="4.8"
                             android:textSize="12sp"
-                            android:textColor="#000"/>
+                            android:textColor="@color/greyText"/>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
@@ -146,8 +181,8 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#CCCCCC"
-                android:layout_marginBottom="16dp"/>
+                android:background="@color/lightGrey"
+                android:layout_marginBottom="20dp"/>
 
             <!-- DETAIL PESANAN -->
             <TextView
@@ -155,9 +190,9 @@
                 android:layout_height="wrap_content"
                 android:text="Detail Pesanan"
                 android:textStyle="bold"
-                android:textColor="#000"
+                android:textColor="@color/blackText"
                 android:textSize="16sp"
-                android:layout_marginBottom="12dp"/>
+                android:layout_marginBottom="16dp"/>
 
             <!-- LAYANAN -->
             <LinearLayout
@@ -165,15 +200,15 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:layout_marginBottom="12dp">
+                android:layout_marginBottom="16dp">
 
                 <ImageView
                     android:id="@+id/imgTransportIcon"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:src="@drawable/motor"
-                    app:tint="#000"
-                    android:layout_marginEnd="12dp"/>
+                    app:tint="@color/primaryRed"
+                    android:layout_marginEnd="16dp"/>
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -188,30 +223,35 @@
                         android:text="Pesan Motor"
                         android:textStyle="bold"
                         android:textSize="14sp"
-                        android:textColor="#000"/>
+                        android:textColor="@color/blackText"/>
 
                     <TextView
                         android:id="@+id/tvHargaLayanan"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Rp 200.000"
-                        android:textSize="12sp"
-                        android:textColor="#666666"/>
+                        android:text="Rp 20.000"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/primaryRed"/>
                 </LinearLayout>
             </LinearLayout>
 
-            <!-- LOKASI -->
+            <!-- LOKASI (Timeline Style Modern) -->
+
+            <!-- Titik Jemput -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="8dp">
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="16dp"
                     android:layout_height="16dp"
-                    android:src="@android:drawable/btn_radio"
-                    android:layout_marginEnd="8dp"/>
+                    android:src="@drawable/ic_arrow_back"
+                    android:rotation="90"
+                    app:tint="@color/primaryRed"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="12dp"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -222,27 +262,29 @@
                         android:layout_height="wrap_content"
                         android:text="Titik Penjemputan"
                         android:textStyle="bold"
-                        android:textColor="#000"
-                        android:textSize="11sp"/>
+                        android:textColor="@color/greyText"
+                        android:textSize="12sp"/>
                     <TextView
                         android:id="@+id/tvAlamatJemput"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Nama jalan"
-                        android:textSize="12sp"
-                        android:textColor="#666666"/>
+                        android:textSize="14sp"
+                        android:textColor="@color/blackText"
+                        android:layout_marginTop="2dp"/>
                 </LinearLayout>
             </LinearLayout>
 
-            <TextView
-                android:layout_width="16dp"
-                android:layout_height="wrap_content"
-                android:text=":"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:layout_marginBottom="2dp"
-                android:layout_marginTop="-2dp"/>
+            <!-- Garis Penghubung -->
+            <View
+                android:layout_width="1dp"
+                android:layout_height="20dp"
+                android:background="@color/lightGrey"
+                android:layout_marginStart="7dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"/>
 
+            <!-- Tujuan -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -251,9 +293,11 @@
                 <ImageView
                     android:layout_width="16dp"
                     android:layout_height="16dp"
-                    android:src="@android:drawable/ic_menu_myplaces"
-                    app:tint="#000"
-                    android:layout_marginEnd="8dp"/>
+                    android:src="@drawable/ic_arrow_back"
+                    android:rotation="270"
+                    app:tint="@color/primaryRedDark"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="12dp"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -264,19 +308,20 @@
                         android:layout_height="wrap_content"
                         android:text="Tujuan"
                         android:textStyle="bold"
-                        android:textColor="#000"
-                        android:textSize="11sp"/>
+                        android:textColor="@color/greyText"
+                        android:textSize="12sp"/>
                     <TextView
                         android:id="@+id/tvAlamatTujuan"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Nama Jalan"
-                        android:textSize="12sp"
-                        android:textColor="#666666"/>
+                        android:textSize="14sp"
+                        android:textColor="@color/blackText"
+                        android:layout_marginTop="2dp"/>
                 </LinearLayout>
             </LinearLayout>
 
         </LinearLayout>
-    </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

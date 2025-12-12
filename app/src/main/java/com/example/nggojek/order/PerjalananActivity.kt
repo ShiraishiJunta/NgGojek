@@ -130,7 +130,7 @@ class PerjalananActivity : AppCompatActivity() {
     private fun mulaiAnimasiPerjalanan(start: GeoPoint, end: GeoPoint) {
         // Membuat animator untuk animasi pergerakan
         val animator = ValueAnimator.ofFloat(0f, 1f)
-        animator.duration = 5000 // Durasi animasi 5 detik
+        animator.duration = 10000 // Durasi animasi 5 detik
         animator.interpolator = LinearInterpolator()
 
         // Update posisi kendaraan setiap frame animasi
@@ -145,7 +145,7 @@ class PerjalananActivity : AppCompatActivity() {
             markerKendaraan.position = currentPos
 
             // Memperbarui estimasi waktu tiba
-            val sisaWaktu = (5 - (5 * v)).toInt()
+            val sisaWaktu = (10 - (10 * v)).toInt()
             if (sisaWaktu > 0) {
                 tvEstimasi.text = "Estimasi tiba dalam $sisaWaktu detik"
             } else {
