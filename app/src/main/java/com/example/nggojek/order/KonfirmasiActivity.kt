@@ -112,60 +112,60 @@ class KonfirmasiActivity : AppCompatActivity() {
 // Ditampilkan setelah perjalanan selesai
 // =====================================================
 
-class RatingActivity : AppCompatActivity() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_rating)
-
-        // Mengambil data dari halaman sebelumnya
-        val namaDriver = intent.getStringExtra("EXTRA_NAMA_DRIVER") ?: "Driver"
-        val harga = intent.getIntExtra("EXTRA_HARGA", 0)
-        val alamatJemput = intent.getStringExtra("EXTRA_ALAMAT_JEMPUT") ?: "Lokasi Jemput"
-        val alamatTujuan = intent.getStringExtra("EXTRA_ALAMAT_TUJUAN") ?: "Lokasi Tujuan"
-        val jenisKendaraan = intent.getStringExtra("EXTRA_JENIS_KENDARAAN") ?: "Motor"
-
-        // Menghubungkan komponen dengan ID dari layout
-        val tvNamaDriver = findViewById<TextView>(R.id.tvNamaDriver)
-        val ratingBar = findViewById<RatingBar>(R.id.ratingBar)
-        val btnKirim = findViewById<Button>(R.id.btnKirim)
-        val edtUlasan = findViewById<TextInputEditText>(R.id.edtUlasan)
-
-        tvNamaDriver.text = namaDriver
-
-        // Tombol untuk mengirim rating dan ulasan
-        btnKirim.setOnClickListener {
-            val nilaiRating = ratingBar.rating
-            val pesanUlasan = edtUlasan.text.toString()
-
-            // Validasi: rating harus diisi
-            if (nilaiRating == 0f) {
-                Toast.makeText(this, "Silakan beri bintang", Toast.LENGTH_SHORT).show()
-            } else {
-                val hargaString = "Rp ${String.format("%,d", harga).replace(',', '.')}"
-
-                // Menyimpan riwayat perjalanan
-                val riwayatBaru = Riwayat(
-                    namaDriver = namaDriver,
-                    totalHarga = hargaString,
-                    rating = nilaiRating,
-                    alamatJemput = alamatJemput,
-                    alamatTujuan = alamatTujuan,
-                    jenisLayanan = jenisKendaraan,
-                    ulasan = pesanUlasan
-                )
-
-                // Menambahkan ke daftar riwayat
-                RiwayatData.listRiwayat.add(0, riwayatBaru)
-
-                Toast.makeText(this, "Terima kasih!", Toast.LENGTH_SHORT).show()
-
-                // Kembali ke halaman home
-                val intent = Intent(this, HomeActivity::class.java)
-                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
-                startActivity(intent)
-                finish()
-            }
-        }
-    }
-}
+//class RatingActivity : AppCompatActivity() {
+//
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//        setContentView(R.layout.activity_rating)
+//
+//        // Mengambil data dari halaman sebelumnya
+//        val namaDriver = intent.getStringExtra("EXTRA_NAMA_DRIVER") ?: "Driver"
+//        val harga = intent.getIntExtra("EXTRA_HARGA", 0)
+//        val alamatJemput = intent.getStringExtra("EXTRA_ALAMAT_JEMPUT") ?: "Lokasi Jemput"
+//        val alamatTujuan = intent.getStringExtra("EXTRA_ALAMAT_TUJUAN") ?: "Lokasi Tujuan"
+//        val jenisKendaraan = intent.getStringExtra("EXTRA_JENIS_KENDARAAN") ?: "Motor"
+//
+//        // Menghubungkan komponen dengan ID dari layout
+//        val tvNamaDriver = findViewById<TextView>(R.id.tvNamaDriver)
+//        val ratingBar = findViewById<RatingBar>(R.id.ratingBar)
+//        val btnKirim = findViewById<Button>(R.id.btnKirim)
+//        val edtUlasan = findViewById<TextInputEditText>(R.id.edtUlasan)
+//
+//        tvNamaDriver.text = namaDriver
+//
+//        // Tombol untuk mengirim rating dan ulasan
+//        btnKirim.setOnClickListener {
+//            val nilaiRating = ratingBar.rating
+//            val pesanUlasan = edtUlasan.text.toString()
+//
+//            // Validasi: rating harus diisi
+//            if (nilaiRating == 0f) {
+//                Toast.makeText(this, "Silakan beri bintang", Toast.LENGTH_SHORT).show()
+//            } else {
+//                val hargaString = "Rp ${String.format("%,d", harga).replace(',', '.')}"
+//
+//                // Menyimpan riwayat perjalanan
+//                val riwayatBaru = Riwayat(
+//                    namaDriver = namaDriver,
+//                    totalHarga = hargaString,
+//                    rating = nilaiRating,
+//                    alamatJemput = alamatJemput,
+//                    alamatTujuan = alamatTujuan,
+//                    jenisLayanan = jenisKendaraan,
+//                    ulasan = pesanUlasan
+//                )
+//
+//                // Menambahkan ke daftar riwayat
+//                RiwayatData.listRiwayat.add(0, riwayatBaru)
+//
+//                Toast.makeText(this, "Terima kasih!", Toast.LENGTH_SHORT).show()
+//
+//                // Kembali ke halaman home
+//                val intent = Intent(this, HomeActivity::class.java)
+//                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+//                startActivity(intent)
+//                finish()
+//            }
+//        }
+//    }
+//}

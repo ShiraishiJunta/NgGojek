@@ -10,6 +10,9 @@ import android.widget.RadioButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
+import androidx.core.widget.NestedScrollView
+import com.google.android.material.button.MaterialButton
+import com.google.android.material.card.MaterialCardView
 import com.example.nggojek.R
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -26,7 +29,7 @@ import java.util.Locale
 class PesanMotorActivity : AppCompatActivity() {
 
     lateinit var mapView: MapView
-    lateinit var bottomSheetBehavior: BottomSheetBehavior<LinearLayout>
+    lateinit var bottomSheetBehavior: BottomSheetBehavior<NestedScrollView>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,7 +60,7 @@ class PesanMotorActivity : AppCompatActivity() {
         controller.setCenter(defaultLoc)
 
         // Mengatur bottom sheet untuk input formulir
-        val bottomSheet = findViewById<LinearLayout>(R.id.bottomSheet)
+        val bottomSheet = findViewById<NestedScrollView>(R.id.bottomSheet)
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
 

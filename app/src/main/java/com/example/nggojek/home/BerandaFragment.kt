@@ -12,6 +12,7 @@ import com.example.nggojek.order.PesanMobilActivity
 import com.example.nggojek.order.PesanMotorActivity
 import com.example.nggojek.ProfileActivity
 import com.example.nggojek.R
+import com.google.android.material.card.MaterialCardView
 
 // =====================================================
 // BerandaFragment: Halaman beranda/home utama aplikasi
@@ -35,8 +36,8 @@ class BerandaFragment : Fragment() {
 
         // Menghubungkan tombol-tombol dengan ID dari layout XML
         val btnProfile = view.findViewById<ImageView>(R.id.btnProfile)
-        val btnMotor = view.findViewById<LinearLayout>(R.id.btnMotor)
-        val btnMobil = view.findViewById<LinearLayout>(R.id.btnMobil)
+        val btnMotor = view.findViewById<MaterialCardView>(R.id.btnMotor)
+        val btnMobil = view.findViewById<MaterialCardView>(R.id.btnMobil)
 
         // Tombol untuk membuka halaman profil pengguna
         btnProfile.setOnClickListener {

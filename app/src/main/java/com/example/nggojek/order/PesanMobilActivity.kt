@@ -10,6 +10,7 @@ import android.widget.RadioButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
+import androidx.core.widget.NestedScrollView
 import com.example.nggojek.R
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -27,7 +28,7 @@ import java.util.Locale
 class PesanMobilActivity : AppCompatActivity() {
 
     lateinit var mapView: MapView
-    lateinit var bottomSheetBehavior: BottomSheetBehavior<LinearLayout>
+    lateinit var bottomSheetBehavior: BottomSheetBehavior<NestedScrollView>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,7 +59,7 @@ class PesanMobilActivity : AppCompatActivity() {
         controller.setCenter(defaultLoc)
 
         // Mengatur bottom sheet untuk input formulir
-        val bottomSheet = findViewById<LinearLayout>(R.id.bottomSheet)
+        val bottomSheet = findViewById<NestedScrollView>(R.id.bottomSheet)
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
 
@@ -132,7 +133,7 @@ class PesanMobilActivity : AppCompatActivity() {
             if (koordinatJemput != null && koordinatTujuan != null) {
                 // Jika lokasi ditemukan, pindahkan peta ke lokasi jemput
                 mapView.controller.animateTo(koordinatJemput)
-                mapView.controller.setZoom(18.0)
+                mapView.controller.setZoom(15.0)
 
                 // Menyiapkan data untuk dikirim ke halaman konfirmasi
                 val intent = Intent(this, KonfirmasiActivity::class.java)
