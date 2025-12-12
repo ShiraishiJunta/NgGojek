@@ -19,38 +19,37 @@ class RatingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rating)
 
-        // 1. Inisialisasi View sesuai ID di XML
+        // Inisialisasi View
         val tvNamaDriver = findViewById<TextView>(R.id.tvNamaDriver)
         val ratingBar = findViewById<RatingBar>(R.id.ratingBar)
         val edtUlasan = findViewById<TextInputEditText>(R.id.edtUlasan)
         val btnKirim = findViewById<Button>(R.id.btnKirim)
 
-        // 2. Ambil Data dari Intent (Dikirim dari MencariDriverActivity)
-        // Data ini diteruskan berantai dari Pesan -> Konfirmasi -> MencariDriver -> Rating
+        // Mengambil Data dari Intent
         val namaDriver = intent.getStringExtra("EXTRA_NAMA_DRIVER") ?: "Budi Santoso"
         val harga = intent.getIntExtra("EXTRA_HARGA", 0)
         val alamatJemput = intent.getStringExtra("EXTRA_ALAMAT_JEMPUT") ?: "-"
         val alamatTujuan = intent.getStringExtra("EXTRA_ALAMAT_TUJUAN") ?: "-"
         val jenisLayanan = intent.getStringExtra("EXTRA_JENIS_KENDARAAN") ?: "Motor"
 
-        // 3. Tampilkan Data ke Layar
+        // Menampilkan Data ke Layar
         tvNamaDriver.text = namaDriver
 
-        // 4. Logika Tombol Kirim
+        // Logika Tombol Kirim
         btnKirim.setOnClickListener {
             val ratingNilai = ratingBar.rating
             val teksUlasan = edtUlasan.text.toString()
 
-            // Validasi: Rating tidak boleh kosong (0 bintang)
+            // Validasi: Rating tidak boleh kosong
             if (ratingNilai == 0f) {
                 Toast.makeText(this, "Mohon beri bintang untuk driver", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            // Format Harga menjadi Rupiah (Contoh: Rp 20.000)
+            // Format Harga menjadi Rupiah
             val hargaString = "Rp ${String.format("%,d", harga).replace(',', '.')}"
 
-            // 5. SIMPAN KE DATA RIWAYAT (Untuk ditampilkan di menu Riwayat nanti)
+            // MENYIMPAN KE DATA RIWAYAT
             try {
                 val riwayatBaru = Riwayat(
                     namaDriver = namaDriver,
@@ -62,17 +61,16 @@ class RatingActivity : AppCompatActivity() {
                     ulasan = teksUlasan
                 )
 
-                // Masukkan ke urutan paling atas (index 0)
                 RiwayatData.listRiwayat.add(0, riwayatBaru)
 
             } catch (e: Exception) {
                 e.printStackTrace()
-                // Jika error saat menyimpan (misal class Riwayat beda parameter), aplikasi tetap jalan
+                // Jika error saat menyimpan aplikasi tetap jalan
             }
 
             Toast.makeText(this, "Terima kasih atas penilaiannya!", Toast.LENGTH_SHORT).show()
 
-            // 6. KEMBALI KE HOME
+            // KEMBALI KE HOME
             // Menggunakan flag agar user tidak bisa tekan 'Back' kembali ke rating
             val intent = Intent(this, HomeActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK

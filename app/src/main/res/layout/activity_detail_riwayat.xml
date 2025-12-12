@@ -9,7 +9,7 @@
     android:background="@color/offWhite"
     tools:context=".riwayat.DetailRiwayatActivity">
 
-    <!-- 1. HEADER -->
+    <!-- HEADER -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -49,7 +49,7 @@
             android:orientation="vertical"
             android:padding="20dp">
 
-            <!-- 2. STATUS PESANAN -->
+            <!-- STATUS PESANAN -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -58,7 +58,6 @@
                 android:layout_marginBottom="24dp"
                 android:layout_marginTop="8dp">
 
-                <!-- Ikon Centang Sederhana -->
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
@@ -87,7 +86,7 @@
                     android:layout_marginTop="4dp"/>
             </LinearLayout>
 
-            <!-- 3. CARD DETAIL UTAMA -->
+            <!-- CARD DETAIL UTAMA -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -103,7 +102,7 @@
                     android:orientation="vertical"
                     android:padding="20dp">
 
-                    <!-- A. INFO DRIVER -->
+                    <!-- INFO DRIVER -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -150,7 +149,7 @@
                         android:background="@color/lightGrey"
                         android:layout_marginBottom="20dp"/>
 
-                    <!-- B. JENIS LAYANAN -->
+                    <!-- JENIS LAYANAN -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -176,15 +175,12 @@
                             android:textColor="@color/blackText"/>
                     </LinearLayout>
 
-                    <!-- C. ALUR PERJALANAN (ICON DISAMAKAN DENGAN KONFIRMASI) -->
-
                     <!-- Titik Jemput -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
-                        <!-- Icon Arrow 90 Derajat (Merah) -->
                         <ImageView
                             android:layout_width="20dp"
                             android:layout_height="20dp"
@@ -215,7 +211,6 @@
                         </LinearLayout>
                     </LinearLayout>
 
-                    <!-- Garis Penghubung -->
                     <View
                         android:layout_width="1dp"
                         android:layout_height="20dp"
@@ -231,7 +226,6 @@
                         android:orientation="horizontal"
                         android:layout_marginBottom="20dp">
 
-                        <!-- Icon Arrow 270 Derajat (Merah Gelap) -->
                         <ImageView
                             android:layout_width="20dp"
                             android:layout_height="20dp"
@@ -268,7 +262,7 @@
                         android:background="@color/lightGrey"
                         android:layout_marginBottom="20dp"/>
 
-                    <!-- D. PENILAIAN & ULASAN -->
+                    <!-- PENILAIAN & ULASAN -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -314,7 +308,7 @@
                         android:background="@color/lightGrey"
                         android:layout_marginBottom="20dp"/>
 
-                    <!-- E. TOTAL PEMBAYARAN -->
+                    <!-- TOTAL PEMBAYARAN -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

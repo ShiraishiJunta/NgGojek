@@ -19,8 +19,6 @@
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
-        <!-- 1. IMAGE (ID Tetap: imageView) -->
-        <!-- Diberi background lingkaran soft agar modern -->
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="48dp"
@@ -29,9 +27,7 @@
             android:padding="8dp"
             android:background="@drawable/bg_circle"
             app:tint="@color/primaryRed" />
-        <!-- Tips: Jika gambarnya foto orang, hapus app:tint -->
 
-        <!-- 2. INFO TENGAH -->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -39,7 +35,6 @@
             android:layout_weight="1"
             android:orientation="vertical">
 
-            <!-- ID Tetap: txtNamaDriver -->
             <TextView
                 android:id="@+id/txtNamaDriver"
                 android:layout_width="wrap_content"
@@ -49,7 +44,6 @@
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
-            <!-- ID Tetap: txtTotal -->
             <TextView
                 android:id="@+id/txtTotal"
                 android:layout_width="wrap_content"
@@ -59,7 +53,6 @@
                 android:textSize="12sp"
                 android:textColor="@color/greyText" />
 
-            <!-- ID Tetap: txtHarga -->
             <TextView
                 android:id="@+id/txtHarga"
                 android:layout_width="wrap_content"
@@ -72,7 +65,7 @@
 
         </LinearLayout>
 
-        <!-- 3. RATING KANAN -->
+        <!-- RATING KANAN -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -87,7 +80,6 @@
                 android:textColor="@color/greyText"
                 android:layout_marginBottom="4dp"/>
 
-            <!-- ID Tetap: ratingBar -->
             <RatingBar
                 android:id="@+id/ratingBar"
                 android:layout_width="wrap_content"

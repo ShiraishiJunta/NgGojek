@@ -9,7 +9,6 @@
     tools:context=".RegisterActivity">
 
     <!-- Tombol Back -->
-
     <ImageView
         android:id="@+id/btnBack"
         android:layout_width="48dp"
@@ -37,10 +36,7 @@
             android:layout_height="wrap_content"
             android:paddingBottom="30dp">
 
-            <!-- LOGO AREA -->
-
             <!-- FORM SECTION -->
-
             <LinearLayout
                 android:id="@+id/headerContainer"
                 android:layout_width="wrap_content"

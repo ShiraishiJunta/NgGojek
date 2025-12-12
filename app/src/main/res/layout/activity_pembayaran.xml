@@ -20,7 +20,7 @@
         android:textColor="@color/blackText"
         android:layout_marginTop="20dp"/>
 
-    <!-- TOTAL HARGA (Highlight Merah) -->
+    <!-- TOTAL HARGA -->
     <TextView
         android:id="@+id/tvTotalBayar"
         android:layout_width="wrap_content"

@@ -84,7 +84,7 @@ class KonfirmasiActivity : AppCompatActivity() {
                 intent.putExtra("EXTRA_ALAMAT_TUJUAN", alamatTujuan)
                 intent.putExtra("EXTRA_JENIS_KENDARAAN", jenisKendaraan)
                 intent.putExtra("EXTRA_METODE_BAYAR", metodeBayar)
-                intent.putExtra("EXTRA_HARGA", totalBayar) // Kirim harga total
+                intent.putExtra("EXTRA_HARGA", totalBayar)
 
                 startActivity(intent)
                 finish() // Tutup konfirmasi agar tidak bisa back

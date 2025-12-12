@@ -9,7 +9,7 @@ import android.widget.RadioButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
-import androidx.core.widget.NestedScrollView // 1. WAJIB IMPORT INI
+import androidx.core.widget.NestedScrollView
 import com.example.nggojek.R
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -22,7 +22,7 @@ class PesanMobilActivity : AppCompatActivity() {
 
     lateinit var mapView: MapView
 
-    // 2. UBAH TIPE VARIABEL (LinearLayout -> NestedScrollView)
+    // NestedScrollView
     lateinit var bottomSheetBehavior: BottomSheetBehavior<NestedScrollView>
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,11 +52,11 @@ class PesanMobilActivity : AppCompatActivity() {
         controller.setZoom(15.0)
         controller.setCenter(defaultLoc)
 
-        // 3. SETUP BOTTOM SHEET (Sesuaikan dengan XML)
+        // SETUP BOTTOM SHEET
         val bottomSheet = findViewById<NestedScrollView>(R.id.bottomSheet)
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
 
-        // Ubah ke COLLAPSED agar map terlihat (sesuai peekHeight di XML)
+        // COLLAPSED agar map terlihat
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
 
         // Inisialisasi View
@@ -90,7 +90,6 @@ class PesanMobilActivity : AppCompatActivity() {
 
         // TOMBOL PESAN
         btnPesan.setOnClickListener {
-            // Ambil data teks
             val alamatJemput = inputJemput.text.toString().trim()
             val alamatTujuan = inputTujuan.text.toString().trim()
 
@@ -115,7 +114,7 @@ class PesanMobilActivity : AppCompatActivity() {
                 rbEW2Right.isChecked -> metodeBayar = "OVO"
             }
 
-            // 4. JALANKAN GEOCODING DI BACKGROUND (Agar tidak Force Close)
+            // MENJALANKAN GEOCODING
             Toast.makeText(this, "Mencari lokasi...", Toast.LENGTH_SHORT).show()
 
             Thread {

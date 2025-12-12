@@ -51,7 +51,7 @@ class ChatActivity : AppCompatActivity() {
 
                 // Simulasi balasan Driver (false)
                 recyclerChat.postDelayed({
-                    addMessage("Siap kak, otw.", false)
+                    addMessage("Saya udah di depan, kak.", false)
                 }, 1000)
             }
         }

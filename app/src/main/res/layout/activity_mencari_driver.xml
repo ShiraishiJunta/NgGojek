@@ -168,8 +168,6 @@
                         android:background="@color/lightGrey"
                         android:layout_marginBottom="20dp"/>
 
-                    <!-- LOKASI (Timeline Style) -->
-
                     <!-- Titik Jemput -->
                     <LinearLayout
                         android:layout_width="match_parent"

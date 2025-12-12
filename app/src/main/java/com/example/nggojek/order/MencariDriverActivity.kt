@@ -17,7 +17,7 @@ class MencariDriverActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mencari_driver)
 
-        // 1. Inisialisasi Views
+        // Inisialisasi Views
         val btnBack = findViewById<ImageView>(R.id.btnBack)
         val tvAlamatJemput = findViewById<TextView>(R.id.tvAlamatJemput)
         val tvAlamatTujuan = findViewById<TextView>(R.id.tvAlamatTujuan)
@@ -26,7 +26,7 @@ class MencariDriverActivity : AppCompatActivity() {
         val tvHargaLayanan = findViewById<TextView>(R.id.tvHargaLayanan)
         val btnBatalkan = findViewById<Button>(R.id.btnBatalkan)
 
-        // 2. Mengambil data dari Intent (TERMASUK KOORDINAT)
+        // Mengambil data dari Intent (TERMASUK KOORDINAT)
         val alamatJemput = intent.getStringExtra("EXTRA_ALAMAT_JEMPUT") ?: "Alamat Jemput Kosong"
         val alamatTujuan = intent.getStringExtra("EXTRA_ALAMAT_TUJUAN") ?: "Alamat Tujuan Kosong"
         val jenisKendaraan = intent.getStringExtra("EXTRA_JENIS_KENDARAAN") ?: "Motor"
@@ -39,15 +39,15 @@ class MencariDriverActivity : AppCompatActivity() {
         val latTujuan = intent.getDoubleExtra("EXTRA_LAT_TUJUAN", 0.0)
         val lonTujuan = intent.getDoubleExtra("EXTRA_LON_TUJUAN", 0.0)
 
-        // 3. Format harga
+        // Format harga
         val hargaString = "Rp ${String.format("%,d", harga).replace(',', '.')}"
 
-        // 4. Set data ke Views
+        // Set data ke Views
         tvAlamatJemput.text = alamatJemput
         tvAlamatTujuan.text = alamatTujuan
         tvHargaLayanan.text = hargaString
 
-        // 5. Set icon dan nama layanan
+        // Set icon dan nama layanan
         if (jenisKendaraan.equals("Mobil", ignoreCase = true)) {
             tvJenisLayanan.text = "Pesan Mobil"
             imgTransportIcon.setImageResource(R.drawable.car)
@@ -56,17 +56,16 @@ class MencariDriverActivity : AppCompatActivity() {
             imgTransportIcon.setImageResource(R.drawable.motor)
         }
 
-        // 6. Back Button
+        // Back Button
         btnBack.setOnClickListener {
             finish()
         }
 
-        // 7. Tombol Batalkan (Penting untuk menghentikan Handler jika user keluar)
-        // Kita simpan referensi handler agar bisa dibatalkan
+        // Tombol Batalkan
         val handler = Handler(Looper.getMainLooper())
         val runnable = Runnable {
             // Logika pindah halaman setelah delay
-            val intent = Intent(this, OrderanBerlangsungActivity::class.java) // Atau PerjalananActivity
+            val intent = Intent(this, OrderanBerlangsungActivity::class.java)
 
             // OPER DATA TEKS
             intent.putExtra("EXTRA_ALAMAT_JEMPUT", alamatJemput)
@@ -93,7 +92,7 @@ class MencariDriverActivity : AppCompatActivity() {
 
         // Tombol Batal
         btnBatalkan.setOnClickListener {
-            // Hentikan timer agar tidak pindah halaman sendiri setelah dibatalkan
+            // Menghentikan timer agar tidak pindah halaman sendiri setelah dibatalkan
             handler.removeCallbacks(runnable)
 
             Toast.makeText(this, "Pencarian driver dibatalkan", Toast.LENGTH_SHORT).show()

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/offWhite">
 
-    <!-- 1. TOOLBAR -->
+    <!-- TOOLBAR -->
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -18,15 +18,14 @@
         app:titleCentered="true"
         app:navigationIcon="@drawable/ic_arrow_back" />
 
-    <!-- 2. MAP (Layer Paling Bawah) -->
+    <!-- MAP -->
     <org.osmdroid.views.MapView
         android:id="@+id/mapView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="?attr/actionBarSize" />
 
-    <!-- 3. INPUT AREA (Floating Box - Melayang di atas Map) -->
-    <!-- Diberi margin bottom agar tidak ketutupan bottom sheet saat peek -->
+    <!-- INPUT AREA -->
     <LinearLayout
         android:id="@+id/topLocationBox"
         android:layout_width="match_parent"
@@ -111,8 +110,7 @@
         </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
 
-    <!-- 4. BOTTOM SHEET (Panel Pembayaran) -->
-    <!-- PERBAIKAN: behavior_peekHeight dan behavior_hideable -->
+    <!-- BOTTOM SHEET -->
     <androidx.core.widget.NestedScrollView
         android:id="@+id/bottomSheet"
         android:layout_width="match_parent"
@@ -128,18 +126,13 @@
         app:behavior_hideable="false"
         app:behavior_draggable="true">
 
-        <!-- 
-           peekHeight="120dp": Tinggi nongol sedikit saat map aktif.
-           hideable="false": Agar tidak bisa di-swipe hilang sampai bawah.
-        -->
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingBottom="50dp">
 
-            <!-- Handle Bar (Indikator Geser) -->
+            <!-- Handle Bar -->
             <View
                 android:layout_width="40dp"
                 android:layout_height="4dp"

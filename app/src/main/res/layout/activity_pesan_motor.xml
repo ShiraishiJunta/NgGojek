@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/offWhite">
 
-    <!-- 1. TOOLBAR -->
+    <!-- TOOLBAR -->
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -18,14 +18,14 @@
         app:titleCentered="true"
         app:navigationIcon="@drawable/ic_arrow_back" />
 
-    <!-- 2. MAP -->
+    <!-- MAP -->
     <org.osmdroid.views.MapView
         android:id="@+id/mapView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="?attr/actionBarSize" />
 
-    <!-- 3. INPUT AREA (Floating Box) -->
+    <!-- INPUT AREA -->
     <LinearLayout
         android:id="@+id/topLocationBox"
         android:layout_width="match_parent"
@@ -109,7 +109,7 @@
         </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
 
-    <!-- 4. BOTTOM SHEET (Scrollable & Naik Turun) -->
+    <!-- BOTTOM SHEET -->
     <androidx.core.widget.NestedScrollView
         android:id="@+id/bottomSheet"
         android:layout_width="match_parent"

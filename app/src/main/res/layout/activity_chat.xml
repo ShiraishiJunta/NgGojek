@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/offWhite">
 
-    <!-- TOP BAR (Header) -->
+    <!-- TOP BAR  -->
     <LinearLayout
         android:id="@+id/topBar"
         android:layout_width="0dp"
@@ -29,9 +29,7 @@
             android:padding="8dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             app:tint="@color/blackText" />
-        <!-- Pastikan src pakai ic_arrow_back yg kamu punya -->
 
-        <!-- Avatar Driver Kecil (Opsional, pemanis visual) -->
         <ImageView
             android:layout_width="36dp"
             android:layout_height="36dp"
@@ -109,7 +107,6 @@
             android:layout_marginStart="8dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             app:tint="@color/primaryRed" />
-        <!-- Pastikan punya icon send (bisa pakai ic_arrow_back rotasi 180 kalau darurat) -->
 
     </LinearLayout>
 

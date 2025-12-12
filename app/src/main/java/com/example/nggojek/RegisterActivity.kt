@@ -48,7 +48,7 @@ class RegisterActivity : AppCompatActivity() {
 
             // Mengarahkan ke Login
             val intent = Intent(this, LoginActivity::class.java)
-            // Hapus stack agar tidak masuk halaman register
+            // Menghapus stack agar tidak masuk halaman register
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
             startActivity(intent)
             finish()

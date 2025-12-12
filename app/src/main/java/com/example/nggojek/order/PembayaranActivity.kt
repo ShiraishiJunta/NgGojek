@@ -31,7 +31,7 @@ class PembayaranActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pembayaran)
 
-        // 1. TERIMA SEMUA DATA
+        // MERIMA SEMUA DATA
         alamatJemput = intent.getStringExtra("EXTRA_ALAMAT_JEMPUT")
         alamatTujuan = intent.getStringExtra("EXTRA_ALAMAT_TUJUAN")
         jenisKendaraan = intent.getStringExtra("EXTRA_JENIS_KENDARAAN")
@@ -40,8 +40,7 @@ class PembayaranActivity : AppCompatActivity() {
         metodeBayar = intent.getStringExtra("EXTRA_METODE_BAYAR") ?: "Tunai"
         namaDriver = intent.getStringExtra("EXTRA_NAMA_DRIVER") ?: "Driver"
 
-        //(Kode Inisialisasi View & Logika Tampilan Cash/Ewallet SAMA SEPERTI SEBELUMNYA)
-
+        // Inisiasi views dan button
         val tvTotalBayar = findViewById<TextView>(R.id.tvTotalBayar)
         val tvMetodeTitle = findViewById<TextView>(R.id.tvMetodeTitle)
         val layoutCash = findViewById<LinearLayout>(R.id.layoutCash)
@@ -63,7 +62,7 @@ class PembayaranActivity : AppCompatActivity() {
             tvNoVa.text = "8800 1234 5678"
         }
 
-        // Tambahkan Listener untuk menyalin teks
+        // Listener untuk menyalin teks
         btnSalinVa.setOnClickListener {
             val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
             val clip = ClipData.newPlainText("Nomor VA", tvNoVa.text.toString())
@@ -89,7 +88,7 @@ class PembayaranActivity : AppCompatActivity() {
 
                 val intent = Intent(this, RatingActivity::class.java)
 
-                // 2. KIRIM SEMUA DATA KE HALAMAN RATING (FINAL BRIDGE)
+                // MENGIRIM SEMUA DATA KE HALAMAN RATING
                 intent.putExtra("EXTRA_ALAMAT_JEMPUT", alamatJemput)
                 intent.putExtra("EXTRA_ALAMAT_TUJUAN", alamatTujuan)
                 intent.putExtra("EXTRA_JENIS_KENDARAAN", jenisKendaraan)

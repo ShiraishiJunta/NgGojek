@@ -117,7 +117,7 @@ class PesanMotorActivity : AppCompatActivity() {
                 rbEW2Right.isChecked -> metodeBayar = "OVO"
             }
 
-            // 6. JALANKAN DI BACKGROUND (Agar Tidak Crash)
+            // MENJALANKAN DI BACKGROUND (Agar Tidak Crash)
             Toast.makeText(this, "Mencari lokasi...", Toast.LENGTH_SHORT).show()
 
             Thread {

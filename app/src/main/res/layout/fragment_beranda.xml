@@ -64,7 +64,6 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!-- Content -->
-
     <!-- Banner Promo -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/bannerPromo"
@@ -85,7 +84,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            android:src="@drawable/promo" />
+            android:src="@drawable/banner" />
 
     </com.google.android.material.card.MaterialCardView>
 

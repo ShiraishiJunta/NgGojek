@@ -11,7 +11,7 @@ import com.example.nggojek.R
 
 class RiwayatAdapter(
     private val items: List<Riwayat>,
-    private val onItemClick: (Riwayat) -> Unit // 1. Tambahkan parameter fungsi klik
+    private val onItemClick: (Riwayat) -> Unit //
 ) : RecyclerView.Adapter<RiwayatAdapter.RiwayatViewHolder>() {
 
     class RiwayatViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -37,9 +37,9 @@ class RiwayatAdapter(
         holder.txtHarga.text = item.totalHarga
         holder.ratingBar.rating = item.rating
 
-        // 2. Pasang Listener Klik pada Item
+        // Listener Klik pada Item
         holder.itemView.setOnClickListener {
-            onItemClick(item) // Panggil fungsi saat diklik
+            onItemClick(item)
         }
     }
 

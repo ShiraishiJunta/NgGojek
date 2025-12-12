@@ -47,7 +47,7 @@ class PerjalananActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_perjalanan)
 
-        // AMBIL SEMUA DATA DARI INTENT
+        // MENGAMBIL SEMUA DATA DARI INTENT
         alamatJemput = intent.getStringExtra("EXTRA_ALAMAT_JEMPUT")
         alamatTujuan = intent.getStringExtra("EXTRA_ALAMAT_TUJUAN")
         jenisKendaraan = intent.getStringExtra("EXTRA_JENIS_KENDARAAN")
@@ -63,7 +63,7 @@ class PerjalananActivity : AppCompatActivity() {
         // SETUP VIEW
         val tvAlamatTujuan = findViewById<TextView>(R.id.tvAlamatTujuan)
         val tvNamaDriver = findViewById<TextView>(R.id.tvNamaDriver)
-        val btnChat = findViewById<ImageView>(R.id.btnChat) // ID BARU DARI XML
+        val btnChat = findViewById<ImageView>(R.id.btnChat)
 
         tvStatus = findViewById(R.id.tvStatusPerjalanan)
         tvEstimasi = findViewById(R.id.tvEstimasi)
@@ -71,7 +71,7 @@ class PerjalananActivity : AppCompatActivity() {
         tvAlamatTujuan.text = alamatTujuan ?: "Tujuan"
         tvNamaDriver.text = namaDriver ?: "Driver"
 
-        // --- LOGIKA TOMBOL CHAT ---
+        // LOGIKA TOMBOL CHAT
         btnChat.setOnClickListener {
             val intentChat = Intent(this, ChatActivity::class.java)
             intentChat.putExtra("EXTRA_NAMA_DRIVER", namaDriver)

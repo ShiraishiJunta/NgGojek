@@ -233,7 +233,6 @@
                 android:textColor="@color/blackText"/>
 
             <!-- BOX RINCIAN -->
-            <!-- Jika bg_input_field tidak ada, pakai background warna putih saja -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

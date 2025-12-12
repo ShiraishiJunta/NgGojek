@@ -19,7 +19,7 @@ class OrderanBerlangsungActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_orderan_berlangsung)
 
-        // --- BOTTOM SHEET  ---
+        // BOTTOM SHEET
         try {
             val bottomSheet = findViewById<NestedScrollView>(R.id.bottomSheet)
             val bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
@@ -77,7 +77,6 @@ class OrderanBerlangsungActivity : AppCompatActivity() {
         // LOGIKA TOMBOL CHAT
         btnChat.setOnClickListener {
             val intentChat = Intent(this, ChatActivity::class.java)
-            // Kirim Nama Driver agar judul Chat sesuai
             intentChat.putExtra("EXTRA_NAMA_DRIVER", namaDriver)
             startActivity(intentChat)
         }
@@ -87,25 +86,20 @@ class OrderanBerlangsungActivity : AppCompatActivity() {
 
             Toast.makeText(this, "Driver sudah sampai di titik jemput!", Toast.LENGTH_LONG).show()
 
-            // Delay 2 detik lagi lalu pindah
+            // Delay 2 detik lagi lalu pindah ke PerjalananActivity
             Handler(Looper.getMainLooper()).postDelayed({
 
-                // Cek apakah PerjalananActivity ada
-                try {
-                    val intent = Intent(this, PerjalananActivity::class.java)
+                val intent = Intent(this, PerjalananActivity::class.java)
 
-                    intent.putExtra("EXTRA_ALAMAT_JEMPUT", alamatJemput)
-                    intent.putExtra("EXTRA_ALAMAT_TUJUAN", alamatTujuan)
-                    intent.putExtra("EXTRA_JENIS_KENDARAAN", jenisKendaraan)
-                    intent.putExtra("EXTRA_NAMA_DRIVER", namaDriver)
-                    intent.putExtra("EXTRA_METODE_BAYAR", metodeBayar)
-                    intent.putExtra("EXTRA_HARGA", harga)
+                intent.putExtra("EXTRA_ALAMAT_JEMPUT", alamatJemput)
+                intent.putExtra("EXTRA_ALAMAT_TUJUAN", alamatTujuan)
+                intent.putExtra("EXTRA_JENIS_KENDARAAN", jenisKendaraan)
+                intent.putExtra("EXTRA_NAMA_DRIVER", namaDriver)
+                intent.putExtra("EXTRA_METODE_BAYAR", metodeBayar)
+                intent.putExtra("EXTRA_HARGA", harga)
 
-                    startActivity(intent)
-                    finish()
-                } catch (e: Exception) {
-                    Toast.makeText(this, "PerjalananActivity belum dibuat", Toast.LENGTH_SHORT).show()
-                }
+                startActivity(intent)
+                finish()
 
             }, 2000)
 

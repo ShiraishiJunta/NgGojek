@@ -9,8 +9,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-
-// PENTING: Import HomeActivity dari package 'home'
 import com.example.nggojek.home.HomeActivity
 
 class LoginActivity : AppCompatActivity() {
@@ -45,13 +43,13 @@ class LoginActivity : AppCompatActivity() {
             val username: String = editTextEmailAddress.text.toString().trim()
             val password: String = editTextPassword.text.toString().trim()
 
-            // 1. Validasi Input Kosong
+            // Validasi Input Kosong
             if (username.isEmpty() || password.isEmpty()) {
                 Toast.makeText(this, "Email & Password tidak boleh kosong", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            // 2. Cek Kesesuaian Akun
+            // Cek Kesesuaian Akun
             if (username == email && password == passwd) {
                 val intentLoginToMain = Intent(this, HomeActivity::class.java)
                 intentLoginToMain.putExtra(KEY_USERNAME, username)

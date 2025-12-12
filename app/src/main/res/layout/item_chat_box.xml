@@ -19,7 +19,7 @@
         android:padding="16dp"
         android:gravity="center_vertical">
 
-        <!-- FOTO PROFIL (ID Tetap: imgProfile) -->
+        <!-- FOTO PROFIL -->
         <ImageView
             android:id="@+id/imgProfile"
             android:layout_width="56dp"
@@ -28,7 +28,6 @@
             android:padding="4dp"
             android:background="@drawable/bg_circle"
             app:tint="@color/greyText"/>
-        <!-- Tips: Hapus app:tint jika ingin menampilkan foto asli berwarna -->
 
         <LinearLayout
             android:layout_width="0dp"
@@ -43,7 +42,6 @@
                 android:orientation="horizontal"
                 android:gravity="center_vertical">
 
-                <!-- NAMA (ID Tetap: tvName) -->
                 <TextView
                     android:id="@+id/tvName"
                     android:layout_width="0dp"
@@ -54,7 +52,6 @@
                     android:textStyle="bold"
                     android:textColor="@color/blackText"/>
 
-                <!-- WAKTU (ID Tetap: tvTime) -->
                 <TextView
                     android:id="@+id/tvTime"
                     android:layout_width="wrap_content"
@@ -64,7 +61,6 @@
                     android:textColor="@color/greyText"/>
             </LinearLayout>
 
-            <!-- PREVIEW PESAN (ID Tetap: tvPreview) -->
             <TextView
                 android:id="@+id/tvPreview"
                 android:layout_width="wrap_content"

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
-    <!-- HEADER: Back Button & Title -->
+    <!-- HEADER -->
     <ImageView
         android:id="@+id/btnBack"
         android:layout_width="48dp"
@@ -45,7 +45,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnBack" />
 
-    <!-- FIELD 1: NAMA -->
+    <!-- FIELD NAMA -->
     <TextView
         android:id="@+id/labelName"
         android:layout_width="wrap_content"
@@ -71,7 +71,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/labelName">
-        <!-- Menggunakan bg_input_field agar kotak rounded & border tipis -->
 
         <ImageView
             android:layout_width="24dp"
@@ -89,7 +88,7 @@
             android:textStyle="bold"/>
     </LinearLayout>
 
-    <!-- FIELD 2: EMAIL -->
+    <!-- FIELD EMAIL -->
     <TextView
         android:id="@+id/labelEmail"
         android:layout_width="wrap_content"
@@ -121,7 +120,6 @@
             android:layout_height="24dp"
             android:src="@drawable/ewallet_icon"
             app:tint="@color/primaryRed"/>
-        <!-- Ganti src dengan icon email jika ada -->
 
         <TextView
             android:layout_width="match_parent"
@@ -132,7 +130,7 @@
             android:textSize="16sp" />
     </LinearLayout>
 
-    <!-- FIELD 3: NOMOR HP -->
+    <!-- FIELD NOMOR HP -->
     <TextView
         android:id="@+id/labelPhone"
         android:layout_width="wrap_content"
@@ -165,7 +163,6 @@
             android:src="@drawable/ic_arrow_back"
             android:rotation="270"
             app:tint="@color/primaryRed"/>
-        <!-- Ganti src dengan icon phone jika ada -->
 
         <TextView
             android:layout_width="match_parent"
