@@ -176,9 +176,4 @@ class PesanMotorActivity : AppCompatActivity() {
         }
         return null
     }
-
-    override fun onSupportNavigateUp(): Boolean {
-        finish()
-        return true
-    }
 }
